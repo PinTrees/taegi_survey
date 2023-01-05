@@ -252,7 +252,7 @@ class _OwnerPageState extends State<OwnerPage> {
     }*/
     return SizedBox();
   }
-  void saveEditDate() async {
+  void saveEditDataP() async {
     if(replaceP == null) return;
 
     if((await WidgetHub.showAlertDl(context, title: replaceP!.addresses.first) as bool) == false) {
@@ -263,8 +263,9 @@ class _OwnerPageState extends State<OwnerPage> {
     if(replaceP != null) {
       print(replaceP!.id);
       await FirebaseT.putPermitManagementWithAES(replaceP, replaceP!.id);
-      var index = SystemControl.permitManagements.indexOf(selectP!);
-      SystemControl.permitManagements[index] = replaceP!;
+      selectP!.fromDatabase(replaceP!.toJson());
+      //var index = SystemControl.permitManagements.indexOf(selectP!);
+      //SystemControl.permitManagements[index] = replaceP!;
     }
 
     selectP = replaceP = null;
@@ -292,6 +293,29 @@ class _OwnerPageState extends State<OwnerPage> {
     }
 
     selectW = replaceW = null;
+    selectMenu = 'main';
+
+    search();
+    WidgetHub.showSnackBar(context, text: '저장되었습니다.');
+    WidgetHub.clear();
+  }
+  void saveEditDataC() async {
+    if(replaceC == null) return;
+
+    if((await WidgetHub.showAlertDl(context, title: replaceC!.addresses.first) as bool) == false) {
+      WidgetHub.showSnackBar(context, text: '저장이 취소되었습니다.');
+      return;
+    }
+
+    if(replaceC != null) {
+      print(replaceC!.id);
+      await FirebaseT.postWorkManagementWithAES(replaceC, replaceC!.id);
+      selectC!.fromDatabase(replaceC!.toJson());
+      //var index = SystemControl.workManagements.indexOf(selectW!);
+      //SystemControl.workManagements[index] = replaceW!;
+    }
+
+    selectC = replaceC = null;
     selectMenu = 'main';
 
     search();
@@ -393,11 +417,10 @@ class _OwnerPageState extends State<OwnerPage> {
         if(selectP == p) {
           w = Stack(
             children: [
-              //WidgetHub.pmRowExcelWidget(context, p, color: SystemStyle.accentLowColor.withOpacity(0.1),),
               Container(
                 padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
                 child: WidgetHub.pmRowExcelEditeWidget(
-                    context, replaceP!, saveFun: saveEditDate,
+                    context, replaceP!, saveFun: saveEditDataP,
                     fun: () async {
                       refresh();
                     },
@@ -459,12 +482,11 @@ class _OwnerPageState extends State<OwnerPage> {
         if(selectC == p) {
           w = WidgetHub.ctRowExcelEditorWidget(
             context, replaceC!, color: backColor, endVisible: true,
-            saveFun: saveEditDate,
+            saveFun: saveEditDataC,
             setFun: () {
               setState(() {}); refresh();
             },
             fun: () async {
-              //sideView('info', p: p);
             },
             closeFun: () {
               replaceP = selectP = null; refresh();

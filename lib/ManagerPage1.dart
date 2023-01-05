@@ -141,6 +141,7 @@ class _ManagerPage1State extends State<ManagerPage1> {
   var menu1_3 = [ '전체', '정산완료', '미정산',];
   var selectMenu1_3 = '전체';
 
+
   @override
   void initState() {
     super.initState();
@@ -256,9 +257,10 @@ class _ManagerPage1State extends State<ManagerPage1> {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(
-                  child: Container(
-                    padding: EdgeInsets.all(8),
+                WidgetHub.iconStyleMini(icon: Icons.notifications_active),
+                Container(
+                  padding: EdgeInsets.all(12),
+                  child: Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -359,22 +361,22 @@ class _ManagerPage1State extends State<ManagerPage1> {
     WidgetHub.clear();
   }
   void saveEditDataC() async {
-    if(replaceW == null) return;
+    if(replaceC == null) return;
 
-    if((await WidgetHub.showAlertDl(context, title: replaceW!.addresses.first) as bool) == false) {
+    if((await WidgetHub.showAlertDl(context, title: replaceC!.addresses.first) as bool) == false) {
       WidgetHub.showSnackBar(context, text: '저장이 취소되었습니다.');
       return;
     }
 
-    if(replaceW != null) {
-      print(replaceW!.id);
-      await FirebaseT.postWorkManagementWithAES(replaceW, replaceW!.id);
-      selectW!.fromDatabase(replaceW!.toJson());
+    if(replaceC != null) {
+      print(replaceC!.id);
+      await FirebaseT.postWorkManagementWithAES(replaceC, replaceC!.id);
+      selectC!.fromDatabase(replaceC!.toJson());
       //var index = SystemControl.workManagements.indexOf(selectW!);
       //SystemControl.workManagements[index] = replaceW!;
     }
 
-    selectW = replaceW = null;
+    selectC = replaceC = null;
     selectMenu = 'main';
 
     search();
@@ -542,7 +544,7 @@ class _ManagerPage1State extends State<ManagerPage1> {
         if(selectC == p) {
           w = WidgetHub.ctRowExcelEditorWidget(
             context, replaceC!, color: backColor, endVisible: true,
-            saveFun: saveEditDate,
+            saveFun: saveEditDataC,
             setFun: () {
               setState(() {}); refresh();
             },
@@ -1174,6 +1176,20 @@ class _ManagerPage1State extends State<ManagerPage1> {
                                          ),*/
                                        ],
                                      ),
+                                     Expanded(child: SizedBox()),
+                                     TextButton(
+                                       onPressed: () async {
+                                         await MassageT.messagePopup(context);
+                                         setState(() {});
+                                       },
+                                       style: StyleT.buttonStyleOutline(elevation: 8, padding: 0,
+                                           strock: 1.4, color: StyleT.errorColor.withOpacity(0.5) ),
+                                       child:   Container( alignment: Alignment.center,
+                                         padding: EdgeInsets.all(8),
+                                         child: Text('알림 ${MassageT.massages.length}건', style: StyleT.hintStyle(bold: true, size: 12, accent: true),),
+                                       ),
+                                     ),
+                                     SizedBox(width: 12,),
                                    ],
                                  ),
                                  SizedBox(height: 4,),
@@ -1552,7 +1568,7 @@ class _ManagerPage1State extends State<ManagerPage1> {
                                            ),
 
                                            /// 상단 오른쪽 메뉴
-                                           SizedBox(width: 8,),
+                                           SizedBox(width: 8,), 
                                            SizedBox(
                                              height: 28, width: 28,
                                              child: TextButton(
@@ -1563,11 +1579,10 @@ class _ManagerPage1State extends State<ManagerPage1> {
                                                child: Icon(Icons.search, size: 18, color: Colors.blueAccent,),
                                              ),
                                            ),
-                                           //SizedBox(width: 8,),
-                                           SizedBox(width: 8,),
+                                           SizedBox(width: 12,),
                                          ],
                                        ),
-                                       SizedBox(height: 8,),
+                                       SizedBox(height: 8,), 
                                      ],
                                    ),
                                  ),

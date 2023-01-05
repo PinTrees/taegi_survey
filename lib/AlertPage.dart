@@ -59,7 +59,7 @@ class _AlertMiniPageState extends State<AlertMiniPage> {
                     children: [
                       Text('${_p['type']}', style: StyleT.titleStyle(),),
                       SizedBox(width: 8,),
-                      Text('${StyleT.dateTimeFormat(dD)}', style: StyleT.titleStyle(),),
+                      Text('${StyleT.dateFormat(dD)}', style: StyleT.titleStyle(),),
                     ],
                   ),
                 ),

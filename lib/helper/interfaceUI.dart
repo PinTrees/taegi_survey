@@ -241,7 +241,7 @@ class WidgetHub extends StatelessWidget {
                 ),
               ),
               SizedBox(width: 8,),
-              Text(StyleT.dateTimeFormat(dD), style: StyleT.titleStyle(),),
+              Text(StyleT.dateFormat(dD), style: StyleT.titleStyle(),),
             ],
           ),
       )
@@ -267,7 +267,7 @@ class WidgetHub extends StatelessWidget {
               ),
             ),
             SizedBox(width: 8,),
-            Text(StyleT.dateTimeFormat(dD), style: StyleT.titleStyle(),),
+            Text(StyleT.dateFormat(dD), style: StyleT.titleStyle(),),
             SizedBox(width: 8,),
             if(endVisible)
               SizedBox(
@@ -477,7 +477,7 @@ class WidgetHub extends StatelessWidget {
               ),
             ),
             SizedBox(width: 8,),
-            Text(StyleT.dateTimeFormat(dD), style: StyleT.titleStyle(),),
+            Text(StyleT.dateFormat(dD), style: StyleT.titleStyle(),),
           ],
         ),
       )
@@ -506,7 +506,7 @@ class WidgetHub extends StatelessWidget {
               ),
             ),
             SizedBox(width: 8,),
-            Text(StyleT.dateTimeFormat(dD), style: StyleT.titleStyle(),),
+            Text(StyleT.dateFormat(dD), style: StyleT.titleStyle(),),
             if(endVisible)
               SizedBox(
                 height: 24,
@@ -675,7 +675,7 @@ class WidgetHub extends StatelessWidget {
               ),
             ),
             SizedBox(width: 8,),
-            Text(StyleT.dateTimeFormat(dD), style: StyleT.titleStyle(),),
+            Text(StyleT.dateFormat(dD), style: StyleT.titleStyle(),),
           ],
         ),
       )
@@ -5242,9 +5242,9 @@ class WidgetHub extends StatelessWidget {
     await ScaffoldMessenger.of(context).showSnackBar(
       //SnackBar 구현하는법 context는 위에 BuildContext에 있는 객체를 그대로 가져오면 됨.
         SnackBar(
-          width: 380,
-          elevation: 18,
-          behavior: SnackBarBehavior.floating,
+          //width: 380,
+          //elevation: 18,
+          //behavior: SnackBarBehavior.floating,
           //backgroundColor: Colors.redAccent,
           content: Text(text ?? 'The feature is under development.'), //snack bar의 내용. icon, button같은것도 가능하다.
           duration: Duration(seconds: 3), //올라와있는 시간

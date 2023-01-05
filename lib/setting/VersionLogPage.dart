@@ -90,6 +90,7 @@ class _VersionLogPageState extends State<VersionLogPage> {
                             '\n             - 실무자 페이지에서 데이터 수정시 수정전 데이터가 표시되던 오류가 해결됨'
                             '\n             - 관리자 페이지에서 데이터 수정시 수정전 데이터가 표시되던 오류가 해결됨'
                             '\n             - 업무배당 화면에서 문서추가가 불가능하던 오류가 해결됨'
+                            '\n             - 계약현황 화면에서 문서수정이 불가능하던 오류가 해결됨'
 
                             '\n\n기능 및 UI 업데이트'
                             '\nUpdate: 실무자 개인페이지 변경'
@@ -112,9 +113,10 @@ class _VersionLogPageState extends State<VersionLogPage> {
                             '\nUpdate: 전반적 인터페이스 통일화'
                             '\nUpdate: 코드 최적화'
                             '\nUpdate: GitHub 코드 추가됨 (0.1.0+beta)'
-                            '\n             - 업무배당 수정시 보완여부 수정 가능'
+                            '\n             - https://github.com/PinTrees/taegi_survey'
 
                             '\n\n기타'
+                            '\n베타버전으로 출시'
                             '\nWindowsApp 안전성 낮음'
                           , style: TextStyle(fontSize: 11, color: StyleT.titleColor, fontWeight: FontWeight.w300),),
                       ],

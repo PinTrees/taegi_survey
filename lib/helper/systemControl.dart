@@ -32,8 +32,8 @@ class SystemControl {
   static var serverPath = 'Z:\\태기측량\\공용\\1.작업\\taegi_system_server';
   static var serverUsage = 0.0;
 
-  static var releaseVer = '0.0.9+dev';
-  static var currentVer = '0.0.9+dev';
+  static var releaseVer = '0.1.0+beta';
+  static var currentVer = '0.1.0+beta';
 
   static var idToken = '';
 

@@ -878,7 +878,7 @@ class _PermitManagementPageState extends State<PermitManagementPage> {
                                if(date == null) return;
 
                                currentPermitAt['type'] = permitAtTypeInput.text;
-                               currentPermitAt['date'] = StyleT.dateTimeFormat(date).replaceAll(' ', '');
+                               currentPermitAt['date'] = StyleT.dateFormat(date).replaceAll(' ', '');
                                permitAtInput.clear(); permitAtTypeInput.clear();
                                permitAtList.add(currentPermitAt);
                                currentPermitAt = {};
@@ -974,7 +974,7 @@ class _PermitManagementPageState extends State<PermitManagementPage> {
                                  if(date == null) return;
 
                                  currentEndAt['type'] = endAtTypeInput.text;
-                                 currentEndAt['date'] = StyleT.dateTimeFormat(date).replaceAll(' ', '');
+                                 currentEndAt['date'] = StyleT.dateFormat(date).replaceAll(' ', '');
                                  endAtInput.clear(); endAtTypeInput.clear();
                                  endAtList.add(currentEndAt);
                                  currentEndAt = {};

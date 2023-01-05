@@ -267,6 +267,46 @@ class Contract {
     confirmPaymentDetails = json['confirmPaymentDetails'] ?? '';
     desc = json['desc'] ?? '';
   }
+  void fromDatabase(Map<dynamic, dynamic> json) {
+    id = json['id'] ?? '';
+    permitAt = json['permitAt'].toString();
+    contractAt = json['contractAt'].toString();
+
+    /// 배당일
+    takeAt = json['takeAt'] ?? '';
+    takeOverAt = json['takeOverAt'] ?? '';
+    applyAt = json['applyAt'] ?? '';
+    managerUid = json['managerUid'] ?? '';
+
+    useType = json['useType'] ?? [];
+    landType = json['landType'] ?? '';
+
+    clients = json['clients'] ?? [];
+    addresses = json['addresses'] ?? [];
+
+    ///계약 내용
+    downPayment = json['downPayment'] ?? 0;
+    middlePayment = json['middlePayment'] ?? 0;
+    middlePayments = json['middlePayments'] ?? [];
+    if(middlePayments.length <= 0) middlePayments.add(middlePayment);
+
+    balance = json['balance'] ?? 0;
+    totalCost = json['totalCost'] ?? 0;
+    licenseTax = json['licenseTax'] ?? 0;
+    thirdParty = json['thirdParty'] ?? [];
+    isVAT = json['isVAT'] ?? false;
+
+    ///입금 현황
+    confirmDeposits = json['confirmDeposits'] ?? [];
+    confirmDownPayment = json['confirmDownPayment'] ?? 0;
+    confirmMiddlePayment = json['confirmMiddlePayment'] ?? [];
+    confirmBalance = json['confirmBalance'] ?? 0;
+    confirmLicenseTax = json['confirmLicenseTax'] ?? 0;
+
+    thirdPartyDetails = json['thirdPartyDetails'] ?? '';
+    confirmPaymentDetails = json['confirmPaymentDetails'] ?? '';
+    desc = json['desc'] ?? '';
+  }
   Map<String, dynamic> toJson() {
     return {
       'id': id,
@@ -539,8 +579,10 @@ class Massage {
   var subTitle = '';
   var desc = '';
   var type = '';
+  var createAt = '';
 
-  Massage({required this.title, required this.subTitle, required this.desc, required this.type}) {
+  Massage({required this.title, required this.subTitle, required this.desc, required this.type,}) {
+    createAt = SystemT.getNowEpoch();
   }
   Massage.fromJson(Map<dynamic, dynamic> json) {
     title = json['title'];

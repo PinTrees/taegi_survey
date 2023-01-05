@@ -115,8 +115,13 @@ class StyleT {
     );
   }
 
-  static String dateTimeFormat(DateTime date) {
+  static String dateFormat(DateTime date) {
     return DateFormat('yyyy. MM. dd').format(date) ?? '';
+  }
+  static String dateFormatAtEpoch(String epoch) {
+    var epochInt = int.tryParse(epoch);
+    if(epochInt == null) return ' - ';
+    return DateFormat('yyyy-MM-dd - hh:mm').format(DateTime.fromMicrosecondsSinceEpoch(epochInt));
   }
 
   static TextStyle titleBigStyle({ bool bold=false, Color? color}) {
@@ -208,5 +213,11 @@ class StyleT {
     var f = NumberFormat('###,###,###,###,###,###,###');
     //print(f.format(date));
     return f.format(date);
+  }
+}
+
+class SystemT {
+  static String getNowEpoch() {
+    return DateTime.now().microsecondsSinceEpoch.toString();
   }
 }
