@@ -783,7 +783,7 @@ class _CtEditePageState extends State<CtEditePage> {
             ),
           ],
         ),
-        WidgetHub.buttonWrap('${SystemControl.getManagerName(c.managerUid)}', width: 128, () {}, read),
+        WidgetHub.buttonWrap('${SystemT.getManagerName(c.managerUid)}', width: 128, () {}, read),
 
         SizedBox(height: 16,),
         Text("신청인", style: StyleT.titleStyle(bold: true), ),
@@ -1778,7 +1778,7 @@ class _CtCreatePageState extends State<CtCreatePage> {
             ),
           ],
         ),
-        WidgetHub.buttonWrap('${SystemControl.getManagerName(c.managerUid)}', width: 128, () { setState(() {});}, read),
+        WidgetHub.buttonWrap('${SystemT.getManagerName(c.managerUid)}', width: 128, () { setState(() {});}, read),
 
         SizedBox(height: 12,),
         Row(

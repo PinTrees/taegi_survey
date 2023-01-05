@@ -22,11 +22,11 @@ class MassageT {
   static List<Widget> messagesW = [];
 
   static dynamic init({String? name, List<PermitManagement>? sortP, List<WorkManagement>? sortW}) async {
-    var tmpP = await SystemControl.getPermitEndAtsList(30, sort: sortP);
+    var tmpP = await SystemT.getPermitEndAtsList(30, sort: sortP);
     massages.add(Massage(title: '허가관리 종료 알림', subTitle: '',
         desc: '곧 허가종료가 다가오는 문서 ${tmpP.length}건이 있습니다.', type: 'alert',));
 
-    var tmpW = await SystemControl.searchWmSortTaskOverAtOnly(sortW ?? SystemControl.workManagements);
+    var tmpW = await SystemT.searchWmSortTaskOverAtOnly(sortW ?? SystemT.workManagements.values.toList());
     massages.add(Massage(title: '업무마감 알림', subTitle: '',
         desc: '곧 마감이 다가오는 업무 ${tmpW.length}건이 있습니다.', type: 'alert'));
 
@@ -86,7 +86,7 @@ class MassageT {
       children.add(w);
     }
 
-    bool aa = await showDialog(
+    bool? aa = await showDialog(
         context: context,
         barrierDismissible: true,
         barrierColor: Colors.black.withOpacity(0.15),

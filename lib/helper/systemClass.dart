@@ -582,7 +582,7 @@ class Massage {
   var createAt = '';
 
   Massage({required this.title, required this.subTitle, required this.desc, required this.type,}) {
-    createAt = SystemT.getNowEpoch();
+    createAt = ConvertT.getNowEpoch();
   }
   Massage.fromJson(Map<dynamic, dynamic> json) {
     title = json['title'];

@@ -131,7 +131,7 @@ class _PermitManagementListViewerPageState extends State<PermitManagementListVie
     //horizontalScroll.addListener(() {
     //  titleHorizontalScroll.jumpTo(horizontalScroll.position.pixels);
     //});
-    list = SystemControl.permitManagements.toList();
+    list = SystemT.permitManagementMaps.values.toList();
 
     if(widget.isAlert != null)
       isEndAts = widget.isAlert!;
@@ -252,7 +252,7 @@ class _PermitManagementListViewerPageState extends State<PermitManagementListVie
         TextButton(
           onPressed: () async {
             WidgetHub.loadingBottomSheet(context);
-            await SystemControl.update();
+            await SystemT.update();
             Navigator.pop(context);
             search();
             setState(() {});
@@ -388,8 +388,6 @@ class _PermitManagementListViewerPageState extends State<PermitManagementListVie
     if(replaceP != null) {
       print(replaceP!.id);
       await FirebaseT.putPermitManagementWithAES(replaceP, replaceP!.id);
-      var index = SystemControl.permitManagements.indexOf(selectP!);
-      SystemControl.permitManagements[index] = replaceP!;
     }
 
     selectP = replaceP = null;
@@ -412,7 +410,7 @@ class _PermitManagementListViewerPageState extends State<PermitManagementListVie
 
     if(createP != null) {
       await FirebaseT.pushPermitManagementWithAES(createP);
-      SystemControl.permitManagements.insert(0, createP!);
+      SystemT.permitManagementMaps[createP!.id] = createP!;
     }
 
     selectP = createP = null;
@@ -506,38 +504,38 @@ class _PermitManagementListViewerPageState extends State<PermitManagementListVie
   }
 
   void search() async {
-    List<PermitManagement>? tmpList = SystemControl.permitManagements.toList();
+    List<PermitManagement>? tmpList = SystemT.permitManagementMaps.values.toList();
 
     if(isEndAts) {
-      tmpList = await SystemControl.getPermitEndAtsList(30);
+      tmpList = await SystemT.getPermitEndAtsList(30);
       //tmpList = await SystemControl.searchPmWithManager(selectManager, sort: tmpList);
     }
 
     if(selectManager != null) {
-      tmpList = await SystemControl.searchPmWithManager(selectManager!.name, sort: tmpList);
+      tmpList = await SystemT.searchPmWithManager(selectManager!.name, sort: tmpList);
     }
 
     if(searchSelectYear != null) {
       print(tmpList!.length);
-      tmpList = await SystemControl.searchPmWithYear(searchSelectYear!.year.toString(), sort: tmpList) ?? [];
+      tmpList = await SystemT.searchPmWithYear(searchSelectYear!.year.toString(), sort: tmpList) ?? [];
     }
     if(searchSelectMonth != null) {
-      tmpList = await SystemControl.searchPmWithMonth(searchSelectMonth!.toString(), sort: tmpList) ?? [];
+      tmpList = await SystemT.searchPmWithMonth(searchSelectMonth!.toString(), sort: tmpList) ?? [];
     }
 
     if(searchOption == SearchPM.address) {
-      SystemControl.searchAddress = searchInput.text;
-      tmpList = await SystemControl.searchPmWithAddress(searchInput.text, sort: tmpList!.toList());
+      SystemT.searchAddress = searchInput.text;
+      tmpList = await SystemT.searchPmWithAddress(searchInput.text, sort: tmpList!.toList());
     }
     else if(searchOption == SearchPM.client) {
-      tmpList = await SystemControl.searchPmWithClient(searchInput.text, sort: tmpList!.toList());
+      tmpList = await SystemT.searchPmWithClient(searchInput.text, sort: tmpList!.toList());
     }
 
     if(selectSortMenu == sortMenu.first) {
-      tmpList = await SystemControl.searchPmSortF(tmpList,);
+      tmpList = await SystemT.searchPmSortF(tmpList,);
     }
     else if(selectSortMenu == sortMenu[1]) {
-      tmpList = await SystemControl.searchPmSortF(tmpList, dsss: true);
+      tmpList = await SystemT.searchPmSortF(tmpList, dsss: true);
     }
     list = tmpList!.toList();
 
@@ -596,8 +594,8 @@ class _PermitManagementListViewerPageState extends State<PermitManagementListVie
                   child: Text("알람 주기 1분", style: StyleT.titleStyle(), ),
                   style: StyleT.buttonStyleOutline(),
                   onPressed: () {
-                    SystemControl.alertDuDefault = 60;
-                    SystemControl.alertDu = 0;
+                    SystemT.alertDuDefault = 60;
+                    SystemT.alertDu = 0;
                     Navigator.pop(context);
                   },
                 ),
@@ -605,8 +603,8 @@ class _PermitManagementListViewerPageState extends State<PermitManagementListVie
                   child: Text("알람 주기 1초", style: StyleT.titleStyle(), ),
                   style: StyleT.buttonStyleOutline(),
                   onPressed: () {
-                    SystemControl.alertDuDefault = 1;
-                    SystemControl.alertDu = 0;
+                    SystemT.alertDuDefault = 1;
+                    SystemT.alertDu = 0;
                     Navigator.pop(context);
                   },
                 ),
@@ -614,8 +612,8 @@ class _PermitManagementListViewerPageState extends State<PermitManagementListVie
                   child: Text("알람 주기 1시간", style: StyleT.titleStyle(), ),
                   style: StyleT.buttonStyleOutline(),
                   onPressed: () {
-                    SystemControl.alertDuDefault = 3600;
-                    SystemControl.alertDu = 0;
+                    SystemT.alertDuDefault = 3600;
+                    SystemT.alertDu = 0;
                     Navigator.pop(context);
                   },
                 ),
@@ -672,7 +670,7 @@ class _PermitManagementListViewerPageState extends State<PermitManagementListVie
                          children: [
                            TextButton(
                              onPressed: () async {
-                               await SystemControl.updateServerUsage();
+                               await SystemT.updateServerUsage();
                                setState(() {});
                              },
                              style: StyleT.buttonStyleNone(padding: 6),
@@ -684,7 +682,7 @@ class _PermitManagementListViewerPageState extends State<PermitManagementListVie
                                  Stack(
                                    children: [
                                      Container(width: 36, height: 3, color: Colors.grey,),
-                                     Container(width: 36 * SystemControl.serverUsage, height: 3, color: Colors.red,),
+                                     Container(width: 36 * SystemT.serverUsage, height: 3, color: Colors.red,),
                                    ],
                                  ),
                                  SizedBox(height: 8,),
@@ -717,16 +715,16 @@ class _PermitManagementListViewerPageState extends State<PermitManagementListVie
                                 WidgetHub.openPageWithFade(context, VersionLogPage());
                              },
                              style: StyleT.buttonStyleNone(padding: 0,
-                                color: !(SystemControl.versionCheck() == 0) ? Colors.redAccent.withOpacity(0.15) : Colors.transparent),
+                                color: !(SystemT.versionCheck() == 0) ? Colors.redAccent.withOpacity(0.15) : Colors.transparent),
                              child: SizedBox( width: 48, height: 36,
                                child: Row(
                                  mainAxisAlignment: MainAxisAlignment.center,
                                  children: [
                                    WidgetHub.iconStyleMini(icon: Icons.history, size: 18),
                                   
-                                   if((SystemControl.versionCheck() == 0))
+                                   if((SystemT.versionCheck() == 0))
                                      Text('최신', style: TextStyle(fontSize: 9, color: StyleT.titleColor),),
-                                   if(!(SystemControl.versionCheck() == 0))
+                                   if(!(SystemT.versionCheck() == 0))
                                      Text('Update', style: TextStyle(fontSize: 9, color: StyleT.titleColor),),
                                  ],
                                ),
@@ -859,7 +857,7 @@ class _PermitManagementListViewerPageState extends State<PermitManagementListVie
                                                          ),
                                                        ],
                                                      ),
-                                                     items: SystemControl.managers.map((item) => DropdownMenuItem<dynamic>(
+                                                     items: SystemT.managers.map((item) => DropdownMenuItem<dynamic>(
                                                        value: item,
                                                        child: Text(
                                                          item.name,

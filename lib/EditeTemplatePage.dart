@@ -115,7 +115,7 @@ class _EditeTemplatePageState extends State<EditeTemplatePage> {
                 ),
               ],
             ),
-          for(var m in SystemControl.managers)
+          for(var m in SystemT.managers)
             TextButton(
               onPressed: () {
               },
@@ -201,7 +201,7 @@ class _EditeTemplatePageState extends State<EditeTemplatePage> {
                 ),
               ],
             ),
-          for(var m in SystemControl.architectureOffices)
+          for(var m in SystemT.architectureOffices)
             TextButton(
               onPressed: () {
               },

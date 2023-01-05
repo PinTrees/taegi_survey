@@ -104,7 +104,7 @@ class _AlertMiniPageState extends State<AlertMiniPage> {
                         children: [
                           Text('실무자', style: StyleT.titleStyle(bold: true),),
                           SizedBox(width: 8,),
-                          Text('${SystemControl.getManagerName(p.managerUid)}', style: StyleT.titleStyle(),),
+                          Text('${SystemT.getManagerName(p.managerUid)}', style: StyleT.titleStyle(),),
                         ],
                       ),
                       SizedBox(height: 8,),
@@ -261,7 +261,7 @@ class _AlertMiniPageState extends State<AlertMiniPage> {
                       onPressed: () async {
                         Navigator.of(context).popUntil((route) => route.isFirst);
 
-                        SystemControl.alert = true;
+                        SystemT.alert = true;
                         await windowManager.setAlwaysOnTop(false);
                         await windowManager.hide();
                         setState(() {});

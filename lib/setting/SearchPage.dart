@@ -60,25 +60,25 @@ class _SearchPageState extends State<SearchPage> {
     contracts.clear();
     works.clear();
 
-    List<PermitManagement>? permitsTmp = SystemControl.permitManagements.toList();
-    var permitsAddress = await SystemControl.searchPmWithAddress(searchInput.text, sort: permitsTmp.toList());
-    var permitsClient = await SystemControl.searchPmWithClient(searchInput.text, sort: permitsTmp.toList());
+    List<PermitManagement>? permitsTmp = SystemT.permitManagementMaps.values.toList();
+    var permitsAddress = await SystemT.searchPmWithAddress(searchInput.text, sort: permitsTmp.toList());
+    var permitsClient = await SystemT.searchPmWithClient(searchInput.text, sort: permitsTmp.toList());
 
     permits.addAll(permitsAddress);
     permits.addAll(permitsClient);
     permits = permits.toSet().toList();
 
-    List<Contract>? contractTmp = SystemControl.contracts.toList();
-    var contractAddress = await SystemControl.searchCtWithAddress(searchInput.text, sort: contractTmp.toList());
-    var contractClient = await SystemControl.searchCtWithClient(searchInput.text, sort: contractTmp.toList());
+    List<Contract>? contractTmp = SystemT.contracts.values.toList();
+    var contractAddress = await SystemT.searchCtWithAddress(searchInput.text, sort: contractTmp.toList());
+    var contractClient = await SystemT.searchCtWithClient(searchInput.text, sort: contractTmp.toList());
 
     contracts.addAll(contractAddress);
     contracts.addAll(contractClient);
     contracts = contracts.toSet().toList();
 
-    List<WorkManagement>? worksTmp = SystemControl.workManagements.toList();
-    var worksAddress = await SystemControl.searchWmWithAddress(searchInput.text, sort: worksTmp.toList());
-    var worksClient = await SystemControl.searchWmWithClient(searchInput.text, sort: worksTmp.toList());
+    List<WorkManagement>? worksTmp = SystemT.workManagements.values.toList();
+    var worksAddress = await SystemT.searchWmWithAddress(searchInput.text, sort: worksTmp.toList());
+    var worksClient = await SystemT.searchWmWithClient(searchInput.text, sort: worksTmp.toList());
 
     works.addAll(worksAddress);
     works.addAll(worksClient);

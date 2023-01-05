@@ -29,7 +29,7 @@ class _SystemUploadPageState extends State<SystemUploadPage> {
     initAsync();
   }
   void initAsync() async {
-    data = await SystemControl.readCSV(context);
+    data = await SystemT.readCSV(context);
     setState(() {});
 
     //print(data.toString());
@@ -41,7 +41,7 @@ class _SystemUploadPageState extends State<SystemUploadPage> {
       var csvRow = data[i];
       var json = {};
 
-      json['managerUid'] = SystemControl.getManagerKey(csvRow[3].toString().trim());
+      json['managerUid'] = SystemT.getManagerKey(csvRow[3].toString().trim());
       json['address'] = csvRow[6].toString().trim();
       json['clientName'] = csvRow[4].toString().trim();
       json['clientPhoneNumber'] = csvRow[5].toString().trim();

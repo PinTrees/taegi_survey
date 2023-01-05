@@ -41,7 +41,7 @@ class _PmEditePageState extends State<PmEditePage> {
     for (var k in editKeys)
       editBool[k] = !read;
     inputCtr['permit'].text = '세움터';
-    inputCtr['arch'].text = SystemControl.getArchitectureOfficeName(widget.p.architectureOffice).toString().replaceAll('\n', '');
+    inputCtr['arch'].text = SystemT.getArchitectureOfficeName(widget.p.architectureOffice).toString().replaceAll('\n', '');
   }
   void inputText(String type) {
     if(type == 'address') {
@@ -295,7 +295,7 @@ class _PmEditePageState extends State<PmEditePage> {
         SizedBox(height: 12,),
         Text("실무자", style: StyleT.titleStyle(bold: true), ),
         SizedBox(height: 2,),
-        WidgetHub.buttonWrap("${SystemControl.getManagerName(p.managerUid)}", () {}, true),
+        WidgetHub.buttonWrap("${SystemT.getManagerName(p.managerUid)}", () {}, true),
 
         WidgetHub.vertSizedPadding(),
         Text("신청인", style: StyleT.titleStyle(bold: true), ),
@@ -411,7 +411,7 @@ class _PmEditePageState extends State<PmEditePage> {
         WidgetHub.vertSizedPadding(),
         Text("건축사", style: StyleT.titleStyle(bold: true), ),
         SizedBox(height: 2,),
-        WidgetHub.buttonWrap(SystemControl.getArchitectureOfficeName(p.architectureOffice)
+        WidgetHub.buttonWrap(SystemT.getArchitectureOfficeName(p.architectureOffice)
             .toString().replaceAll('\n', ' '), () {}, true),
 
         WidgetHub.vertSizedPadding(),
@@ -958,7 +958,7 @@ class _PmCreatePageState extends State<PmCreatePage> {
             ),
           ],
         ),
-        WidgetHub.buttonWrap('${SystemControl.getManagerName(p.managerUid)}', width: 128,  () {}, true),
+        WidgetHub.buttonWrap('${SystemT.getManagerName(p.managerUid)}', width: 128,  () {}, true),
 
         WidgetHub.vertSizedPadding(),
         Text("신청인", style: StyleT.titleBigStyle(bold: true), ),

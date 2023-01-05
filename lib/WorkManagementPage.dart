@@ -126,7 +126,7 @@ class _WorkManagementListViewerPageState extends State<WorkManagementListViewerP
   @override
   void initState() {
     super.initState();
-    SystemControl.initPageValue();
+    SystemT.initPageValue();
 
     selectSortMenu = sortMenu.first;
 
@@ -134,7 +134,7 @@ class _WorkManagementListViewerPageState extends State<WorkManagementListViewerP
     horizontalScroll.addListener(() {
       titleHorizontalScroll.jumpTo(horizontalScroll.position.pixels);
     });
-    list = SystemControl.workManagements.toList();
+    list = SystemT.workManagements.values.toList();
 
     if(widget.isAlert != null)
       isConfirm = widget.isAlert!;
@@ -215,13 +215,13 @@ class _WorkManagementListViewerPageState extends State<WorkManagementListViewerP
             if(selectP != null) {
               print(createPage.c.id);
               await FirebaseT.postWorkManagementWithAES(createPage.c, createPage.c.id);
-              var index = SystemControl.workManagements.indexOf(selectP!);
-              SystemControl.workManagements[index] = createPage.c;
+              //var index = SystemT.workManagements.indexOf(selectP!);
+              //SystemT.workManagements[index] = createPage.c;
             }
             else {
               print(createPage.c.toJson());
-              await FirebaseT.pushWorkManagementWithAES(createPage.c);
-              SystemControl.workManagements.insert(0, createPage.c);
+              //await FirebaseT.pushWorkManagementWithAES(createPage.c);
+              //SystemT.workManagements.insert(0, createPage.c);
             }
 
             selectP = null;
@@ -260,7 +260,7 @@ class _WorkManagementListViewerPageState extends State<WorkManagementListViewerP
         TextButton(
           onPressed: () async {
             WidgetHub.loadingBottomSheet(context);
-            await SystemControl.update();
+            await SystemT.update();
             Navigator.pop(context);
             search();
             setState(() {});
@@ -349,8 +349,8 @@ class _WorkManagementListViewerPageState extends State<WorkManagementListViewerP
     if(replaceP != null) {
       print(replaceP!.id);
       await FirebaseT.postWorkManagementWithAES(replaceP, replaceP!.id);
-      var index = SystemControl.workManagements.indexOf(selectP!);
-      SystemControl.workManagements[index] = replaceP!;
+      //var index = SystemT.workManagements.indexOf(selectP!);
+      //SystemT.workManagements[index] = replaceP!;
     }
 
     selectP = replaceP = null;
@@ -458,37 +458,37 @@ class _WorkManagementListViewerPageState extends State<WorkManagementListViewerP
   }
 
   void search({ String? address, String? manager, String? client }) async {
-    List<WorkManagement> tmpList = SystemControl.workManagements.toList();
+    List<WorkManagement> tmpList = SystemT.workManagements.values.toList();
 
     if(isConfirm) {
-      tmpList = await SystemControl.searchWmSortTaskOverAtOnly(tmpList);
+      tmpList = await SystemT.searchWmSortTaskOverAtOnly(tmpList);
     }
 
     if(searchSelectYear != null) {
-      tmpList = await SystemControl.searchWmWithYear(searchSelectYear!.year.toString(), sort: tmpList);
+      tmpList = await SystemT.searchWmWithYear(searchSelectYear!.year.toString(), sort: tmpList);
     }
     if(searchSelectMonth != null) {
-      tmpList = await SystemControl.searchWmWithMonth(searchSelectMonth.toString(), sort: tmpList);
+      tmpList = await SystemT.searchWmWithMonth(searchSelectMonth.toString(), sort: tmpList);
     }
 
     if(address != null) {
-      tmpList = await SystemControl.searchWmWithAddress(address, sort: tmpList);
+      tmpList = await SystemT.searchWmWithAddress(address, sort: tmpList);
     }
     if(manager != null) {
-      tmpList = await SystemControl.searchWmWithManager(manager, sort: tmpList);
+      tmpList = await SystemT.searchWmWithManager(manager, sort: tmpList);
     }
     if(client != null) {
-      tmpList = await SystemControl.searchWmWithClient(client, sort: tmpList);
+      tmpList = await SystemT.searchWmWithClient(client, sort: tmpList);
     }
 
     if(selectSortMenu == sortMenu.first) {
-      tmpList = await SystemControl.searchWmSortF(tmpList,);
+      tmpList = await SystemT.searchWmSortF(tmpList,);
     }
     else if(selectSortMenu == sortMenu[1]) {
-      tmpList = await SystemControl.searchWmSortF(tmpList, dsss: true);
+      tmpList = await SystemT.searchWmSortF(tmpList, dsss: true);
     }
     else if(selectSortMenu == sortMenu[2]) {
-      tmpList = await SystemControl.searchWmSortTaskOverAt(tmpList,);
+      tmpList = await SystemT.searchWmSortTaskOverAt(tmpList,);
     }
 
     list = tmpList.toList();
@@ -545,8 +545,8 @@ class _WorkManagementListViewerPageState extends State<WorkManagementListViewerP
                   child: Text("알람 주기 1분", style: StyleT.titleStyle(), ),
                   style: StyleT.buttonStyleOutline(),
                   onPressed: () {
-                    SystemControl.alertDuDefault = 60;
-                    SystemControl.alertDu = 0;
+                    SystemT.alertDuDefault = 60;
+                    SystemT.alertDu = 0;
                     Navigator.pop(context);
                   },
                 ),
@@ -554,8 +554,8 @@ class _WorkManagementListViewerPageState extends State<WorkManagementListViewerP
                   child: Text("알람 주기 1초", style: StyleT.titleStyle(), ),
                   style: StyleT.buttonStyleOutline(),
                   onPressed: () {
-                    SystemControl.alertDuDefault = 1;
-                    SystemControl.alertDu = 0;
+                    SystemT.alertDuDefault = 1;
+                    SystemT.alertDu = 0;
                     Navigator.pop(context);
                   },
                 ),
@@ -563,8 +563,8 @@ class _WorkManagementListViewerPageState extends State<WorkManagementListViewerP
                   child: Text("알람 주기 1시간", style: StyleT.titleStyle(), ),
                   style: StyleT.buttonStyleOutline(),
                   onPressed: () {
-                    SystemControl.alertDuDefault = 3600;
-                    SystemControl.alertDu = 0;
+                    SystemT.alertDuDefault = 3600;
+                    SystemT.alertDu = 0;
                     Navigator.pop(context);
                   },
                 ),
@@ -572,14 +572,13 @@ class _WorkManagementListViewerPageState extends State<WorkManagementListViewerP
                   child: Text("Nas 데이터 저장", style: StyleT.titleStyle(), ),
                   style: StyleT.buttonStyleOutline(),
                   onPressed: () async {
-                    await FirebaseT.saveAllCtWithNAS(SystemControl.contracts, id: '2022_12');
                   },
                 ),
                 TextButton(
                   child: Text("Nas 데이터 확인", style: StyleT.titleStyle(), ),
                   style: StyleT.buttonStyleOutline(),
                   onPressed: () async {
-                    var a = File('${SystemControl.serverPath}/contract/2022_12.tgs');
+                    var a = File('${SystemT.serverPath}/contract/2022_12.tgs');
                     var ss = await a.readAsStringSync();
                     print(ss);
                   },

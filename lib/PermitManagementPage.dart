@@ -112,7 +112,7 @@ class _PermitManagementPageState extends State<PermitManagementPage> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              for(var m in SystemControl.managers)
+              for(var m in SystemT.managers)
                 TextButton(
                 onPressed: () {
                   selectManagerId = m.id;
@@ -203,7 +203,7 @@ class _PermitManagementPageState extends State<PermitManagementPage> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              for(var m in SystemControl.architectureOffices)
+              for(var m in SystemT.architectureOffices)
                 TextButton(
                     onPressed: () {
                       selectArchitectureOfficeId = m.id;
@@ -685,7 +685,7 @@ class _PermitManagementPageState extends State<PermitManagementPage> {
                        Text('실무자 입력', style: StyleT.titleStyle(bold: true),),
                        Row(
                          children: [
-                           Text(SystemControl.getManagerName(selectManagerId)),
+                           Text(SystemT.getManagerName(selectManagerId)),
                            Container(width: 256, child: WidgetHub.textInputField(managerInput, hintText: '실무자 직접 입력')),
                            SizedBox(width: 8,),
                            SizedBox(

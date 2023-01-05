@@ -39,7 +39,7 @@ class _AlertMainPageState extends State<AlertMainPage> {
     super.initState();
 
     list = widget.permits.toList();
-    manager = SystemControl.managers;
+    manager = SystemT.managers;
 
     horizontalScroll.addListener(() {
       titleHorizontalScroll.jumpTo(horizontalScroll.position.pixels);
@@ -191,7 +191,7 @@ class _AlertMainPageState extends State<AlertMainPage> {
                   children: [
                     Text(p.address, style: StyleT.titleStyle(),),
                     SizedBox(height: 8,),
-                    Text('실무자: ${SystemControl.getManagerName(p.managerUid)}\n' + '신청인: ${p.clientName} : ${p.clientPhoneNumber}'.replaceAll('\n', ''), style: StyleT.titleStyle(),),
+                    Text('실무자: ${SystemT.getManagerName(p.managerUid)}\n' + '신청인: ${p.clientName} : ${p.clientPhoneNumber}'.replaceAll('\n', ''), style: StyleT.titleStyle(),),
                     SizedBox(height: 8,),
                     Text('종료 예정일', style: StyleT.titleStyle(bold: true),),
                     SizedBox(height: 4,),
@@ -499,7 +499,7 @@ void openMenu(BuildContext context, PermitManagement p) {
             children: <Widget>[
               new Text("${p.address}", style: StyleT.titleStyle(), ),
               SizedBox(height: 12,),
-              new Text("실무자: ${SystemControl.getManagerName(p.managerUid)}", style: StyleT.titleStyle(), ),
+              new Text("실무자: ${SystemT.getManagerName(p.managerUid)}", style: StyleT.titleStyle(), ),
               SizedBox(height: 12,),
               new Text("신청인: ", style: StyleT.titleStyle(), ),
               new Text("${p.clients}", style: StyleT.titleStyle(), ),

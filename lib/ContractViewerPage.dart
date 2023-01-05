@@ -124,13 +124,13 @@ class _ContractListViewerPageState extends State<ContractListViewerPage> {
   @override
   void initState() {
     super.initState();
-    SystemControl.initPageValue();
+    SystemT.initPageValue();
 
     initWidgetMenu();
     horizontalScroll.addListener(() {
       titleHorizontalScroll.jumpTo(horizontalScroll.position.pixels);
     });
-    list = SystemControl.contracts.toList();
+    list = SystemT.contracts.values.toList();
 
     if(widget.isAlert != null)
       isConfirm = widget.isAlert!;
@@ -210,14 +210,14 @@ class _ContractListViewerPageState extends State<ContractListViewerPage> {
 
             if(selectP != null) {
               print(createPage.c.id);
-              await FirebaseT.postContractWithAES(createPage.c, createPage.c.id);
-              var index = SystemControl.contracts.indexOf(selectP!);
-              SystemControl.contracts[index] = createPage.c;
+              //await FirebaseT.postContractWithAES(createPage.c, createPage.c.id);
+              //var index = SystemT.contracts.indexOf(selectP!);
+              //SystemT.contracts[index] = createPage.c;
             }
             else {
               print(createPage.c.toJson());
-              await FirebaseT.pushContractWithAES(createPage.c);
-              SystemControl.contracts.insert(0, createPage.c);
+              //await FirebaseT.pushContractWithAES(createPage.c);
+              //SystemT.contracts.insert(0, createPage.c);
             }
 
             selectP = null;
@@ -256,7 +256,7 @@ class _ContractListViewerPageState extends State<ContractListViewerPage> {
         TextButton(
           onPressed: () async {
             WidgetHub.loadingBottomSheet(context);
-            await SystemControl.update();
+            await SystemT.update();
             Navigator.pop(context);
             search();
             setState(() {});
@@ -392,9 +392,9 @@ class _ContractListViewerPageState extends State<ContractListViewerPage> {
 
     if(replaceP != null) {
       print(replaceP!.id);
-      await FirebaseT.postContractWithAES(replaceP, replaceP!.id);
-      var index = SystemControl.contracts.indexOf(selectP!);
-      SystemControl.contracts[index] = replaceP!;
+      //await FirebaseT.postContractWithAES(replaceP, replaceP!.id);
+      //var index = SystemT.contracts.indexOf(selectP!);
+      //SystemT.contracts[index] = replaceP!;
     }
 
     selectP = replaceP = null;
@@ -416,11 +416,11 @@ class _ContractListViewerPageState extends State<ContractListViewerPage> {
 
     if(createP != null) {
       if(!isWork) {
-        await FirebaseT.pushContractWithAES(createP);
+        //await FirebaseT.pushContractWithAES(createP);
       } else {
-        await FirebaseT.pushContractWithAESAndWm(createP);
+        //await FirebaseT.pushContractWithAESAndWm(createP);
       }
-      SystemControl.contracts.insert(0, createP!);
+      //SystemT.contracts.insert(0, createP!);
     }
 
     selectP = createP = null;
@@ -492,28 +492,28 @@ class _ContractListViewerPageState extends State<ContractListViewerPage> {
 
   void search({ String? address, String? manager, String? client }) async {
     List<Contract>? tmpList = [];
-    tmpList = SystemControl.contracts.toList();
+    tmpList = SystemT.contracts.values.toList();
     if(isConfirm) {
-      tmpList = await SystemControl.searchCtWithConfirm();
+      tmpList = await SystemT.searchCtWithConfirm();
     }
     else if(isComplete) {
-      tmpList = await SystemControl.searchCtWithComplete();
+      tmpList = await SystemT.searchCtWithComplete();
     }
 
     if(searchSelectMonth != null) {
-      tmpList = await SystemControl.searchCtWithMonth(searchSelectMonth.toString(), sort: tmpList);
+      tmpList = await SystemT.searchCtWithMonth(searchSelectMonth.toString(), sort: tmpList);
     }
 
     if(address != null) {
-      tmpList = await SystemControl.searchCtWithAddress(address, sort: tmpList);
+      tmpList = await SystemT.searchCtWithAddress(address, sort: tmpList);
     }
     else if(manager != null) {
       if(manager != '')
-        tmpList = await SystemControl.searchCtWithManager(manager, sort: tmpList);
+        tmpList = await SystemT.searchCtWithManager(manager, sort: tmpList);
     }
     else if(client != null) {
       if(manager != '')
-        tmpList = await SystemControl.searchCtWithClient(client, sort: tmpList);
+        tmpList = await SystemT.searchCtWithClient(client, sort: tmpList);
     }
 
     list = tmpList!.toList();
@@ -571,8 +571,8 @@ class _ContractListViewerPageState extends State<ContractListViewerPage> {
                   child: Text("알람 주기 1분", style: StyleT.titleStyle(), ),
                   style: StyleT.buttonStyleOutline(),
                   onPressed: () {
-                    SystemControl.alertDuDefault = 60;
-                    SystemControl.alertDu = 0;
+                    SystemT.alertDuDefault = 60;
+                    SystemT.alertDu = 0;
                     Navigator.pop(context);
                   },
                 ),
@@ -580,8 +580,8 @@ class _ContractListViewerPageState extends State<ContractListViewerPage> {
                   child: Text("알람 주기 1초", style: StyleT.titleStyle(), ),
                   style: StyleT.buttonStyleOutline(),
                   onPressed: () {
-                    SystemControl.alertDuDefault = 1;
-                    SystemControl.alertDu = 0;
+                    SystemT.alertDuDefault = 1;
+                    SystemT.alertDu = 0;
                     Navigator.pop(context);
                   },
                 ),
@@ -589,8 +589,8 @@ class _ContractListViewerPageState extends State<ContractListViewerPage> {
                   child: Text("알람 주기 1시간", style: StyleT.titleStyle(), ),
                   style: StyleT.buttonStyleOutline(),
                   onPressed: () {
-                    SystemControl.alertDuDefault = 3600;
-                    SystemControl.alertDu = 0;
+                    SystemT.alertDuDefault = 3600;
+                    SystemT.alertDu = 0;
                     Navigator.pop(context);
                   },
                 ),
@@ -598,14 +598,14 @@ class _ContractListViewerPageState extends State<ContractListViewerPage> {
                   child: Text("Nas 데이터 저장", style: StyleT.titleStyle(), ),
                   style: StyleT.buttonStyleOutline(),
                   onPressed: () async {
-                    await FirebaseT.saveAllCtWithNAS(SystemControl.contracts, id: '2022_12');
+                    //await FirebaseT.saveAllCtWithNAS(SystemT.contracts, id: '2022_12');
                   },
                 ),
                 TextButton(
                   child: Text("Nas 데이터 확인", style: StyleT.titleStyle(), ),
                   style: StyleT.buttonStyleOutline(),
                   onPressed: () async {
-                    var a = File('${SystemControl.serverPath}/contract/2022_12.tgs');
+                    var a = File('${SystemT.serverPath}/contract/2022_12.tgs');
                     var ss = await a.readAsStringSync();
                   },
                 ),
@@ -715,7 +715,7 @@ class _ContractListViewerPageState extends State<ContractListViewerPage> {
                                                          ),
                                                        ],
                                                      ),
-                                                     items: SystemControl.managers.map((item) => DropdownMenuItem<dynamic>(
+                                                     items: SystemT.managers.map((item) => DropdownMenuItem<dynamic>(
                                                        value: item,
                                                        child: Text(
                                                          item.name,

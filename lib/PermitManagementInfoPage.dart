@@ -54,7 +54,7 @@ class _PmInfoMiniPageState extends State<PmInfoMiniPage> {
         new Text("소재지", style: StyleT.titleStyle(bold: true), ),
         new Text("${p.address}", style: StyleT.titleBigStyle(), ),
         SizedBox(height: 12,),
-        new Text("실무자: ${SystemControl.getManagerName(p.managerUid)}", style: StyleT.titleStyle(), ),
+        new Text("실무자: ${SystemT.getManagerName(p.managerUid)}", style: StyleT.titleStyle(), ),
         SizedBox(height: 12,),
         new Text("신청인", style: StyleT.titleStyle(bold: true), ),
         new Text("${clientString}", style: StyleT.titleStyle(), ),
@@ -119,7 +119,7 @@ class _PmInfoMiniPageState extends State<PmInfoMiniPage> {
                 TextButton(
                     onPressed: () async {
                       Navigator.pop(context);
-                      SystemControl.alert = false;
+                      SystemT.alert = false;
                       await windowManager.hide();
                     },
                     style: TextButton.styleFrom(
@@ -157,7 +157,7 @@ class _PmInfoMiniPageState extends State<PmInfoMiniPage> {
                     onPressed: () async {
                       Navigator.pop(context);
 
-                      SystemControl.alert = true;
+                      SystemT.alert = true;
                       await windowManager.setAlwaysOnTop(false);
                       await windowManager.hide();
                       setState(() {});

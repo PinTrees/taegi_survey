@@ -338,7 +338,7 @@ class WidgetHub extends StatelessWidget {
               WidgetHub.dividViertical(),
               Container(alignment: Alignment.center,width:defaultSize0, child: Text('${date!.month}', style: StyleT.titleStyle(),)),
               WidgetHub.dividViertical(),
-              Container(alignment: Alignment.center,width:defaultSize, child: Text(SystemControl.getManagerName(p.managerUid), style: StyleT.titleStyle(),)),
+              Container(alignment: Alignment.center,width:defaultSize, child: Text(SystemT.getManagerName(p.managerUid), style: StyleT.titleStyle(),)),
               WidgetHub.dividViertical(),
               Container(alignment: Alignment.center,width:defaultSize, child: Text(clientName, maxLines: maxline,  style: StyleT.titleStyle(),)),
               WidgetHub.dividViertical(),
@@ -427,7 +427,7 @@ class WidgetHub extends StatelessWidget {
                   child: Row(
                     children: [
                       SizedBox(width: 8,),
-                      Expanded(child: Text(SystemControl.getArchitectureOfficeName(p.architectureOffice), style: StyleT.titleStyle(),)),
+                      Expanded(child: Text(SystemT.getArchitectureOfficeName(p.architectureOffice), style: StyleT.titleStyle(),)),
                       SizedBox(
                         height: 24, width: 24,
                         child: TextButton(
@@ -562,7 +562,7 @@ class WidgetHub extends StatelessWidget {
               WidgetHub.dividViertical(),
               Container(alignment: Alignment.center,width:defaultSize0, child: Text('${date!.month}', style: StyleT.titleStyle(),)),
               WidgetHub.dividViertical(),
-              Container(alignment: Alignment.center,width:defaultSize, child: Text(SystemControl.getManagerName(p.managerUid), style: StyleT.titleStyle(),)),
+              Container(alignment: Alignment.center,width:defaultSize, child: Text(SystemT.getManagerName(p.managerUid), style: StyleT.titleStyle(),)),
               WidgetHub.dividViertical(),
               Container(alignment: Alignment.center,width:defaultSize, child: Text(p.clientName, maxLines: maxline,  style: StyleT.titleStyle(),)),
               WidgetHub.dividViertical(),
@@ -615,7 +615,7 @@ class WidgetHub extends StatelessWidget {
                   child: Row(
                     children: [
                       SizedBox(width: 8,),
-                      Expanded(child: Text(SystemControl.getArchitectureOfficeName(p.architectureOffice), maxLines: maxline, style: StyleT.titleStyle(),)),
+                      Expanded(child: Text(SystemT.getArchitectureOfficeName(p.architectureOffice), maxLines: maxline, style: StyleT.titleStyle(),)),
                       SizedBox(
                         height: 24, width: 24,
                         child: TextButton(
@@ -656,12 +656,9 @@ class WidgetHub extends StatelessWidget {
     var widthDateD = 250.0;
     var widthDateF = 50.0;
 
-    var dateString = '';
-    if( p.permitAts.length >= 1)
-      dateString = p.permitAts.first['date'].replaceAll('.', '-');
-    DateTime? date = DateTime.tryParse(dateString) ?? DateTime.now();
     List<Widget> pDateAtsW = [];
     for(var _p in p.permitAts) {
+      if(_p['date'] != '') continue;
       var dS = _p['date'].replaceAll('.', '-');
       DateTime? dD = DateTime.tryParse(dS) ?? DateTime.now();
       pDateAtsW.add( Container( padding: EdgeInsets.only(top: 2, bottom: 2),
@@ -684,6 +681,7 @@ class WidgetHub extends StatelessWidget {
 
     List<Widget> eDateAtsW = [];
     for(var a in p.endAts) {
+      if(a['date'] != '') continue;
       var dS = a['date'].replaceAll('.', '-');
       DateTime? dD = DateTime.tryParse(dS) ?? DateTime.now();
 
@@ -737,19 +735,11 @@ class WidgetHub extends StatelessWidget {
       eDateAtsW.add(w);
     }
 
-    String clientName = '', clientPN = '', address = '';
-    if(p.clients.length > 0) {
-      clientName = p.clients.elementAt(0)['name'];
-      clientPN = p.clients.elementAt(0)['phoneNumber'];
-    }
-    if(p.addresses.length > 0) address = p.addresses.first;
-    else address = p.address;
-
     var search = '';
     Widget searchW = SizedBox();
     searchW = Text(p.addresses.first, maxLines: 1, style: StyleT.titleStyle(),);
-    if(SystemControl.searchAddress != null) {
-      search = SystemControl.searchAddress.trim();
+    if(SystemT.searchAddress != null) {
+      search = SystemT.searchAddress.trim();
       if(search != '') {
         var adsss = p.addresses.first.split(search);
         if(adsss.length > 1) {
@@ -814,7 +804,7 @@ class WidgetHub extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text('실무자  ', style: StyleT.textStyle(),),
-                                Text('${SystemControl.getManagerName(p.managerUid)}    ', style: StyleT.titleStyle(),),
+                                Text('${SystemT.getManagerName(p.managerUid)}    ', style: StyleT.titleStyle(),),
                               ],
                             ),
                           ),
@@ -878,7 +868,7 @@ class WidgetHub extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text('건축사  ', style: StyleT.textStyle(),),
-                            Text('${SystemControl.getArchitectureOfficeName(p.architectureOffice).toString().replaceAll('\n', ' ')}', style: StyleT.titleStyle(),),
+                            Text('${SystemT.getArchitectureOfficeName(p.architectureOffice).toString().replaceAll('\n', ' ')}', style: StyleT.titleStyle(),),
                           ],
                         ),
                       ),
@@ -944,23 +934,7 @@ class WidgetHub extends StatelessWidget {
                   ),
                 ),
                 for(var a in p.permitAts)
-                  Container( width:  widthDateD,
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(a['type'], style: StyleT.titleStyle(),),
-                              SizedBox(width: 8,),
-                              Text(a['date'], style: StyleT.titleStyle(),)
-                            ],
-                          ),
-                        ),
-                        WidgetHub.dividVerticalLow(height: height1),
-                      ],
-                    ),
-                  ),
+                  excelGrid(label: a['type'], text: a['date'], width: widthDateD)
               ],
             ),
             WidgetHub.dividHorizontalLow(),
@@ -1011,8 +985,8 @@ class WidgetHub extends StatelessWidget {
     var search = '';
     Widget searchW = SizedBox();
     searchW = Text(p.addresses.first, maxLines: 1, style: StyleT.titleStyle(),);
-    if(SystemControl.searchAddress != null) {
-      search = SystemControl.searchAddress.trim();
+    if(SystemT.searchAddress != null) {
+      search = SystemT.searchAddress.trim();
       if(search != '') {
         var adsss = p.addresses.first.split(search);
         if(adsss.length > 1) {
@@ -1075,15 +1049,15 @@ class WidgetHub extends StatelessWidget {
                           alignment: Alignment.centerLeft, isManager: true,
                           set: (index, data) {
                             p.managerUid = data;
-                          }, key: 'pm.manager', text: '${SystemControl.getManagerName(p.managerUid)}',
+                          }, key: 'pm.manager', text: '${SystemT.getManagerName(p.managerUid)}',
                           label: '실무자'),
                       excelGridEditor(context, setFun: setFun, set: (index, data) {
                         p.permitType = data;
                       }, val: p.permitType ?? '', width: 150, key: 'pm.permitType', text: p.permitType, label: '허가유형'),
                       excelGridEditor(context, setFun: setFun, set: (index, data) {
                         p.architectureOffice = data;
-                      }, val: '${SystemControl.getArchitectureOfficeName(p.architectureOffice).toString().replaceAll('\n', ' ')}', width: 150, key: 'pm.architectureOffice',
-                          text: '${SystemControl.getArchitectureOfficeName(p.architectureOffice).toString().replaceAll('\n', ' ')}', label: '건축사', isArch: true),
+                      }, val: '${SystemT.getArchitectureOfficeName(p.architectureOffice).toString().replaceAll('\n', ' ')}', width: 150, key: 'pm.architectureOffice',
+                          text: '${SystemT.getArchitectureOfficeName(p.architectureOffice).toString().replaceAll('\n', ' ')}', label: '건축사', isArch: true),
                     ],
                   ),
                   WidgetHub.dividHorizontalLow(),
@@ -1530,7 +1504,7 @@ class WidgetHub extends StatelessWidget {
                                         p.managerUid = manager.id;
                                         if(setFun != null) await setFun();
                                         setStateS(() {});
-                                      }, label: '실무자', text: '${SystemControl.getManagerName(p.managerUid)}', width: widthManager),
+                                      }, label: '실무자', text: '${SystemT.getManagerName(p.managerUid)}', width: widthManager),
                                       excelGridEditor(context, setFun: () async {
                                         if(setFun != null) await setFun();
                                         setStateS(() {});
@@ -1542,8 +1516,8 @@ class WidgetHub extends StatelessWidget {
                                         setStateS(() {});
                                       }, set: (index, data) {
                                         p.architectureOffice = data;
-                                      }, val: '${SystemControl.getArchitectureOfficeName(p.architectureOffice).toString().replaceAll('\n', ' ')}', width: 150, key: 'pm.architectureOffice',
-                                          text: '${SystemControl.getArchitectureOfficeName(p.architectureOffice).toString().replaceAll('\n', ' ')}', label: '건축사', isArch: true),
+                                      }, val: '${SystemT.getArchitectureOfficeName(p.architectureOffice).toString().replaceAll('\n', ' ')}', width: 150, key: 'pm.architectureOffice',
+                                          text: '${SystemT.getArchitectureOfficeName(p.architectureOffice).toString().replaceAll('\n', ' ')}', label: '건축사', isArch: true),
                                     ],
                                   ),
                                   WidgetHub.dividHorizontalLow(),
@@ -1852,8 +1826,8 @@ class WidgetHub extends StatelessWidget {
     var search = '';
     Widget searchW = SizedBox();
     searchW = Text(p.addresses.first, maxLines: 1, style: StyleT.titleStyle(),);
-    if(SystemControl.searchAddress != null) {
-      search = SystemControl.searchAddress.trim();
+    if(SystemT.searchAddress != null) {
+      search = SystemT.searchAddress.trim();
       if(search != '') {
         var adsss = p.addresses.first.split(search);
         if(adsss.length > 1) {
@@ -1906,7 +1880,7 @@ class WidgetHub extends StatelessWidget {
                                 child: Row(
                                   children: [
                                     Text('실무자  ', style: StyleT.textStyle(),),
-                                    Text('${SystemControl.getManagerName(p.managerUid)}    ', style: StyleT.titleStyle(),),
+                                    Text('${SystemT.getManagerName(p.managerUid)}    ', style: StyleT.titleStyle(),),
                                     Text('신청인  ', style: StyleT.textStyle(),),
                                     Text('${p.clients.first['name']}  ', style: StyleT.titleStyle(),),
                                     Text('연락처  ', style: StyleT.textStyle(),),
@@ -2053,8 +2027,8 @@ class WidgetHub extends StatelessWidget {
         Text('주소 ', style: StyleT.textStyle(),),
         Text(p.addresses.first, maxLines: 1, style: StyleT.titleStyle(),),
       ],);
-    if(SystemControl.searchAddress != null) {
-      search = SystemControl.searchAddress.trim();
+    if(SystemT.searchAddress != null) {
+      search = SystemT.searchAddress.trim();
       if(search != '') {
         var adsss = p.addresses.first.split(search);
         if(adsss.length > 1) {
@@ -2137,7 +2111,7 @@ class WidgetHub extends StatelessWidget {
                                 children: [
                                   Expanded(child: SizedBox()),
                                   Text('실무자  ', style: StyleT.textStyle(),),
-                                  Text('${SystemControl.getManagerName(p.managerUid)}    ', style: StyleT.titleStyle(),),
+                                  Text('${SystemT.getManagerName(p.managerUid)}    ', style: StyleT.titleStyle(),),
                                   Expanded(child: SizedBox()),
                                   WidgetHub.dividVerticalLow(height: height1),
                                 ],
@@ -2416,7 +2390,7 @@ class WidgetHub extends StatelessWidget {
                               alignment: Alignment.centerLeft, isManager: true,
                               set: (index, data) {
                                 p.managerUid = data;
-                              }, key: 'ct.manager', text: '${SystemControl.getManagerName(p.managerUid)}',
+                              }, key: 'ct.manager', text: '${SystemT.getManagerName(p.managerUid)}',
                               label: '실무자'),
                           excelGridEditor(context,setFun: setFun,
                               set: (index, data) {
@@ -2820,7 +2794,7 @@ class WidgetHub extends StatelessWidget {
                                               width: widthManager, alignment: Alignment.centerLeft, isManager: true,
                                               set: (index, data) {
                                                 p.managerUid = data;
-                                              }, key: 'ct.manager', text: '${SystemControl.getManagerName(p.managerUid)}',
+                                              }, key: 'ct.manager', text: '${SystemT.getManagerName(p.managerUid)}',
                                               label: '실무자'),
                                           excelGridEditor(context,setFun: () { if(setFun != null) setFun(); setStateS(() {}); },
                                               set: (index, data) {
@@ -3155,7 +3129,7 @@ class WidgetHub extends StatelessWidget {
                                   await saveFun(false);
                                 }
                                 setStateS(() {});
-                                Navigator.pop(context);
+                                Navigator.pop(context, true);
                               },
                               style: StyleT.buttonStyleOutline(padding: 0, strock: 1.4, elevation: 0, color: StyleT.accentColor.withOpacity(0.5)),
                               child: Row( mainAxisSize: MainAxisSize.min,
@@ -3176,7 +3150,7 @@ class WidgetHub extends StatelessWidget {
                                   await saveFun(true);
                                 }
                                 setStateS(() {});
-                                Navigator.pop(context);
+                                Navigator.pop(context, true);
                               },
                               style: StyleT.buttonStyleOutline(padding: 0, strock: 1.4, elevation: 0, color: StyleT.accentLowColor.withOpacity(0.5)),
                               child: Row( mainAxisSize: MainAxisSize.min,
@@ -3208,8 +3182,8 @@ class WidgetHub extends StatelessWidget {
     var search = '';
     Widget searchW = SizedBox();
     searchW = Text(p.addresses.first, maxLines: 1, style: StyleT.titleStyle(),);
-    if(SystemControl.searchAddress != null) {
-      search = SystemControl.searchAddress.trim();
+    if(SystemT.searchAddress != null) {
+      search = SystemT.searchAddress.trim();
       if(search != '') {
         var adsss = p.addresses.first.split(search);
         if(adsss.length > 1) {
@@ -3281,7 +3255,7 @@ class WidgetHub extends StatelessWidget {
                           children: [
                             Expanded(child: SizedBox()),
                             Text('실무자  ', style: StyleT.textStyle(),),
-                            Text('${SystemControl.getManagerName(p.managerUid)}    ', style: StyleT.titleStyle(),),
+                            Text('${SystemT.getManagerName(p.managerUid)}    ', style: StyleT.titleStyle(),),
                             Expanded(child: SizedBox()),
                             WidgetHub.dividVerticalLow(height: height1),
                           ],
@@ -3592,7 +3566,7 @@ class WidgetHub extends StatelessWidget {
                           alignment: Alignment.centerLeft, isManager: true,
                           set: (index, data) {
                             p.managerUid = data;
-                          }, key: 'pm.manager', text: '${SystemControl.getManagerName(p.managerUid)}',
+                          }, key: 'pm.manager', text: '${SystemT.getManagerName(p.managerUid)}',
                           label: '실무자'),
                     ],
                   ),
@@ -3980,7 +3954,7 @@ class WidgetHub extends StatelessWidget {
                                           set: (index, data) {
                                             p.managerUid = data;
                                             setStateS(() {});
-                                          }, key: 'pm.manager', text: '${SystemControl.getManagerName(p.managerUid)}',
+                                          }, key: 'pm.manager', text: '${SystemT.getManagerName(p.managerUid)}',
                                           label: '실무자'),
                                     ],
                                   ),
@@ -4360,7 +4334,7 @@ class WidgetHub extends StatelessWidget {
                   backColor: Colors.white.withOpacity(0.5)),
               controller: textInputs[key]!,
               suggestionsAmount: 10,
-              suggestions: SystemControl.searchAddressList,
+              suggestions: SystemT.searchAddressList,
               submitOnSuggestionTap: true,
               textChanged: (text) {
                 //print(text);
@@ -4500,7 +4474,7 @@ class WidgetHub extends StatelessWidget {
                 ),
               ),
             ),
-            items: SystemControl.managers.map((item) => DropdownMenuItem<dynamic>(
+            items: SystemT.managers.map((item) => DropdownMenuItem<dynamic>(
               value: item.id,
               child: Text(
                 item.name.toString(),
@@ -4706,40 +4680,69 @@ class WidgetHub extends StatelessWidget {
             if(isDate)
               Container(  width: 28, height: 28,
                 child: TextButton(
-                  onPressed: () async {
-                    var dS = val?.replaceAll('.', '-') ?? '';
-                    DateTime? dD = DateTime.tryParse(dS);
-
-                    DateTime? pickedDate = await showDatePicker(
-                        context: context,
-                        initialDate: dD ?? DateTime.now(), //get today's date
-                        firstDate:DateTime(2000), //DateTime.now() - not to allow to choose before today.
-                        lastDate: DateTime(2101)
-                    );
-                    if(key!=null && pickedDate != null) {
-                      var i = int.tryParse(key.split('::').first) ?? 0;
-                      var dateString = DateFormat('yyyy.MM.dd').format(pickedDate);
-                      if(set != null) await set(i, dateString);
-                    }
-                    if(setFun != null) await setFun();
-                  },
-                  style: StyleT.buttonStyleNone(padding: 0),
-                  child: iconStyleMini(icon: Icons.calendar_month)
-                ),
-              ),
-            if(isArch)
-              Container(  width: 28, height: 28,
-                child: TextButton(
                     onPressed: () async {
-                      var arch = await showBTArchList(context);
-                      if(key!=null && arch != null) {
+                      var dS = val?.replaceAll('.', '-') ?? '';
+                      DateTime? dD = DateTime.tryParse(dS);
+
+                      DateTime? pickedDate = await showDatePicker(
+                          context: context,
+                          initialDate: dD ?? DateTime.now(), //get today's date
+                          firstDate:DateTime(2000), //DateTime.now() - not to allow to choose before today.
+                          lastDate: DateTime(2101)
+                      );
+                      if(key!=null && pickedDate != null) {
                         var i = int.tryParse(key.split('::').first) ?? 0;
-                        if(set != null) await set(i, arch.id);
+                        var dateString = DateFormat('yyyy.MM.dd').format(pickedDate);
+                        if(set != null) await set(i, dateString);
                       }
                       if(setFun != null) await setFun();
                     },
                     style: StyleT.buttonStyleNone(padding: 0),
-                    child: iconStyleMini(icon: Icons.more_vert)
+                    child: iconStyleMini(icon: Icons.calendar_month)
+                ),
+              ),
+            if(isArch)
+              Container(
+                height: 28, width: 28,
+                child: DropdownButtonHideUnderline(
+                  child: DropdownButton2(
+                    customButton: Container( width: 28, height: 28, alignment: Alignment.center,
+                      child: TextButton(
+                        onPressed: null,
+                        style: StyleT.buttonStyleNone(padding: 0),
+                        child:  iconStyleMini(icon: Icons.more_vert),
+                      ),
+                    ),
+                    items: SystemT.architectureOffices.map((item) => DropdownMenuItem<dynamic>(
+                      value: item.id,
+                      child: Text(
+                        item.name.toString(),
+                        style: StyleT.titleStyle(),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    )).toList(),
+                    onChanged: (value) async {
+                      if(key == null) return;
+
+                      var i = int.tryParse(key.split('::').first) ?? 0;
+                      if(set != null) await set(i, value);
+                      if(setFun != null) await setFun();
+                    },
+                    itemHeight: 28,
+                    itemPadding: const EdgeInsets.only(left: 16, right: 16),
+                    dropdownWidth: width,
+                    dropdownPadding: const EdgeInsets.symmetric(vertical: 6),
+                    dropdownDecoration: BoxDecoration(
+                      border: Border.all(
+                        width: 1.7,
+                        color: Colors.grey.withOpacity(0.5),
+                      ),
+                      borderRadius: BorderRadius.circular(0),
+                      color: Colors.white.withOpacity(0.95),
+                    ),
+                    dropdownElevation: 0,
+                    offset: Offset((width! * -1.0 + 28.7), 0),
+                  ),
                 ),
               ),
 
@@ -5142,7 +5145,7 @@ class WidgetHub extends StatelessWidget {
             content: Text('현재 최신버전이 아닙니다.'
                 '\n버전을 업데이트 해 주세요. (폴더를 복사)'
                 '\nZ:태기측량/태기측량 시스템 프로그램/(버전코드)'
-                '\n\n최신버전: ${SystemControl.releaseVer}  현재버전: ${SystemControl.currentVer}', style: StyleT.titleStyle()),
+                '\n\n최신버전: ${SystemT.releaseVer}  현재버전: ${SystemT.currentVer}', style: StyleT.titleStyle()),
             actionsPadding: EdgeInsets.all(14),
             actions: <Widget>[
               Row(
@@ -5188,7 +5191,7 @@ class WidgetHub extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              for(var m in SystemControl.managers)
+              for(var m in SystemT.managers)
                 TextButton(
                     onPressed: () {
                       Navigator.pop(context, m);
@@ -5216,7 +5219,7 @@ class WidgetHub extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              for(var m in SystemControl.architectureOffices)
+              for(var m in SystemT.architectureOffices)
                 TextButton(
                     onPressed: () {
                       Navigator.pop(context, m);
@@ -5246,11 +5249,11 @@ class WidgetHub extends StatelessWidget {
           //elevation: 18,
           //behavior: SnackBarBehavior.floating,
           //backgroundColor: Colors.redAccent,
-          content: Text(text ?? 'The feature is under development.'), //snack bar의 내용. icon, button같은것도 가능하다.
+          content: Text(text ?? 'The feature is under development.'),
           duration: Duration(seconds: 3), //올라와있는 시간
-          action: SnackBarAction( //추가로 작업을 넣기. 버튼넣기라 생각하면 편하다.
-            label: 'Undo', //버튼이름
-            onPressed: (){}, //버튼 눌렀을때.
+          action: SnackBarAction(
+            label: 'Undo',
+            onPressed: (){},
           ),
         )
     );
@@ -5393,7 +5396,7 @@ class WindowButtons extends StatelessWidget {
                                 onPressed: () {
                                   Navigator.of(context).pop();
                                   appWindow.hide();
-                                  SystemControl.alert = true;
+                                  SystemT.alert = true;
                                 },
                                 style: StyleT.buttonStyleOutline(padding: 0, strock: 1.4, elevation: 0, color: StyleT.accentColor.withOpacity(0.5)),
                                 child: Row( mainAxisSize: MainAxisSize.min,

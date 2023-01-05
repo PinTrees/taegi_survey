@@ -1,3 +1,4 @@
+/*
 import 'dart:convert';
 import 'dart:io';
 import 'dart:ui';
@@ -147,7 +148,7 @@ class _ManagerPageState extends State<ManagerPage> {
     //horizontalScroll.addListener(() {
     //  titleHorizontalScroll.jumpTo(horizontalScroll.position.pixels);
     //});
-    listP = SystemControl.permitManagements.toList();
+    listP = SystemT.permitManagementMaps.values.toList();
 
     if(widget.isAlert != null)
       isEndAts = widget.isAlert!;
@@ -156,14 +157,14 @@ class _ManagerPageState extends State<ManagerPage> {
     search();
   }
   void initAsync() async {
-    var tmpP = SystemControl.permitManagements.toList();
-    var tmpC = SystemControl.contracts.toList();
-    var tmpW = SystemControl.workManagements.toList();
+    var tmpP = SystemT.permitManagementMaps.values.toList();
+    var tmpC = SystemT.contracts.toList();
+    var tmpW = SystemT.workManagements.toList();
 
-    var name = SystemControl.currentManager['name'];
-    listMP = await SystemControl.searchPmWithManager(name, sort: tmpP);
-    listMC = await SystemControl.searchCtWithManager(name, sort: tmpC);
-    listMW = await SystemControl.searchWmWithManager(name, sort: tmpW);
+    var name = SystemT.currentManager['name'];
+    listMP = await SystemT.searchPmWithManager(name, sort: tmpP);
+    listMC = await SystemT.searchCtWithManager(name, sort: tmpC);
+    listMW = await SystemT.searchWmWithManager(name, sort: tmpW);
 
     listP = listMP.toList();
     listC = listMC.toList();
@@ -207,14 +208,16 @@ class _ManagerPageState extends State<ManagerPage> {
           child: WidgetHub.iconStyleBig(icon: Icons.create),
         ),
 
-        /*
+        */
+/*
         TextButton(
           onPressed: () async {
           },
           style: SystemStyle.buttonStyleNone(padding: 0),
           child: WidgetHub.iconStyleBig(icon: Icons.create),
         ),
-        */
+        *//*
+
         TextButton(
           onPressed: () async {
             isViewShort = !isViewShort;
@@ -260,14 +263,16 @@ class _ManagerPageState extends State<ManagerPage> {
           child: WidgetHub.iconStyleBig(icon: Icons.drive_folder_upload_rounded),
         ),
 
-        /*
+        */
+/*
         TextButton(
           onPressed: () async {
           },
           style: SystemStyle.buttonStyleNone(padding: 0),
           child: WidgetHub.iconStyleBig(icon: Icons.create),
         ),
-        */
+        *//*
+
         TextButton(
           onPressed: () async {
             isViewShort = !isViewShort;
@@ -284,7 +289,7 @@ class _ManagerPageState extends State<ManagerPage> {
         TextButton(
           onPressed: () async {
             WidgetHub.loadingBottomSheet(context);
-            await SystemControl.update();
+            await SystemT.update();
             Navigator.pop(context);
             search();
             setState(() {});
@@ -333,7 +338,8 @@ class _ManagerPageState extends State<ManagerPage> {
   }
 
   Widget getSideView() {
-   /* if(sideViewType == 'infoP') {
+   */
+/* if(sideViewType == 'infoP') {
       return Container(width: 360, color: Colors.transparent,
           child: Column(
             children: [
@@ -349,7 +355,8 @@ class _ManagerPageState extends State<ManagerPage> {
             children: [ Expanded(child: createPage), ],
           )
       );
-    }*/
+    }*//*
+
     return SizedBox();
   }
   void sideView(String type, { PermitManagement? p }) {
@@ -385,8 +392,6 @@ class _ManagerPageState extends State<ManagerPage> {
     if(replaceP != null) {
       print(replaceP!.id);
       await FirebaseT.putPermitManagementWithAES(replaceP, replaceP!.id);
-      var index = SystemControl.permitManagements.indexOf(selectP!);
-      SystemControl.permitManagements[index] = replaceP!;
     }
 
     selectP = replaceP = null;
@@ -409,7 +414,7 @@ class _ManagerPageState extends State<ManagerPage> {
 
     if(createP != null) {
       await FirebaseT.pushPermitManagementWithAES(createP);
-      SystemControl.permitManagements.insert(0, createP!);
+      SystemT.permitManagements.insert(0, createP!);
     }
 
     selectP = createP = null;
@@ -666,8 +671,9 @@ class _ManagerPageState extends State<ManagerPage> {
     List<PermitManagement>? tmpList = listMP.toList();
 
     if(selectMenu1_1 == menu1_1[1]) {
-      tmpList = await SystemControl.getPermitEndAtsList(30, sort: tmpList.toList());
+      tmpList = await SystemT.getPermitEndAtsList(30, sort: tmpList.toList());
     }
+*/
 /*
     if(searchSelectYear != null) {
       print(tmpList!.length);
@@ -690,7 +696,8 @@ class _ManagerPageState extends State<ManagerPage> {
     }
     else if(selectSortMenu == sortMenu[1]) {
       tmpList = await SystemControl.searchPmSortF(tmpList, dsss: true);
-    }*/
+    }*//*
+
     listP = tmpList!.toList();
 
     refresh();
@@ -700,11 +707,12 @@ class _ManagerPageState extends State<ManagerPage> {
     List<WorkManagement>? tmpList = listMW.toList();
 
     if(selectMenu1_2 == menu1_2[1]) {
-      tmpList = await SystemControl.searchWmSortTaskOverAtOnly(tmpList);
+      tmpList = await SystemT.searchWmSortTaskOverAtOnly(tmpList);
     }
     if(selectMenu1_2 == menu1_2[2]) {
       tmpList!.clear();
     }
+*/
 /*
     if(searchSelectYear != null) {
       print(tmpList!.length);
@@ -727,7 +735,8 @@ class _ManagerPageState extends State<ManagerPage> {
     }
     else if(selectSortMenu == sortMenu[1]) {
       tmpList = await SystemControl.searchPmSortF(tmpList, dsss: true);
-    }*/
+    }*//*
+
     listW = tmpList!.toList();
 
     refresh();
@@ -735,34 +744,34 @@ class _ManagerPageState extends State<ManagerPage> {
   }
 
   void search() async {
-    List<PermitManagement>? tmpList = SystemControl.permitManagements.toList();
+    List<PermitManagement>? tmpList = SystemT.permitManagements.toList();
 
     if(isEndAts) {
-      tmpList = await SystemControl.getPermitEndAtsList(30);
+      tmpList = await SystemT.getPermitEndAtsList(30);
       //tmpList = await SystemControl.searchPmWithManager(selectManager, sort: tmpList);
     }
 
     if(searchSelectYear != null) {
       print(tmpList!.length);
-      tmpList = await SystemControl.searchPmWithYear(searchSelectYear!.year.toString(), sort: tmpList) ?? [];
+      tmpList = await SystemT.searchPmWithYear(searchSelectYear!.year.toString(), sort: tmpList) ?? [];
     }
     if(searchSelectMonth != null) {
-      tmpList = await SystemControl.searchPmWithMonth(searchSelectMonth!.toString(), sort: tmpList) ?? [];
+      tmpList = await SystemT.searchPmWithMonth(searchSelectMonth!.toString(), sort: tmpList) ?? [];
     }
 
     if(searchOption == SearchPM.address) {
-      SystemControl.searchAddress = searchInput.text;
-      tmpList = await SystemControl.searchPmWithAddress(searchInput.text, sort: tmpList!.toList());
+      SystemT.searchAddress = searchInput.text;
+      tmpList = await SystemT.searchPmWithAddress(searchInput.text, sort: tmpList!.toList());
     }
     else if(searchOption == SearchPM.client) {
-      tmpList = await SystemControl.searchPmWithClient(searchInput.text, sort: tmpList!.toList());
+      tmpList = await SystemT.searchPmWithClient(searchInput.text, sort: tmpList!.toList());
     }
 
     if(selectSortMenu == sortMenu.first) {
-      tmpList = await SystemControl.searchPmSortF(tmpList,);
+      tmpList = await SystemT.searchPmSortF(tmpList,);
     }
     else if(selectSortMenu == sortMenu[1]) {
-      tmpList = await SystemControl.searchPmSortF(tmpList, dsss: true);
+      tmpList = await SystemT.searchPmSortF(tmpList, dsss: true);
     }
 
     searchP();
@@ -823,8 +832,8 @@ class _ManagerPageState extends State<ManagerPage> {
                   child: Text("알람 주기 1분", style: StyleT.titleStyle(), ),
                   style: StyleT.buttonStyleOutline(),
                   onPressed: () {
-                    SystemControl.alertDuDefault = 60;
-                    SystemControl.alertDu = 0;
+                    SystemT.alertDuDefault = 60;
+                    SystemT.alertDu = 0;
                     Navigator.pop(context);
                   },
                 ),
@@ -832,8 +841,8 @@ class _ManagerPageState extends State<ManagerPage> {
                   child: Text("알람 주기 1초", style: StyleT.titleStyle(), ),
                   style: StyleT.buttonStyleOutline(),
                   onPressed: () {
-                    SystemControl.alertDuDefault = 1;
-                    SystemControl.alertDu = 0;
+                    SystemT.alertDuDefault = 1;
+                    SystemT.alertDu = 0;
                     Navigator.pop(context);
                   },
                 ),
@@ -841,8 +850,8 @@ class _ManagerPageState extends State<ManagerPage> {
                   child: Text("알람 주기 1시간", style: StyleT.titleStyle(), ),
                   style: StyleT.buttonStyleOutline(),
                   onPressed: () {
-                    SystemControl.alertDuDefault = 3600;
-                    SystemControl.alertDu = 0;
+                    SystemT.alertDuDefault = 3600;
+                    SystemT.alertDu = 0;
                     Navigator.pop(context);
                   },
                 ),
@@ -899,7 +908,7 @@ class _ManagerPageState extends State<ManagerPage> {
                          children: [
                            TextButton(
                              onPressed: () async {
-                               await SystemControl.updateServerUsage();
+                               await SystemT.updateServerUsage();
                                setState(() {});
                              },
                              style: StyleT.buttonStyleNone(padding: 6),
@@ -911,7 +920,7 @@ class _ManagerPageState extends State<ManagerPage> {
                                  Stack(
                                    children: [
                                      Container(width: 36, height: 3, color: Colors.grey,),
-                                     Container(width: 36 * SystemControl.serverUsage, height: 3, color: Colors.red,),
+                                     Container(width: 36 * SystemT.serverUsage, height: 3, color: Colors.red,),
                                    ],
                                  ),
                                  SizedBox(height: 8,),
@@ -944,16 +953,16 @@ class _ManagerPageState extends State<ManagerPage> {
                                 WidgetHub.openPageWithFade(context, VersionLogPage());
                              },
                              style: StyleT.buttonStyleNone(padding: 0,
-                                color: !(SystemControl.versionCheck() == 0) ? Colors.redAccent.withOpacity(0.15) : Colors.transparent),
+                                color: !(SystemT.versionCheck() == 0) ? Colors.redAccent.withOpacity(0.15) : Colors.transparent),
                              child: SizedBox( width: 48, height: 36,
                                child: Row(
                                  mainAxisAlignment: MainAxisAlignment.center,
                                  children: [
                                    WidgetHub.iconStyleMini(icon: Icons.history, size: 18),
                                   
-                                   if((SystemControl.versionCheck() == 0))
+                                   if((SystemT.versionCheck() == 0))
                                      Text('최신', style: TextStyle(fontSize: 9, color: StyleT.titleColor),),
-                                   if(!(SystemControl.versionCheck() == 0))
+                                   if(!(SystemT.versionCheck() == 0))
                                      Text('Update', style: TextStyle(fontSize: 9, color: StyleT.titleColor),),
                                  ],
                                ),
@@ -985,7 +994,7 @@ class _ManagerPageState extends State<ManagerPage> {
                                        style: TextStyle(fontSize: 24, color: StyleT.textColor.withOpacity(0.7), fontWeight: FontWeight.w700),
                                      ),
                                      SizedBox(width: 12,),
-                                     Text(SystemControl.currentManager['name'] ?? '',
+                                     Text(SystemT.currentManager['name'] ?? '',
                                        style: TextStyle(fontSize: 18, color: StyleT.titleColor.withOpacity(0.7), fontWeight: FontWeight.w900),
                                      ),
                                    ],
@@ -1089,7 +1098,7 @@ class _ManagerPageState extends State<ManagerPage> {
                                                          ),
                                                        ],
                                                      ),
-                                                     items: SystemControl.managers.map((item) => DropdownMenuItem<dynamic>(
+                                                     items: SystemT.managers.map((item) => DropdownMenuItem<dynamic>(
                                                        value: item,
                                                        child: Text(
                                                          item.name,
@@ -1427,3 +1436,4 @@ class _ManagerPageState extends State<ManagerPage> {
     );
   }
 }
+*/

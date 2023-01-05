@@ -119,7 +119,7 @@ class _InitPageState extends State<InitPage> {
       debugPrint("eventName: $eventName");
       if (eventName == kSystemTrayEventClick) {
         if(Platform.isWindows) {
-          await SystemControl.startTrayOpen(context);
+          await SystemT.startTrayOpen(context);
           setState(() {});
         }
         else {
@@ -127,7 +127,7 @@ class _InitPageState extends State<InitPage> {
         }
       } else if (eventName == kSystemTrayEventRightClick) {
         if(Platform.isWindows) {
-          await SystemControl.startTrayOpen(context);
+          await SystemT.startTrayOpen(context);
           setState(() {});
         }
         else {
@@ -178,17 +178,17 @@ class _InitPageState extends State<InitPage> {
 
     loadText = '버전 확인중입니다.'; setState(() {});
     await Future.delayed(const Duration(milliseconds: 300), () {});
-    await SystemControl.updateVersion();
-    if(SystemControl.versionCheck() >= 2) {
+    await SystemT.updateVersion();
+    if(SystemT.versionCheck() >= 2) {
       WidgetHub.showAlertDlVersion(context);
       return;
-    } else if(SystemControl.versionCheck() != 0) {
+    } else if(SystemT.versionCheck() != 0) {
       WidgetHub.showAlertDlVersion(context, force: false);
     }
 
 
     loadText = '서버와 연결을 시도중입니다.'; setState(() {});
-    await SystemControl.init();
+    await SystemT.init();
     loadText = '로딩 완료'; setState(() {});
     await Future.delayed(const Duration(milliseconds: 300), () {});
     loadText = '시스템 화면 설정중'; setState(() {});
@@ -214,8 +214,8 @@ class _InitPageState extends State<InitPage> {
       Navigator.push(context, MaterialPageRoute(builder: (context) => ManagerPage1()),);
       return;
     }
-
-    Navigator.push(context, MaterialPageRoute(builder: (context) => PermitManagementListViewerPage()),);
+    Navigator.push(context, MaterialPageRoute(builder: (context) => OwnerPage()),);
+    //Navigator.push(context, MaterialPageRoute(builder: (context) => PermitManagementListViewerPage()),);
 
     //WidgetHub.openPageWithFade(context, TestPage(key: widget.key,));
     //Navigator.push(context, MaterialPageRoute(builder: (context) => TestPage()),);
@@ -251,7 +251,7 @@ class _InitPageState extends State<InitPage> {
 
       //WidgetHub.openPageWithFade(context, PermitManagementListViewerPage(), time: 0);
       Navigator.push(context, MaterialPageRoute(builder: (context) => PermitManagementListViewerPage()),);
-      await SystemControl.windowMainStyle(show: true);
+      await SystemT.windowMainStyle(show: true);
     };
 
     _notificationList.add(notification);
@@ -262,12 +262,12 @@ class _InitPageState extends State<InitPage> {
   /// 백그라운드 알림 서비스 동작
   void mainSV() {
     mainService = Timer.periodic(Duration(minutes: 30), (timer) async {
-      await SystemControl.update();
+      await SystemT.update();
 
-      if(SystemControl.alert) {
-        SystemControl.alert = false;
+      if(SystemT.alert) {
+        SystemT.alert = false;
 
-        List<PermitManagement> list = SystemControl.getPermitEndAtsList(30);
+        List<PermitManagement> list = SystemT.getPermitEndAtsList(30);
         ///종료 예정일이 가까운 목록 없음 반환됨
         if(list.length <= 0)
           return;
@@ -295,14 +295,14 @@ class _InitPageState extends State<InitPage> {
     mainService = Timer.periodic(Duration(seconds: 1), (timer) async {
       if(isLoad) return;
       isLoad = true;
-      SystemControl.alertDu = SystemControl.alertDuDefault;
+      SystemT.alertDu = SystemT.alertDuDefault;
 
-      while(SystemControl.alertDu > 0) {
+      while(SystemT.alertDu > 0) {
         await Future.delayed(const Duration(milliseconds: 1024), () {});
-        SystemControl.alertDu--;
+        SystemT.alertDu--;
       }
 
-      if(SystemControl.alertDu <= 0) {
+      if(SystemT.alertDu <= 0) {
         _notificationList.clear();
         await _handleNewLocalNotification();
 

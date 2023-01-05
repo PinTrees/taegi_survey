@@ -65,7 +65,7 @@ class _EditTPageState extends State<EditTPage> {
   Widget main() {
     if(selectMenu == 'M') {
       List<Widget> widgetW = [];
-      for(var t in SystemControl.managers) {
+      for(var t in SystemT.managers) {
         var w = Padding(
           padding: const EdgeInsets.only(bottom: 12),
           child: TextButton(
@@ -133,7 +133,7 @@ class _EditTPageState extends State<EditTPage> {
                             mngTypeInput.clear();
                             mngPhoneNumberInput.clear();
 
-                            SystemControl.managers.insert(0, data);
+                            SystemT.managers.insert(0, data);
 
                             setState(() {});
                           },
@@ -163,7 +163,7 @@ class _EditTPageState extends State<EditTPage> {
     }
     else if(selectMenu == 'A') {
       List<Widget> widgetW = [];
-      for(var t in SystemControl.architectureOffices) {
+      for(var t in SystemT.architectureOffices) {
         var w = Padding(
           padding: const EdgeInsets.only(bottom: 12),
           child: TextButton(
@@ -233,7 +233,7 @@ class _EditTPageState extends State<EditTPage> {
                             nameInput.clear();
                             descInput.clear();
 
-                            SystemControl.architectureOffices.insert(0, data);
+                            SystemT.architectureOffices.insert(0, data);
                             setState(() {});
                           },
                           style: StyleT.buttonStyleOutline( strock: 1.4, elevation: 8, color: StyleT.backgroundColor),

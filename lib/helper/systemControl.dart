@@ -14,12 +14,14 @@ import 'package:window_manager/window_manager.dart';
 
 import '../PermitManagementViewerPage.dart';
 
-class SystemControl {
+class SystemT {
   static List<Manager> managers = [];
   static List<ArchitectureOffice> architectureOffices = [];
-  static List<PermitManagement> permitManagements = [];
-  static List<Contract> contracts = [];
-  static List<WorkManagement> workManagements = [];
+  //static List<PermitManagement> permitManagements = [];
+  static Map<String, PermitManagement> permitManagementMaps = Map();
+  static Map<String, WorkManagement> workManagements = Map();
+  static Map<String, Contract> contracts = Map();
+
   static Map<dynamic, dynamic> currentManager = {};
 
   static SecurityKeys securityKeys = SecurityKeys.fromDatabase({});
@@ -144,13 +146,21 @@ class SystemControl {
 
     managers = await FirebaseT.getManagerAll();
     architectureOffices = await FirebaseT.getArchitectureOfficeAll();
-    contracts = await FirebaseT.getContractAll_Security();
-    permitManagements = await FirebaseT.getPermitManagementAll_Security();
-    workManagements = await FirebaseT.getWorkManagementAll_Security();
+
+    //permitManagementMaps;
+    await FirebaseSSE.subscribePermitManagementSSE();
+    //workManagementMaps;
+    await FirebaseSSE.subscribeWorkManagementSSE();
+    //contracts;
+    await FirebaseSSE.subscribeContractSSE();
+
+    //permitManagements = await FirebaseT.getPermitManagementAll_Security();
+    //workManagements = await FirebaseT.getWorkManagementAll_Security();
+    //contracts = await FirebaseT.getContractAll_Security();
 
     releaseVer = await FirebaseT.getWindowsVersion();
 
-    for(var p in permitManagements) {
+    for(var p in permitManagementMaps.values) {
       if (p.addresses.first != null)
         if (p.addresses.first != '')
           searchAddressList.add(p.addresses.first);
@@ -159,9 +169,9 @@ class SystemControl {
   }
   static dynamic update() async {
     try{
-      permitManagements = await FirebaseT.getPermitManagementAll_Security();
-      contracts = await FirebaseT.getContractAll_Security();
-      workManagements = await FirebaseT.getWorkManagementAll_Security();
+      //permitManagements = await FirebaseT.getPermitManagementAll_Security();
+      //workManagements = await FirebaseT.getWorkManagementAll_Security();
+      //contracts = await FirebaseT.getContractAll_Security();
       updateServerUsage();
     } catch (e) {
       print(e);
@@ -275,7 +285,7 @@ class SystemControl {
         if(e.getPermitAtsFirst()!.month.toString() == search) return true;
         return false;
       }).toList() ?? [];
-    return await permitManagements.where((e) {
+    return await permitManagementMaps.values.where((e) {
       if(e.getPermitAtsFirst() == null) return false;
       if(e.getPermitAtsFirst()!.month.toString() == search) return true;
       return false;
@@ -318,7 +328,7 @@ class SystemControl {
         if(e.getAllCfPay() >= e.getAllPay()) return true;
         return false;
       }).toList() ?? [];
-    return await contracts.where((e) {
+    return await contracts.values.where((e) {
       if(e.getAllCfPay() >= e.getAllPay()) return true;
       return false;
     }).toList() ?? [];
@@ -329,7 +339,7 @@ class SystemControl {
         if(e.getAllCfPay() < e.getAllPay()) return true;
         return false;
       }).toList() ?? [];
-    return await contracts.where((e) {
+    return await contracts.values.where((e) {
       if(e.getAllCfPay() < e.getAllPay()) return true;
       return false;
     }).toList() ?? [];
@@ -342,11 +352,11 @@ class SystemControl {
       regExp = getRegExp(search, RegExpOptions(initialSearch: true, startsWith: false, endsWith: false));
     } catch (e) {
       print(e);
-      return SystemControl.contracts.toList();
+      return SystemT.contracts.values.toList();
     }
     if(sort != null)
       return await sort.where((e) => regExp.hasMatch(e.addresses.first ?? '')).toList() ?? [];
-    return await SystemControl.contracts.where((e) => regExp.hasMatch(e.addresses.first ?? '')).toList() ?? [];
+    return await SystemT.contracts.values.where((e) => regExp.hasMatch(e.addresses.first ?? '')).toList() ?? [];
   }
   static dynamic searchCtWithManager(String search, {List<Contract>? sort}) async {
     late RegExp regExp;
@@ -354,11 +364,11 @@ class SystemControl {
       regExp = getRegExp(search, RegExpOptions(initialSearch: true, startsWith: false, endsWith: false));
     } catch (e) {
       print(e);
-      return SystemControl.contracts.toList();
+      return SystemT.contracts.values.toList();
     }
     if(sort != null)
       return await sort.where((e) => regExp.hasMatch(getManagerName(e.managerUid) ?? '')).toList() ?? [];
-    return await SystemControl.contracts.where((e) => regExp.hasMatch(getManagerName(e.managerUid) ?? '')).toList() ?? [];
+    return await SystemT.contracts.values.where((e) => regExp.hasMatch(getManagerName(e.managerUid) ?? '')).toList() ?? [];
   }
   static dynamic searchCtWithClient(String search, {List<Contract>? sort}) async {
     late RegExp regExp;
@@ -366,11 +376,11 @@ class SystemControl {
       regExp = getRegExp(search, RegExpOptions(initialSearch: true, startsWith: false, endsWith: false));
     } catch (e) {
       print(e);
-      return SystemControl.contracts.toList();
+      return SystemT.contracts.values.toList();
     }
     if(sort != null)
       return await sort.where((e) => regExp.hasMatch(e.clients.first['name'] ?? '')).toList() ?? [];
-    return await SystemControl.contracts.where((e) => regExp.hasMatch(e.clients.first['name'] ?? '')).toList() ?? [];
+    return await SystemT.contracts.values.where((e) => regExp.hasMatch(e.clients.first['name'] ?? '')).toList() ?? [];
   }
   static dynamic searchCtWithMonth(String search, {List<Contract>? sort}) async {
     if(sort != null)
@@ -379,7 +389,7 @@ class SystemControl {
         if(e.getContractAtsFirstNull()!.month.toString() == search) return true;
         return false;
       }).toList() ?? [];
-    return await contracts.where((e) {
+    return await contracts.values.where((e) {
       if(e.getContractAtsFirst() == null) return false;
       if(e.getContractAtsFirst()!.month.toString() == search) return true;
       return false;
@@ -392,7 +402,7 @@ class SystemControl {
         if(e.getContractAtsFirstNull()!.year.toString() == search) return true;
         return false;
       }).toList() ?? [];
-    return await contracts.where((e) {
+    return await contracts.values.where((e) {
       if(e.getContractAtsFirst() == null) return false;
       if(e.getContractAtsFirst()!.month.toString() == search) return true;
       return false;
@@ -429,11 +439,11 @@ class SystemControl {
       regExp = getRegExp(search, RegExpOptions(initialSearch: true, startsWith: false, endsWith: false));
     } catch (e) {
       print(e);
-      return sort ?? SystemControl.workManagements.toList();
+      return sort ?? SystemT.workManagements.values.toList();
     }
     if(sort != null)
       return await sort.where((e) => regExp.hasMatch(e.addresses.first ?? '')).toList() ?? [];
-    return await SystemControl.workManagements.where((e) => regExp.hasMatch(e.addresses.first ?? '')).toList() ?? [];
+    return await SystemT.workManagements.values.where((e) => regExp.hasMatch(e.addresses.first ?? '')).toList() ?? [];
   }
   static dynamic searchWmWithManager(String search, {List<WorkManagement>? sort}) async {
     late RegExp regExp;
@@ -441,11 +451,10 @@ class SystemControl {
       regExp = getRegExp(search, RegExpOptions(initialSearch: true, startsWith: false, endsWith: false));
     } catch (e) {
       print(e);
-      return sort ?? SystemControl.workManagements.toList();
     }
     if(sort != null)
       return await sort.where((e) => regExp.hasMatch(getManagerName(e.managerUid) ?? '')).toList() ?? [];
-    return await SystemControl.workManagements.where((e) => regExp.hasMatch(getManagerName(e.managerUid) ?? '')).toList() ?? [];
+    return sort ?? [];
   }
   static dynamic searchWmWithClient(String search, {List<WorkManagement>? sort}) async {
     late RegExp regExp;
@@ -453,11 +462,10 @@ class SystemControl {
       regExp = getRegExp(search, RegExpOptions(initialSearch: true, startsWith: false, endsWith: false));
     } catch (e) {
       print(e);
-      return sort ?? SystemControl.workManagements.toList();
     }
     if(sort != null)
       return await sort.where((e) => regExp.hasMatch(e.clients.first['name'] ?? '')).toList() ?? [];
-    return await SystemControl.workManagements.where((e) => regExp.hasMatch(e.clients.first['name'] ?? '')).toList() ?? [];
+    return sort ?? [];
   }
   static dynamic searchWmWithMonth(String search, {List<WorkManagement>? sort}) async {
     if(sort != null)
@@ -466,7 +474,7 @@ class SystemControl {
         if(e.getTaskAt()!.month.toString() == search) return true;
         return false;
       }).toList() ?? [];
-    return await workManagements.where((e) {
+    return await workManagements.values.where((e) {
       if(e.getTaskAt() == null) return false;
       if(e.getTaskAt()!.month.toString() == search) return true;
       return false;
@@ -479,7 +487,7 @@ class SystemControl {
         if(e.getTaskAt()!.year.toString() == search) return true;
         return false;
       }).toList() ?? [];
-    return await workManagements.where((e) {
+    return await workManagements.values.where((e) {
       if(e.getTaskAt() == null) return false;
       if(e.getTaskAt()!.year.toString() == search) return true;
       return false;
@@ -577,6 +585,8 @@ class SystemControl {
     if(sort != null) {
       for(var p in sort) {
         for(var _p in p.endAts) {
+          if(_p['date'] == null) continue;
+
           var dS = _p['date'].replaceAll('.', '-');
           DateTime? dD = DateTime.tryParse(dS);
           if(dD == null) continue;
@@ -590,7 +600,7 @@ class SystemControl {
       return result;
     }
 
-    for(var p in permitManagements) {
+    for(var p in permitManagementMaps.values) {
       for(var _p in p.endAts) {
         var dS = _p['date'].replaceAll('.', '-');
         DateTime? dD = DateTime.tryParse(dS) ?? DateTime.now();
@@ -608,10 +618,10 @@ class SystemControl {
   static startTrayOpen(BuildContext context) async {
     //WidgetHub.openPageWithFade(context, AlertMiniPage(permits: getPermitEndAtsList(30)), time: 0);
     Navigator.push(context, MaterialPageRoute(builder: (context) => PermitManagementListViewerPage()),);
-    await SystemControl.windowMainStyle(show: true);
+    await SystemT.windowMainStyle(show: true);
   }
   static windowMainStyle({ bool show=false }) async {
-    SystemControl.alert = false;
+    SystemT.alert = false;
 
     appWindow.maxSize = Size(2048, 2048);appWindow.minSize = new Size(400, 400);
     appWindow.size = Size(1280, 720);

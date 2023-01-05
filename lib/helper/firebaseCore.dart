@@ -1,9 +1,12 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_client_sse/flutter_client_sse.dart';
 import 'package:http/http.dart' as http;
 import 'package:encrypt/encrypt.dart' as en;
+import 'package:untitled2/helper/security.dart';
 import 'package:untitled2/helper/systemClass.dart';
 import 'package:untitled2/helper/systemControl.dart';
 
@@ -88,7 +91,7 @@ class FirebaseT {
     http.Response response = await http.get(Uri.parse("$_databaseURL/managers/${user?.uid}.json?auth=$idC"),);
     Map<dynamic, dynamic> data = json.decode(response.body);
 
-    SystemControl.currentManager = data;
+    SystemT.currentManager = data;
     return data;
   }
 
@@ -102,7 +105,7 @@ class FirebaseT {
   }
 
   static dynamic pushPermitManagementWithAES(dynamic data) async {
-    if(SystemControl.versionCheck() == false) return;
+    if(SystemT.versionCheck() == false) return;
 
     var dataJson = data.toJson();
     var jsonString = jsonEncode(dataJson);
@@ -144,7 +147,7 @@ class FirebaseT {
         body: json.encode({ 'data': list as List, }));
   }
   static dynamic putPermitManagementWithAES(dynamic data, String id) async {
-    if(SystemControl.versionCheck() == false) return;
+    if(SystemT.versionCheck() == false) return;
 
     var j = data.toJson();
     var jsonString = jsonEncode(j);
@@ -188,7 +191,7 @@ class FirebaseT {
       var tList = tmp['data'] as List ?? [];
       var sKey = tList.removeLast();
 
-      var ssKey = SystemControl.securityKeys.getKey(sKey);
+      var ssKey = SystemT.securityKeys.getKey(sKey);
 
       final key = en.Key.fromUtf8(ssKey);
       final iv1 = en.IV.fromLength(16);
@@ -203,7 +206,7 @@ class FirebaseT {
     print('download server data - length: ${data.length}');
 
     var downloadLength = response.contentLength! * 50;
-    await http.patch(Uri.parse("$_databaseURL/system/usage/${SystemControl.getServerDateId()}.json"),
+    await http.patch(Uri.parse("$_databaseURL/system/usage/${SystemT.getServerDateId()}.json"),
         body: json.encode({
           'download': { ".sv": {"increment": downloadLength}}
         }));
@@ -211,7 +214,7 @@ class FirebaseT {
   }
 
   static dynamic pushContractWithAES(dynamic data) async {
-    if(SystemControl.versionCheck() == false) return;
+    if(SystemT.versionCheck() == false) return;
 
     var dataJson = data.toJson();
     var jsonString = jsonEncode(dataJson);
@@ -249,7 +252,7 @@ class FirebaseT {
         body: json.encode({ 'data': list as List, }));
   }
   static dynamic pushContractWithAESAndWm(dynamic data) async {
-    if(SystemControl.versionCheck() == false) return;
+    if(SystemT.versionCheck() == false) return;
 
     var dataJson = data.toJson();
     var jsonString = jsonEncode(dataJson);
@@ -296,10 +299,10 @@ class FirebaseT {
     work.id =data.id;
 
     await pushWorkManagementWithAESID(work);
-    SystemControl.workManagements.insert(0, work);
+    SystemT.workManagements[work.id] = work;
   }
   static dynamic postContractWithAES(dynamic data, String id) async {
-    if(SystemControl.versionCheck() == false) return;
+    if(SystemT.versionCheck() == false) return;
 
     var dataJson = data.toJson();
     var jsonString = jsonEncode(dataJson);
@@ -340,7 +343,7 @@ class FirebaseT {
       var tList = tmp['data'] as List ?? [];
       var sKey = tList.removeLast();
 
-      var ssKey = SystemControl.securityKeys.getKey(sKey);
+      var ssKey = SystemT.securityKeys.getKey(sKey);
 
       final key = en.Key.fromUtf8(ssKey);
       final iv1 = en.IV.fromLength(16);
@@ -356,7 +359,7 @@ class FirebaseT {
 
 
     var downloadLength = response.contentLength! * 50;
-    await http.patch(Uri.parse("$_databaseURL/system/usage/${SystemControl.getServerDateId()}.json"),
+    await http.patch(Uri.parse("$_databaseURL/system/usage/${SystemT.getServerDateId()}.json"),
         body: json.encode({
           'download': { ".sv": {"increment": downloadLength}}
         }));
@@ -364,7 +367,7 @@ class FirebaseT {
   }
 
   static Future<int> getServerUsage() async {
-    http.Response response = await http.get(Uri.parse("$_databaseURL/system/usage/${SystemControl.getServerDateId()}.json"),);
+    http.Response response = await http.get(Uri.parse("$_databaseURL/system/usage/${SystemT.getServerDateId()}.json"),);
     Map<dynamic, dynamic> data = json.decode(response.body);
     int download = data['download'] ?? 0;
     return download.toInt();
@@ -372,7 +375,7 @@ class FirebaseT {
 
   /// work
   static dynamic postWorkManagementWithAES(dynamic data, String id) async {
-    if(SystemControl.versionCheck() == false) return;
+    if(SystemT.versionCheck() == false) return;
 
     var dataJson = data.toJson();
     var jsonString = jsonEncode(dataJson);
@@ -405,7 +408,7 @@ class FirebaseT {
         body: json.encode({ 'data': list as List, }));
   }
   static dynamic pushWorkManagementWithAES(dynamic data) async {
-    if(SystemControl.versionCheck() == false) return;
+    if(SystemT.versionCheck() == false) return;
 
     var dataJson = data.toJson();
     var jsonString = jsonEncode(dataJson);
@@ -443,7 +446,7 @@ class FirebaseT {
         body: json.encode({ 'data': list as List, }));
   }
   static dynamic pushWorkManagementWithAESID(dynamic data) async {
-    if(SystemControl.versionCheck() == false) return;
+    if(SystemT.versionCheck() == false) return;
 
     var dataJson = data.toJson();
     var jsonString = jsonEncode(dataJson);
@@ -492,7 +495,7 @@ class FirebaseT {
       var tList = tmp['data'] as List ?? [];
       var sKey = tList.removeLast();
 
-      var ssKey = SystemControl.securityKeys.getKey(sKey);
+      var ssKey = SystemT.securityKeys.getKey(sKey);
 
       final key = en.Key.fromUtf8(ssKey);
       final iv1 = en.IV.fromLength(16);
@@ -507,7 +510,7 @@ class FirebaseT {
     print('download server data - length: ${data.length}');
 
     var downloadLength = response.contentLength! * 50;
-    await http.patch(Uri.parse("$_databaseURL/system/usage/${SystemControl.getServerDateId()}.json"),
+    await http.patch(Uri.parse("$_databaseURL/system/usage/${SystemT.getServerDateId()}.json"),
         body: json.encode({
           'download': { ".sv": {"increment": downloadLength}}
         }));
@@ -542,9 +545,9 @@ class FirebaseT {
       list.add(current);
     list.add('-NI4ujaycSizu0Tx5cYA');
 
-    var a = File('${SystemControl.serverPath}/contract/$id.tgs');
+    var a = File('${SystemT.serverPath}/contract/$id.tgs');
     await a.writeAsString('$security');
-    var b = File('${SystemControl.serverPath}/contract/${id}_o.json');
+    var b = File('${SystemT.serverPath}/contract/${id}_o.json');
     await b.writeAsString('$jsonString');
   }
 }
@@ -590,5 +593,173 @@ class FirebaseNTT {
     var a2 = sencrypter2.decrypt64(a, iv: siv2);
 
     return json.decode(a2);
+  }
+}
+
+class FirebaseSSE {
+  static const _databaseURL = 'https://taegi-survey-default-rtdb.firebaseio.com';
+  static StreamSubscription<SSEModel>? subscribePmToSSE;
+  static StreamSubscription<SSEModel>? subscribeWmToSSE;
+  static StreamSubscription<SSEModel>? subscribeCtToSSE;
+
+  static dynamic subscribePermitManagementSSE() async {
+    try{
+      var idC = await FirebaseAuth.instance.currentUser?.getIdToken();
+
+      if(subscribePmToSSE != null) {
+        await subscribePmToSSE!.cancel();
+        subscribePmToSSE = null;
+        SSEClient.unsubscribeFromSSE();
+      }
+
+      subscribePmToSSE = await SSEClient.subscribeToSSE(
+          url: '$_databaseURL/permit-management/security.json?auth=$idC',
+          header: {
+            "Cookie":
+            'jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJpYXQiOjE2NDMyMTAyMzEsImV4cCI6MTY0MzgxNTAzMX0.U0aCAM2fKE1OVnGFbgAU_UVBvNwOMMquvPY8QaLD138; Path=/; Expires=Wed, 02 Feb 2022 15:17:11 GMT; HttpOnly; SameSite=Strict',
+            "Accept": "text/event-stream",
+            "Cache-Control": "no-cache",
+            'Content-Type': 'application/json',
+          }).listen((event) {
+        print('SSE.Event.PM: ' + event.event!);
+        if(event.data != null) {
+          if(event.event == 'keep-alive') return;
+
+          var data = jsonDecode(event.data!);
+          var path = data['path'].toString().replaceAll('/', '');
+          if(path == '') {
+            var dataMaps = data['data'] as Map;
+            for(int i = 0; i < dataMaps.length; i++) {
+              var d = dataMaps.values.elementAt(i);
+              var k = dataMaps.keys.elementAt(i);
+
+              var tList = d['data'] as List ?? [];
+              var json = SecurityT.securityT(tList, k);
+              SystemT.permitManagementMaps[k] = PermitManagement.fromDatabase(json);
+            }
+            print('sever sent event data length: ${dataMaps.length}');
+          }
+          else {
+            var dataO = data['data'];
+            var tList = dataO['data'] as List ?? [];
+            var json = SecurityT.securityT(tList, path);
+            SystemT.permitManagementMaps[path] = PermitManagement.fromDatabase(json);
+            print('sever sent event data length: 1');
+          }
+          print('all PM data length: ${SystemT.permitManagementMaps.length}');
+        }
+      });
+    } catch(e) {
+      print(e);
+    }
+  }
+  static dynamic subscribeWorkManagementSSE() async {
+    try{
+      var idC = await FirebaseAuth.instance.currentUser?.getIdToken();
+
+      if(subscribeWmToSSE != null) {
+        await subscribeWmToSSE!.cancel();
+        subscribeWmToSSE = null;
+        SSEClient.unsubscribeFromSSE();
+      }
+
+      subscribeWmToSSE = await SSEClient.subscribeToSSE(
+          url: '$_databaseURL/work-management/list.json?auth=$idC',
+          header: {
+            "Cookie":
+            'jwt=eyJhbGciOiJIUzI1NiIInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZS6InRlc3QiLCJpYXQiOjE2NDMyMTAyMzEsImV4cCI6MTY0MzgxNTAzMX0.U0aCAM2fKE1OVnGFbgAU_UVBvNwOMMquvPY8QaLD138; Path=/; Expires=Wed, 02 Feb 2022 15:17:11 GMT; HttpOnly; SameSite=Strict',
+            "Accept": "text/event-stream",
+            "Cache-Control": "no-cache",
+            'Content-Type': 'application/json',
+          }).listen((event) {
+        print('SSE.Event.WM: ' + event.event!);
+        if(event.data != null) {
+          if(event.event == 'keep-alive') return;
+
+          var data = jsonDecode(event.data!);
+          var path = data['path'].toString().replaceAll('/', '');
+
+          if(path == '') {
+            var dataMaps = data['data'] as Map;
+            for(int i = 0; i < dataMaps.length; i++) {
+              var d = dataMaps.values.elementAt(i);
+              var k = dataMaps.keys.elementAt(i);
+
+              var tList = d['data'] as List ?? [];
+              var json = SecurityT.securityT(tList, k);
+              SystemT.workManagements[k] = WorkManagement.fromDatabase(json);
+            }
+            print('sever sent event data length: ${dataMaps.length}');
+          }
+          else {
+            var dataO = data['data'];
+            var tList = dataO['data'] as List ?? [];
+            var json = SecurityT.securityT(tList, path);
+            SystemT.workManagements[path] = WorkManagement.fromDatabase(json);
+            print('sever sent event data length: 1');
+          }
+          print('all WM data length: ${SystemT.workManagements.length}');
+        }
+      });
+    } catch(e) {
+      print(e);
+    }
+  }
+  static dynamic subscribeContractSSE() async {
+    try{
+      var idC = await FirebaseAuth.instance.currentUser?.getIdToken();
+
+      if(subscribeCtToSSE != null) {
+        await subscribeCtToSSE!.cancel();
+        subscribeCtToSSE = null;
+        SSEClient.unsubscribeFromSSE();
+      }
+
+      subscribeCtToSSE = await SSEClient.subscribeToSSE(
+          url: '$_databaseURL/contract/list.json?auth=$idC',
+          header: {
+            "Cookie":
+            'jwt=eyJhbGciOiJIUzI1NiIsIR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6nRlc3QiLCJpYXQiOjE2NDMyMTAyMzEsImV4cCI6MTY0MzgxNTAzMX0.U0aCAM2fKE1OVnGFbgAU_UVBvNwOMMquvPY8QaLD138; Path=/; Expires=Wed, 02 Feb 2022 15:17:11 GMT; HttpOnly; SameSite=Strict',
+            "Accept": "text/event-stream",
+            "Cache-Control": "no-cache",
+            'Content-Type': 'application/json',
+          }).listen((event) {
+        print('SSE.Event.Ct: ' +  event.event!);
+        if(event.data != null) {
+          if(event.event == 'keep-alive') return;
+
+          var data = jsonDecode(event.data!);
+          var path = data['path'].toString().replaceAll('/', '');
+          if(path == '') {
+            var dataMaps = data['data'] as Map;
+            for(int i = 0; i < dataMaps.length; i++) {
+              var d = dataMaps.values.elementAt(i);
+              var k = dataMaps.keys.elementAt(i);
+
+              var tList = d['data'] as List ?? [];
+              var json = SecurityT.securityT(tList, k);
+              SystemT.contracts[k] = Contract.fromDatabase(json);
+            }
+            print('sever sent event data length: ${dataMaps.length}');
+          }
+          else {
+            var dataO = data['data'];
+            if(dataO == null) {
+              SystemT.contracts.remove(path);
+              print('SSE.Data.Ct: Delete');
+            }
+            else {
+              var tList = dataO['data'] as List ?? [];
+              var json = SecurityT.securityT(tList, path);
+              SystemT.contracts[path] = Contract.fromDatabase(json);
+              print('sever sent event data length: 1');
+            }
+          }
+          print('all PM data length: ${SystemT.contracts.length}');
+        }
+      });
+    } catch(e) {
+      print(e);
+    }
   }
 }
