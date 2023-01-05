@@ -10,7 +10,7 @@ import 'package:untitled2/helper/interfaceUI.dart';
 import 'package:untitled2/helper/systemClass.dart';
 import 'package:untitled2/helper/systemControl.dart';
 
-import 'helper/style.dart';
+import '../helper/style.dart';
 
 class PermitManagementPage extends StatefulWidget {
   const PermitManagementPage();

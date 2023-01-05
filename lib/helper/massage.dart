@@ -14,8 +14,6 @@ import 'package:untitled2/helper/systemClass.dart';
 import 'package:untitled2/helper/systemControl.dart';
 import 'package:window_manager/window_manager.dart';
 
-import '../PermitManagementViewerPage.dart';
-
 class MassageT {
   static List<Massage> massages = [];
   static List<Massage> currentMassages = [];

@@ -1,3 +1,4 @@
+/*
 import 'dart:convert';
 
 import 'package:bitsdojo_window/bitsdojo_window.dart';
@@ -5,13 +6,13 @@ import 'package:collection/collection.dart';
 import 'package:desktop_lifecycle/desktop_lifecycle.dart';
 import 'package:desktop_multi_window/desktop_multi_window.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled2/PermitManagementViewerPage.dart';
+import 'package:untitled2/xxx/PermitManagementViewerPage.dart';
 import 'package:untitled2/helper/systemClass.dart';
 import 'package:window_manager/window_manager.dart';
 
-import 'helper/interfaceUI.dart';
-import 'helper/style.dart';
-import 'helper/systemControl.dart';
+import '../helper/interfaceUI.dart';
+import '../helper/style.dart';
+import '../helper/systemControl.dart';
 
 class PmInfoMiniPage extends StatefulWidget {
   PermitManagement p;
@@ -190,4 +191,4 @@ class _PmInfoMiniPageState extends State<PmInfoMiniPage> {
       ),
     );
   }
-}
+}*/

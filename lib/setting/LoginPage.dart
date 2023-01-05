@@ -13,8 +13,7 @@ import 'package:local_notifier/local_notifier.dart';
 import 'package:quick_notify/quick_notify.dart';
 import 'package:system_tray/system_tray.dart';
 import 'package:untitled2/AlertPage.dart';
-import 'package:untitled2/PermitManagementInfoPage.dart';
-import 'package:untitled2/PermitManagementViewerPage.dart';
+import 'package:untitled2/xxx/PermitManagementInfoPage.dart';
 import 'package:untitled2/SystemUploder.dart';
 
 import 'package:untitled2/helper/firebaseCore.dart';
@@ -23,7 +22,6 @@ import 'package:untitled2/helper/style.dart';
 import 'package:untitled2/helper/systemClass.dart';
 import 'package:untitled2/helper/systemControl.dart';
 import 'package:window_manager/window_manager.dart';
-import '../PermitManagementPage.dart';
 import '../page/Test.dart';
 
 class LogInPage extends StatefulWidget {

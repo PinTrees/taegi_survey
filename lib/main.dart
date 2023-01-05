@@ -17,8 +17,7 @@ import 'package:untitled2/AlertPage.dart';
 import 'package:untitled2/ManagerPage.dart';
 import 'package:untitled2/ManagerPage1.dart';
 import 'package:untitled2/OwnerPage.dart';
-import 'package:untitled2/PermitManagementInfoPage.dart';
-import 'package:untitled2/PermitManagementViewerPage.dart';
+import 'package:untitled2/xxx/PermitManagementInfoPage.dart';
 import 'package:untitled2/SystemUploder.dart';
 
 import 'package:untitled2/helper/firebaseCore.dart';
@@ -28,7 +27,6 @@ import 'package:untitled2/helper/systemClass.dart';
 import 'package:untitled2/helper/systemControl.dart';
 import 'package:untitled2/setting/LoginPage.dart';
 import 'package:window_manager/window_manager.dart';
-import 'PermitManagementPage.dart';
 import 'page/Test.dart';
 import 'package:encrypt/encrypt.dart' as en;
 
@@ -236,7 +234,8 @@ class _InitPageState extends State<InitPage> {
     notification.onClickAction = (index) {
       print('윈도우 알림창에서 확인하기가 클릭됨');
       Navigator.of(context).popUntil((route) => route.isFirst);
-      WidgetHub.openPageWithFade(context, PermitManagementListViewerPage(), time: 0);
+
+      //WidgetHub.openPageWithFade(context, PermitManagementListViewerPage(), time: 0);
       appWindow.show();
     };
     notification.onShow = () {
@@ -250,7 +249,7 @@ class _InitPageState extends State<InitPage> {
       Navigator.of(context).popUntil((route) => route.isFirst);
 
       //WidgetHub.openPageWithFade(context, PermitManagementListViewerPage(), time: 0);
-      Navigator.push(context, MaterialPageRoute(builder: (context) => PermitManagementListViewerPage()),);
+      //Navigator.push(context, MaterialPageRoute(builder: (context) => PermitManagementListViewerPage()),);
       await SystemT.windowMainStyle(show: true);
     };
 

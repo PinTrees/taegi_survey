@@ -1,3 +1,4 @@
+/*
 import 'dart:convert';
 import 'dart:io';
 import 'dart:ui';
@@ -17,9 +18,9 @@ import 'package:korea_regexp/models/regexp_options.dart';
 import 'package:quick_notify/quick_notify.dart';
 import 'package:untitled2/ContractEditPage.dart';
 import 'package:untitled2/EditeTemplatePage.dart';
-import 'package:untitled2/PermitManagementInfoPage.dart';
-import 'package:untitled2/PermitManagementPage.dart';
-import 'package:untitled2/PermitManagementViewerPage.dart';
+import 'package:untitled2/xxx/PermitManagementInfoPage.dart';
+import 'package:untitled2/xxx/PermitManagementPage.dart';
+import 'package:untitled2/xxx/PermitManagementViewerPage.dart';
 import 'package:untitled2/SettingPage.dart';
 import 'package:untitled2/WorkManagementEditPage.dart';
 import 'package:untitled2/helper/firebaseCore.dart';
@@ -236,14 +237,16 @@ class _WorkManagementListViewerPageState extends State<WorkManagementListViewerP
           child: WidgetHub.iconStyleBig(icon: Icons.drive_folder_upload_rounded),
         ),
 
-        /*
+        */
+/*
         TextButton(
           onPressed: () async {
           },
           style: SystemStyle.buttonStyleNone(padding: 0),
           child: WidgetHub.iconStyleBig(icon: Icons.create),
         ),
-        */
+        *//*
+
         TextButton(
           onPressed: () async {
             isViewShort = !isViewShort;
@@ -982,3 +985,4 @@ class _WorkManagementListViewerPageState extends State<WorkManagementListViewerP
        );
   }
 }
+*/

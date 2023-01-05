@@ -15,13 +15,9 @@ import 'package:http/http.dart' as http;
 import 'package:korea_regexp/get_regexp.dart';
 import 'package:korea_regexp/models/regexp_options.dart';
 import 'package:quick_notify/quick_notify.dart';
-import 'package:untitled2/ContractViewerPage.dart';
 import 'package:untitled2/EditeTemplatePage.dart';
-import 'package:untitled2/PermitManagementInfoPage.dart';
-import 'package:untitled2/PermitManagementPage.dart';
-import 'package:untitled2/PermitManagementViewerPage.dart';
+import 'package:untitled2/xxx/PermitManagementInfoPage.dart';
 import 'package:untitled2/SettingPage.dart';
-import 'package:untitled2/WorkManagementPage.dart';
 import 'package:untitled2/helper/firebaseCore.dart';
 import 'package:untitled2/helper/interfaceUI.dart';
 import 'package:untitled2/helper/massage.dart';
@@ -945,114 +941,6 @@ class _ManagerPage1State extends State<ManagerPage1> {
       createC = Contract.fromDatabase({});
       await WidgetHub.ctCreateExcelEditeWidgetDl(context, createC!, saveFun: saveNewDateC!);
     }
-  }
-
-  void openMenu() {
-    showDialog(
-        context: context,
-        //barrierDismissible - Dialog를 제외한 다른 화면 터치 x
-        barrierDismissible: true,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(0.0)),
-
-            titlePadding: EdgeInsets.all(0),
-            title: Container(
-              color: Colors.grey.shade300, padding: EdgeInsets.all(8),
-              child: Column(
-                children: <Widget>[
-                  Text("시스템 관리자 설정", style: StyleT.titleStyle(),),
-                ],
-              ),
-            ),
-            //
-            content: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                TextButton(
-                  child: Text("허가 관리 목록 추가", style: StyleT.titleStyle(), ),
-                  style: StyleT.buttonStyleOutline(),
-                  onPressed: () {
-                    WidgetHub.openPageWithFade(context, PermitManagementPage());
-                  },
-                ),
-                SizedBox(height: 12,),
-                TextButton(
-                  child: Text("이용자 추가 (테스트)", style: StyleT.titleStyle(), ),
-                  style: StyleT.buttonStyleOutline(),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                ),
-                SizedBox(height: 12,),
-                TextButton(
-                  child: Text("테스트", style: StyleT.titleStyle(), ),
-                  style: StyleT.buttonStyleOutline(),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                ),
-                TextButton(
-                  child: Text("알람 주기 1분", style: StyleT.titleStyle(), ),
-                  style: StyleT.buttonStyleOutline(),
-                  onPressed: () {
-                    SystemT.alertDuDefault = 60;
-                    SystemT.alertDu = 0;
-                    Navigator.pop(context);
-                  },
-                ),
-                TextButton(
-                  child: Text("알람 주기 1초", style: StyleT.titleStyle(), ),
-                  style: StyleT.buttonStyleOutline(),
-                  onPressed: () {
-                    SystemT.alertDuDefault = 1;
-                    SystemT.alertDu = 0;
-                    Navigator.pop(context);
-                  },
-                ),
-                TextButton(
-                  child: Text("알람 주기 1시간", style: StyleT.titleStyle(), ),
-                  style: StyleT.buttonStyleOutline(),
-                  onPressed: () {
-                    SystemT.alertDuDefault = 3600;
-                    SystemT.alertDu = 0;
-                    Navigator.pop(context);
-                  },
-                ),
-                TextButton(
-                  child: Text("윈도우 경로 설정", style: StyleT.titleStyle(), ),
-                  style: StyleT.buttonStyleOutline(),
-                  onPressed: () async {
-                    serverPath = await FilePicker.platform.getDirectoryPath();
-                    if (serverPath == null) {
-                      print('aaaaaaaaaaaaaa');
-                      // User canceled the picker
-                    }
-                    print(serverPath);
-                  },
-                ),
-                TextButton(
-                  child: Text("윈도우 파일 저장", style: StyleT.titleStyle(), ),
-                  style: StyleT.buttonStyleOutline(),
-                  onPressed: () async {
-                    var a = File('$serverPath/output-file.txt');
-                    await a.writeAsString('dddddddddddddddddddddddd');
-                  },
-                ),
-              ],
-            ),
-            actions: <Widget>[
-              TextButton(
-                child: Text("확인", style: StyleT.titleStyle(bold: true)),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
-            ],
-          );
-        });
   }
 
   @override

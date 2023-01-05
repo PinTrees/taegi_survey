@@ -7,12 +7,13 @@ import 'package:intl/intl.dart';
 import 'package:korea_regexp/get_regexp.dart';
 import 'package:korea_regexp/models/regexp_options.dart';
 import 'package:untitled2/AlertPage.dart';
+import 'package:untitled2/ManagerPage1.dart';
 import 'package:untitled2/helper/firebaseCore.dart';
 import 'package:untitled2/helper/interfaceUI.dart';
 import 'package:untitled2/helper/systemClass.dart';
 import 'package:window_manager/window_manager.dart';
 
-import '../PermitManagementViewerPage.dart';
+import '../xxx/PermitManagementViewerPage.dart';
 
 class SystemT {
   static List<Manager> managers = [];
@@ -616,8 +617,8 @@ class SystemT {
 
   /// System Manager
   static startTrayOpen(BuildContext context) async {
-    //WidgetHub.openPageWithFade(context, AlertMiniPage(permits: getPermitEndAtsList(30)), time: 0);
-    Navigator.push(context, MaterialPageRoute(builder: (context) => PermitManagementListViewerPage()),);
+    WidgetHub.openPageWithFade(context, ManagerPage1(), time: 0, first: true);
+    //Navigator.push(context, MaterialPageRoute(builder: (context) => PermitManagementListViewerPage()),);
     await SystemT.windowMainStyle(show: true);
   }
   static windowMainStyle({ bool show=false }) async {

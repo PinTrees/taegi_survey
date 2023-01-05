@@ -1,3 +1,4 @@
+/*
 import 'dart:convert';
 
 import 'package:bitsdojo_window/bitsdojo_window.dart';
@@ -6,13 +7,9 @@ import 'package:desktop_lifecycle/desktop_lifecycle.dart';
 import 'package:desktop_multi_window/desktop_multi_window.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled2/PermitManagementViewerPage.dart';
+import 'package:untitled2/xxx/PermitManagementViewerPage.dart';
 import 'package:untitled2/helper/systemClass.dart';
 import 'package:window_manager/window_manager.dart';
-
-import 'helper/interfaceUI.dart';
-import 'helper/style.dart';
-import 'helper/systemControl.dart';
 
 class CtEditePage extends StatefulWidget {
   Contract c;
@@ -114,7 +111,8 @@ class _CtEditePageState extends State<CtEditePage> {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    /*
+                    */
+/*
                     Row(
                       children: [
                         Expanded(
@@ -131,7 +129,8 @@ class _CtEditePageState extends State<CtEditePage> {
                         ),
                       ],
                     ),
-                     */
+                     *//*
+
                     Row(
                       children: [
                         Expanded(
@@ -1422,7 +1421,8 @@ class _CtCreatePageState extends State<CtCreatePage> {
               SizedBox(width: 4,),
               Expanded(child: Column(
                 children: [
-                  /*
+                  */
+/*
                   Container(
                     padding: EdgeInsets.only(bottom: padding),
                     child: WidgetHub.buttonWrap('${widget.c.confirmDownPayment}만', () {
@@ -1468,7 +1468,8 @@ class _CtCreatePageState extends State<CtCreatePage> {
                       //widget.c.confirmMiddlePayment.insert(i, data);
                     }, setFun: () { setState(() {}); }, hint: '계약금'),
                   ),
-                   */
+                   *//*
+
                 ],
               )),
             ],
@@ -1951,3 +1952,4 @@ class _CtCreatePageState extends State<CtCreatePage> {
     );
   }
 }
+*/

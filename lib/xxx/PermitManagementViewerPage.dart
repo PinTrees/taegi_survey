@@ -1,3 +1,4 @@
+/*
 import 'dart:convert';
 import 'dart:io';
 import 'dart:ui';
@@ -17,8 +18,8 @@ import 'package:korea_regexp/models/regexp_options.dart';
 import 'package:quick_notify/quick_notify.dart';
 import 'package:untitled2/ContractViewerPage.dart';
 import 'package:untitled2/EditeTemplatePage.dart';
-import 'package:untitled2/PermitManagementInfoPage.dart';
-import 'package:untitled2/PermitManagementPage.dart';
+import 'package:untitled2/xxx/PermitManagementInfoPage.dart';
+import 'package:untitled2/xxx/PermitManagementPage.dart';
 import 'package:untitled2/SettingPage.dart';
 import 'package:untitled2/WorkManagementPage.dart';
 import 'package:untitled2/helper/firebaseCore.dart';
@@ -28,10 +29,10 @@ import 'package:untitled2/helper/systemControl.dart';
 import 'package:encrypt/encrypt.dart' as en;
 import 'package:untitled2/setting/VersionLogPage.dart';
 
-import 'AlertMainPage.dart';
-import 'PmEditePage.dart';
-import 'helper/style.dart';
-import 'setting/SearchPage.dart';
+import '../AlertMainPage.dart';
+import '../PmEditePage.dart';
+import '../helper/style.dart';
+import '../setting/SearchPage.dart';
 
 enum SearchPM {
   address('address', '주소'),
@@ -175,14 +176,16 @@ class _PermitManagementListViewerPageState extends State<PermitManagementListVie
           child: WidgetHub.iconStyleBig(icon: Icons.create),
         ),
 
-        /*
+        */
+/*
         TextButton(
           onPressed: () async {
           },
           style: SystemStyle.buttonStyleNone(padding: 0),
           child: WidgetHub.iconStyleBig(icon: Icons.create),
         ),
-        */
+        *//*
+
         TextButton(
           onPressed: () async {
             isViewShort = !isViewShort;
@@ -228,14 +231,16 @@ class _PermitManagementListViewerPageState extends State<PermitManagementListVie
           child: WidgetHub.iconStyleBig(icon: Icons.drive_folder_upload_rounded),
         ),
 
-        /*
+        */
+/*
         TextButton(
           onPressed: () async {
           },
           style: SystemStyle.buttonStyleNone(padding: 0),
           child: WidgetHub.iconStyleBig(icon: Icons.create),
         ),
-        */
+        *//*
+
         TextButton(
           onPressed: () async {
             isViewShort = !isViewShort;
@@ -356,11 +361,13 @@ class _PermitManagementListViewerPageState extends State<PermitManagementListVie
 
     if(type == 'info') {
       selectP = p!;
-      /*infoPage = PmEditePage(p: p!, read: true, close: () {
+      */
+/*infoPage = PmEditePage(p: p!, read: true, close: () {
         sideViewType = '';
         selectMenu = 'main';
         setState(() {});
-      },);*/
+      },);*//*
+
       //infoPage!.createState();
     }
     refresh();
@@ -1205,3 +1212,4 @@ class _PermitManagementListViewerPageState extends State<PermitManagementListVie
     );
   }
 }
+*/

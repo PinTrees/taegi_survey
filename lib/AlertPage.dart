@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_acrylic/flutter_acrylic.dart';
 import 'package:http/http.dart' as http;
 import 'package:untitled2/AlertMainPage.dart';
-import 'package:untitled2/PermitManagementInfoPage.dart';
-import 'package:untitled2/PermitManagementViewerPage.dart';
+import 'package:untitled2/xxx/PermitManagementInfoPage.dart';
+import 'package:untitled2/xxx/PermitManagementViewerPage.dart';
 import 'package:untitled2/helper/firebaseCore.dart';
 import 'package:untitled2/helper/interfaceUI.dart';
 import 'package:untitled2/helper/style.dart';
@@ -82,7 +82,7 @@ class _AlertMiniPageState extends State<AlertMiniPage> {
         padding: EdgeInsets.fromLTRB(12, 6, 12, 6),
         child: TextButton(
           onPressed: () async {
-            WidgetHub.openPageWithFade(context, PmInfoMiniPage(p: p));
+            //WidgetHub.openPageWithFade(context, PmInfoMiniPage(p: p));
           },
           style: StyleT.buttonStyleOutline(padding: 0, elevation: 0, strock: 1.4, color: Colors.white.withOpacity(0.5)),
           child: Container(
@@ -240,8 +240,8 @@ class _AlertMiniPageState extends State<AlertMiniPage> {
 
                   TextButton(
                       onPressed: () async {
-                        Navigator.of(context).popUntil((route) => route.isFirst);
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => PermitManagementListViewerPage(isAlert: true,)),);
+                        //Navigator.of(context).popUntil((route) => route.isFirst);
+                        //Navigator.push(context, MaterialPageRoute(builder: (context) => PermitManagementListViewerPage(isAlert: true,)),);
 
                         appWindow.maxSize = Size(2048, 2048); appWindow.minSize = new Size(400, 400);
                         appWindow.size = Size(1280, 720);
