@@ -118,7 +118,7 @@ class _PmEditePageState extends State<PmEditePage> {
           onEditingComplete: () {
             inputText('address');
           },
-          decoration: WidgetHub.textInputDecoration( hintText: '소재지 입력', round: 4),
+          decoration: WidgetT.textInputDecoration( hintText: '소재지 입력', round: 4),
           controller: inputCtr['address'],
         ),
       );
@@ -135,7 +135,7 @@ class _PmEditePageState extends State<PmEditePage> {
               onEditingComplete: () {
                 inputText('client');
               },
-              decoration:  WidgetHub.textInputDecoration( hintText: '이름 입력', round: 4),
+              decoration:  WidgetT.textInputDecoration( hintText: '이름 입력', round: 4),
               controller: inputCtr['clientN'],
             ),
           ),
@@ -149,7 +149,7 @@ class _PmEditePageState extends State<PmEditePage> {
               onEditingComplete: () {
                 inputText('client');
               },
-              decoration:  WidgetHub.textInputDecoration( hintText: '번호 입력', round: 4),
+              decoration:  WidgetT.textInputDecoration( hintText: '번호 입력', round: 4),
               controller: inputCtr['clientPN'],
             ),
           ),
@@ -165,7 +165,7 @@ class _PmEditePageState extends State<PmEditePage> {
           onEditingComplete: () {
             inputText('use');
           },
-          decoration: WidgetHub.textInputDecoration( hintText: '용도', round: 4),
+          decoration: WidgetT.textInputDecoration( hintText: '용도', round: 4),
           controller: inputCtr['use'],
         ),
       );
@@ -182,7 +182,7 @@ class _PmEditePageState extends State<PmEditePage> {
               onEditingComplete: () {
                 inputText('area');
               },
-              decoration: WidgetHub.textInputDecoration( hintText: '타입', round: 4),
+              decoration: WidgetT.textInputDecoration( hintText: '타입', round: 4),
               controller: inputCtr['areaT'],
             ),
           ),
@@ -196,7 +196,7 @@ class _PmEditePageState extends State<PmEditePage> {
               onEditingComplete: () {
                 inputText('area');
               },
-              decoration: WidgetHub.textInputDecoration( hintText: '면적', round: 4),
+              decoration: WidgetT.textInputDecoration( hintText: '면적', round: 4),
               controller: inputCtr['areaM2'],
             ),
           ),
@@ -215,7 +215,7 @@ class _PmEditePageState extends State<PmEditePage> {
               onEditingComplete: () {
                 inputText('permitAts');
               },
-              decoration: WidgetHub.textInputDecoration( hintText: '타입', round: 4),
+              decoration: WidgetT.textInputDecoration( hintText: '타입', round: 4),
               controller: inputCtr['permitAtsT'],
             ),
           ),
@@ -229,7 +229,7 @@ class _PmEditePageState extends State<PmEditePage> {
               onEditingComplete: () {
                 inputText('permitAts');
               },
-              decoration: WidgetHub.textInputDecoration( hintText: '날짜', round: 4),
+              decoration: WidgetT.textInputDecoration( hintText: '날짜', round: 4),
               controller: inputCtr['permitAtsD'],
             ),
           ),
@@ -248,7 +248,7 @@ class _PmEditePageState extends State<PmEditePage> {
             onEditingComplete: () {
               inputText('endAts');
             },
-            decoration:  WidgetHub.textInputDecoration( hintText: '타입', round: 4),
+            decoration:  WidgetT.textInputDecoration( hintText: '타입', round: 4),
             controller: inputCtr['endAtsT'],
           ),
         ),
@@ -262,7 +262,7 @@ class _PmEditePageState extends State<PmEditePage> {
             onEditingComplete: () {
               inputText('endAts');
             },
-            decoration:  WidgetHub.textInputDecoration( hintText: '날짜', round: 4),
+            decoration:  WidgetT.textInputDecoration( hintText: '날짜', round: 4),
             controller: inputCtr['endAtsD'],
           ),
         ),
@@ -284,7 +284,7 @@ class _PmEditePageState extends State<PmEditePage> {
           spacing: 4,
           children: [
             for(var s in p.addresses)
-              WidgetHub.buttonWrap(s, () {
+              WidgetT.buttonWrap(s, () {
                 p.addresses.remove(s);
                 setState(() {});}, read),
             editButton('address'),
@@ -295,9 +295,9 @@ class _PmEditePageState extends State<PmEditePage> {
         SizedBox(height: 12,),
         Text("실무자", style: StyleT.titleStyle(bold: true), ),
         SizedBox(height: 2,),
-        WidgetHub.buttonWrap("${SystemT.getManagerName(p.managerUid)}", () {}, true),
+        WidgetT.buttonWrap("${SystemT.getManagerName(p.managerUid)}", () {}, true),
 
-        WidgetHub.vertSizedPadding(),
+        WidgetT.vertSizedPadding(),
         Text("신청인", style: StyleT.titleStyle(bold: true), ),
         SizedBox(height: 2,),
         Wrap(
@@ -305,7 +305,7 @@ class _PmEditePageState extends State<PmEditePage> {
           spacing: 4,
           children: [
             for(var s in p.clients)
-              WidgetHub.buttonWrap('${s['name']}  ${s['phoneNumber']}', () {
+              WidgetT.buttonWrap('${s['name']}  ${s['phoneNumber']}', () {
                 p.clients.remove(s);
                 setState(() {});}, read),
             editButton('client'),
@@ -313,7 +313,7 @@ class _PmEditePageState extends State<PmEditePage> {
           ],
         ),
 
-        WidgetHub.vertSizedPadding(),
+        WidgetT.vertSizedPadding(),
         Text("용도", style: StyleT.titleStyle(bold: true), ),
         SizedBox(height: 2,),
         Wrap(
@@ -321,7 +321,7 @@ class _PmEditePageState extends State<PmEditePage> {
           spacing: 4,
           children: [
             for(var s in p.useType)
-              WidgetHub.buttonWrap(s, () {
+              WidgetT.buttonWrap(s, () {
                 p.useType.remove(s);
                 setState(() {});}, read),
             editButton('use'),
@@ -329,7 +329,7 @@ class _PmEditePageState extends State<PmEditePage> {
           ],
         ),
 
-        WidgetHub.vertSizedPadding(),
+        WidgetT.vertSizedPadding(),
         Text("허가 면적", style: StyleT.titleStyle(bold: true), ),
         SizedBox(height: 2,),
         Wrap(
@@ -339,11 +339,11 @@ class _PmEditePageState extends State<PmEditePage> {
             for(var s in p.area)
               Row(
                 children: [
-                  WidgetHub.buttonWrap('${s['type']}', width: 100, () {
+                  WidgetT.buttonWrap('${s['type']}', width: 100, () {
                     p.area.remove(s);
                     setState(() {});}, read),
                   SizedBox(width: 4,),
-                  WidgetHub.buttonWrap('${s['area']} ㎡', width: 200, () {
+                  WidgetT.buttonWrap('${s['area']} ㎡', width: 200, () {
                     p.area.remove(s);
                     setState(() {});}, read),
                 ],
@@ -351,7 +351,7 @@ class _PmEditePageState extends State<PmEditePage> {
           ],
         ),
 
-        WidgetHub.vertSizedPadding(),
+        WidgetT.vertSizedPadding(),
 
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -367,7 +367,7 @@ class _PmEditePageState extends State<PmEditePage> {
                     spacing: 4,
                     children: [
                       for(var s in p.permitAts)
-                        WidgetHub.buttonWrap('${s['type']}  ${s['date']}'.replaceAll('.', '. '), () {
+                        WidgetT.buttonWrap('${s['type']}  ${s['date']}'.replaceAll('.', '. '), () {
                           p.permitAts.remove(s);
                           setState(() {});}, read),
                       editButton('permitAts'),
@@ -389,7 +389,7 @@ class _PmEditePageState extends State<PmEditePage> {
                     spacing: 4,
                     children: [
                       for(var s in p.endAts)
-                        WidgetHub.buttonWrap('${s['type']}  ${s['date']}'.replaceAll('.', '. '), () {
+                        WidgetT.buttonWrap('${s['type']}  ${s['date']}'.replaceAll('.', '. '), () {
                           p.endAts.remove(s);
                           setState(() {});}, read),
                       editButton('endAts'),
@@ -403,18 +403,18 @@ class _PmEditePageState extends State<PmEditePage> {
         ),
 
 
-        WidgetHub.vertSizedPadding(),
+        WidgetT.vertSizedPadding(),
         Text("허가유형", style: StyleT.titleStyle(bold: true), ),
         SizedBox(height: 2,),
-        WidgetHub.buttonWrap(p.permitType, () {}, true),
+        WidgetT.buttonWrap(p.permitType, () {}, true),
 
-        WidgetHub.vertSizedPadding(),
+        WidgetT.vertSizedPadding(),
         Text("건축사", style: StyleT.titleStyle(bold: true), ),
         SizedBox(height: 2,),
-        WidgetHub.buttonWrap(SystemT.getArchitectureOfficeName(p.architectureOffice)
+        WidgetT.buttonWrap(SystemT.getArchitectureOfficeName(p.architectureOffice)
             .toString().replaceAll('\n', ' '), () {}, true),
 
-        WidgetHub.vertSizedPadding(),
+        WidgetT.vertSizedPadding(),
         Row(
           children: [
             new Text("비고", style: StyleT.titleStyle(bold: true), ),
@@ -573,7 +573,7 @@ class _PmCreatePageState extends State<PmCreatePage> {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Expanded(child:   WidgetHub.buttonWrap('${widget.p.addresses[i]}',() {
+                  Expanded(child:   WidgetT.buttonWrap('${widget.p.addresses[i]}',() {
                     setState(() {});
                   }, true,
                       k: '$i::addresses', set: (i, data) {
@@ -587,13 +587,13 @@ class _PmCreatePageState extends State<PmCreatePage> {
                           setState(() {});
                         },
                         style: StyleT.buttonStyleNone(padding: 0),
-                        child: WidgetHub.iconStyleMini(icon: Icons.delete),
+                        child: WidgetT.iconStyleMini(icon: Icons.delete),
                       )
                   ),
                 ],
               ),
             ),
-          WidgetHub.buttonAdd(fun: () {
+          WidgetT.buttonAdd(fun: () {
             widget.p.addresses.add('');
             inputWidget('address');
             setState(() {});
@@ -614,13 +614,13 @@ class _PmCreatePageState extends State<PmCreatePage> {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  WidgetHub.buttonWrap('${widget.p.clients[i]['name']}', width: 100, () {
+                  WidgetT.buttonWrap('${widget.p.clients[i]['name']}', width: 100, () {
                     setState(() {});
                   }, true, k: '$i::clients.name', set: (i, data) {
                     widget.p.clients[i]['name'] =  data;
                   }, setFun: () { setState(() {}); }, hint: '이름', val: widget.p.clients[i]['name']),
                   SizedBox(width: 4,),
-                  Expanded(child:   WidgetHub.buttonWrap('${widget.p.clients[i]['phoneNumber']}',() {
+                  Expanded(child:   WidgetT.buttonWrap('${widget.p.clients[i]['phoneNumber']}',() {
                     setState(() {});
                   }, true,
                       k: '$i::clients.phoneNumber', set: (i, data) {
@@ -634,13 +634,13 @@ class _PmCreatePageState extends State<PmCreatePage> {
                           setState(() {});
                         },
                         style: StyleT.buttonStyleNone(padding: 0),
-                        child: WidgetHub.iconStyleMini(icon: Icons.delete),
+                        child: WidgetT.iconStyleMini(icon: Icons.delete),
                       )
                   ),
                 ],
               ),
             ),
-          WidgetHub.buttonAdd(fun: () {
+          WidgetT.buttonAdd(fun: () {
             widget.p.clients.add({});
             inputWidget('client');
             setState(() {});
@@ -659,7 +659,7 @@ class _PmCreatePageState extends State<PmCreatePage> {
               onEditingComplete: () {
                 inputText('use');
               },
-              decoration: WidgetHub.textInputDecoration( hintText: '용도', round: 4),
+              decoration: WidgetT.textInputDecoration( hintText: '용도', round: 4),
               controller: inputCtr['use'],
             ),
           ),
@@ -668,7 +668,7 @@ class _PmCreatePageState extends State<PmCreatePage> {
               padding: EdgeInsets.only(top: 4),
               child: Row(
                 children: [
-                  Expanded(child:    WidgetHub.buttonWrap('${widget.p.useType[i]}', () {
+                  Expanded(child:    WidgetT.buttonWrap('${widget.p.useType[i]}', () {
                     setState(() {});
                   }, true, k: '$i::useType', set: (i, data) {
                     widget.p.useType[i] =  data;
@@ -681,7 +681,7 @@ class _PmCreatePageState extends State<PmCreatePage> {
                           setState(() {});
                         },
                         style: StyleT.buttonStyleNone(padding: 0),
-                        child: WidgetHub.iconStyleMini(icon: Icons.delete),
+                        child: WidgetT.iconStyleMini(icon: Icons.delete),
                       )
                   ),
                 ],
@@ -706,7 +706,7 @@ class _PmCreatePageState extends State<PmCreatePage> {
                     onEditingComplete: () {
                       inputText('area');
                     },
-                    decoration: WidgetHub.textInputDecoration( hintText: '타입', round: 4),
+                    decoration: WidgetT.textInputDecoration( hintText: '타입', round: 4),
                     controller: inputCtr['areaT'],
                   ),
                 ),
@@ -721,7 +721,7 @@ class _PmCreatePageState extends State<PmCreatePage> {
                     onEditingComplete: () {
                       inputText('area');
                     },
-                    decoration: WidgetHub.textInputDecoration( hintText: '면적', round: 4),
+                    decoration: WidgetT.textInputDecoration( hintText: '면적', round: 4),
                     controller: inputCtr['areaM2'],
                   ),
                 ),
@@ -733,7 +733,7 @@ class _PmCreatePageState extends State<PmCreatePage> {
                       setState(() {});
                     },
                     style: StyleT.buttonStyleNone(padding: 0),
-                    child: WidgetHub.iconStyleMini(icon: Icons.clear),
+                    child: WidgetT.iconStyleMini(icon: Icons.clear),
                   )
               ),
             ],
@@ -743,13 +743,13 @@ class _PmCreatePageState extends State<PmCreatePage> {
               padding: EdgeInsets.only(top: 4),
               child: Row(
                 children: [
-                  Expanded(child:    WidgetHub.buttonWrap('${widget.p.area[i]['type']}', () {
+                  Expanded(child:    WidgetT.buttonWrap('${widget.p.area[i]['type']}', () {
                     setState(() {});
                   }, true, k: '$i::area.type', set: (i, data) {
                     widget.p.area[i]['type'] =  data;
                   }, setFun: () { setState(() {}); }, hint: '타입', val: widget.p.area[i]['type']),),
                   SizedBox(width: 4,),
-                  Expanded(child:    WidgetHub.buttonWrap('${widget.p.area[i]['area']} ㎡', () {
+                  Expanded(child:    WidgetT.buttonWrap('${widget.p.area[i]['area']} ㎡', () {
                     setState(() {});
                   }, true, k: '$i::area.area', set: (i, data) {
                     widget.p.area[i]['area'] =  data;
@@ -762,7 +762,7 @@ class _PmCreatePageState extends State<PmCreatePage> {
                           setState(() {});
                         },
                         style: StyleT.buttonStyleNone(padding: 0),
-                        child: WidgetHub.iconStyleMini(icon: Icons.delete),
+                        child: WidgetT.iconStyleMini(icon: Icons.delete),
                       )
                   ),
                 ],
@@ -785,7 +785,7 @@ class _PmCreatePageState extends State<PmCreatePage> {
                   onEditingComplete: () {
                     inputText('permitAts');
                   },
-                  decoration: WidgetHub.textInputDecoration( hintText: '타입', round: 4),
+                  decoration: WidgetT.textInputDecoration( hintText: '타입', round: 4),
                   controller: inputCtr['permitAtsT'],
                 ),
               ),),
@@ -798,7 +798,7 @@ class _PmCreatePageState extends State<PmCreatePage> {
                   onEditingComplete: () {
                     inputText('permitAts');
                   },
-                  decoration: WidgetHub.textInputDecoration( hintText: '날짜', round: 4),
+                  decoration: WidgetT.textInputDecoration( hintText: '날짜', round: 4),
                   controller: inputCtr['permitAtsD'],
                 ),
               ),),
@@ -809,7 +809,7 @@ class _PmCreatePageState extends State<PmCreatePage> {
                       setState(() {});
                     },
                     style: StyleT.buttonStyleNone(padding: 0),
-                    child: WidgetHub.iconStyleMini(icon: Icons.clear),
+                    child: WidgetT.iconStyleMini(icon: Icons.clear),
                   )
               ),
             ],
@@ -819,13 +819,13 @@ class _PmCreatePageState extends State<PmCreatePage> {
               padding: EdgeInsets.only(top: 4),
               child: Row(
                 children: [
-                  Expanded(child:    WidgetHub.buttonWrap('${widget.p.permitAts[i]['type']}', () {
+                  Expanded(child:    WidgetT.buttonWrap('${widget.p.permitAts[i]['type']}', () {
                     setState(() {});
                   }, true, k: '$i::permitAts.type', set: (i, data) {
                     widget.p.permitAts[i]['type'] =  data;
                   }, setFun: () { setState(() {}); }, hint: '타입', val: widget.p.permitAts[i]['type']),),
                   SizedBox(width: 4,),
-                  Expanded(child:    WidgetHub.buttonWrap('${widget.p.permitAts[i]['date']}', () {
+                  Expanded(child:    WidgetT.buttonWrap('${widget.p.permitAts[i]['date']}', () {
                     setState(() {});
                   }, true, k: '$i::permitAts.date', set: (i, data) {
                     widget.p.permitAts[i]['date'] =  data;
@@ -838,7 +838,7 @@ class _PmCreatePageState extends State<PmCreatePage> {
                           setState(() {});
                         },
                         style: StyleT.buttonStyleNone(padding: 0),
-                        child: WidgetHub.iconStyleMini(icon: Icons.delete),
+                        child: WidgetT.iconStyleMini(icon: Icons.delete),
                       )
                   ),
                 ],
@@ -861,7 +861,7 @@ class _PmCreatePageState extends State<PmCreatePage> {
                   onEditingComplete: () {
                     inputText('endAts');
                   },
-                  decoration: WidgetHub.textInputDecoration( hintText: '타입', round: 4),
+                  decoration: WidgetT.textInputDecoration( hintText: '타입', round: 4),
                   controller: inputCtr['endAtsT'],
                 ),
               ),),
@@ -874,7 +874,7 @@ class _PmCreatePageState extends State<PmCreatePage> {
                   onEditingComplete: () {
                     inputText('endAts');
                   },
-                  decoration: WidgetHub.textInputDecoration( hintText: '날짜', round: 4),
+                  decoration: WidgetT.textInputDecoration( hintText: '날짜', round: 4),
                   controller: inputCtr['endAtsD'],
                 ),
               ),),
@@ -885,7 +885,7 @@ class _PmCreatePageState extends State<PmCreatePage> {
                       setState(() {});
                     },
                     style: StyleT.buttonStyleNone(padding: 0),
-                    child: WidgetHub.iconStyleMini(icon: Icons.clear),
+                    child: WidgetT.iconStyleMini(icon: Icons.clear),
                   )
               ),
             ],
@@ -895,13 +895,13 @@ class _PmCreatePageState extends State<PmCreatePage> {
               padding: EdgeInsets.only(top: 4),
               child: Row(
                 children: [
-                  Expanded(child:    WidgetHub.buttonWrap('${widget.p.endAts[i]['type']}', () {
+                  Expanded(child:    WidgetT.buttonWrap('${widget.p.endAts[i]['type']}', () {
                     setState(() {});
                   }, true, k: '$i::endAts.type', set: (i, data) {
                     widget.p.endAts[i]['type'] =  data;
                   }, setFun: () { setState(() {}); }, hint: '타입', val: widget.p.endAts[i]['type']),),
                   SizedBox(width: 4,),
-                  Expanded(child:    WidgetHub.buttonWrap('${widget.p.endAts[i]['date']}', () {
+                  Expanded(child:    WidgetT.buttonWrap('${widget.p.endAts[i]['date']}', () {
                     setState(() {});
                   }, true, k: '$i::endAts.date', set: (i, data) {
                     widget.p.endAts[i]['date'] =  data;
@@ -914,7 +914,7 @@ class _PmCreatePageState extends State<PmCreatePage> {
                           setState(() {});
                         },
                         style: StyleT.buttonStyleNone(padding: 0),
-                        child: WidgetHub.iconStyleMini(icon: Icons.delete),
+                        child: WidgetT.iconStyleMini(icon: Icons.delete),
                       )
                   ),
                 ],
@@ -942,7 +942,7 @@ class _PmCreatePageState extends State<PmCreatePage> {
             new Text("실무자", style: StyleT.titleStyle(bold: true), ),
             TextButton(
                 onPressed: () async {
-                  Manager m = await WidgetHub.showBTManagerList(context);
+                  Manager m = await WidgetT.showBTManagerList(context);
                   if(m != null) {
                     widget.p.managerUid = m.id;
                     setState(() {});
@@ -958,29 +958,29 @@ class _PmCreatePageState extends State<PmCreatePage> {
             ),
           ],
         ),
-        WidgetHub.buttonWrap('${SystemT.getManagerName(p.managerUid)}', width: 128,  () {}, true),
+        WidgetT.buttonWrap('${SystemT.getManagerName(p.managerUid)}', width: 128,  () {}, true),
 
-        WidgetHub.vertSizedPadding(),
+        WidgetT.vertSizedPadding(),
         Text("신청인", style: StyleT.titleBigStyle(bold: true), ),
         SizedBox(height: 2,),
         inputWidget('client'),
 
-        WidgetHub.vertSizedPadding(),
+        WidgetT.vertSizedPadding(),
         Text("용도", style: StyleT.titleStyle(bold: true), ),
         SizedBox(height: 2,),
         inputWidget('use'),
 
-        WidgetHub.vertSizedPadding(),
+        WidgetT.vertSizedPadding(),
         Text("허가 면적", style: StyleT.titleStyle(bold: true), ),
         SizedBox(height: 2,),
         inputWidget('area'),
 
-        WidgetHub.vertSizedPadding(),
+        WidgetT.vertSizedPadding(),
         Text("허가일", style: StyleT.titleStyle(bold: true), ),
         SizedBox(height: 2,),
         inputWidget('permitAts'),
 
-        WidgetHub.vertSizedPadding(),
+        WidgetT.vertSizedPadding(),
         Text("종료일", style: StyleT.titleStyle(bold: true), ),
         SizedBox(height: 2,),
         inputWidget('endAts'),
@@ -1015,7 +1015,7 @@ class _PmCreatePageState extends State<PmCreatePage> {
                 onEditingComplete: () {
                   inputText('permit');
                 },
-                decoration: WidgetHub.textInputDecoration( hintText: '허가유형', round: 4),
+                decoration: WidgetT.textInputDecoration( hintText: '허가유형', round: 4),
                 controller: inputCtr['permit'],
               ),
             ),
@@ -1029,7 +1029,7 @@ class _PmCreatePageState extends State<PmCreatePage> {
             new Text("건축사", style: StyleT.titleStyle(bold: true), ),
             TextButton(
                 onPressed: () async {
-                  ArchitectureOffice a = await WidgetHub.showBTArchList(context);
+                  ArchitectureOffice a = await WidgetT.showBTArchList(context);
                   if(a != null) {
                     widget.p.architectureOffice = a.id;
                     inputCtr['arch'].text = a.name;
@@ -1059,7 +1059,7 @@ class _PmCreatePageState extends State<PmCreatePage> {
                 onEditingComplete: () {
                   inputText('arch');
                 },
-                decoration: WidgetHub.textInputDecoration( hintText: '건축사', round: 4),
+                decoration: WidgetT.textInputDecoration( hintText: '건축사', round: 4),
                 controller: inputCtr['arch'],
               ),
             ),
@@ -1096,7 +1096,7 @@ class _PmCreatePageState extends State<PmCreatePage> {
                     inputText('desc');
                   },
                   style: StyleT.titleStyle(),
-                  decoration:  WidgetHub.textInputDecoration( hintText: '비고', round: 4),
+                  decoration:  WidgetT.textInputDecoration( hintText: '비고', round: 4),
                   controller: inputCtr['desc'],
                 ),
               ),

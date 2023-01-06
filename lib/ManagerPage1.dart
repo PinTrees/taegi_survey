@@ -184,7 +184,7 @@ class _ManagerPage1State extends State<ManagerPage1> {
       children: [
         TextButton(
           onPressed: () async {
-            WidgetHub.loadingBottomSheet(context);
+            WidgetT.loadingBottomSheet(context);
             await SystemT.update();
             Navigator.pop(context);
 
@@ -192,14 +192,14 @@ class _ManagerPage1State extends State<ManagerPage1> {
             setState(() {});
           },
           style: StyleT.buttonStyleNone(padding: 0),
-          child: WidgetHub.iconStyleBig(icon: Icons.refresh),
+          child: WidgetT.iconStyleBig(icon: Icons.refresh),
         ),
         TextButton(
           onPressed: () async {
-            WidgetHub.openPageWithFade(context, SearchPage());
+            WidgetT.openPageWithFade(context, SearchPage());
           },
           style: StyleT.buttonStyleNone(padding: 0),
-          child:WidgetHub.iconStyleBig(icon: Icons.search),
+          child:WidgetT.iconStyleBig(icon: Icons.search),
         ),
         /*TextButton(
           onPressed: () async {
@@ -217,13 +217,13 @@ class _ManagerPage1State extends State<ManagerPage1> {
             //);
           },
           style: StyleT.buttonStyleNone(padding: 0),
-          child: WidgetHub.iconStyleBig(icon: Icons.settings_suggest),
+          child: WidgetT.iconStyleBig(icon: Icons.settings_suggest),
         ),
         TextButton(
           onPressed: () async {
           },
           style: StyleT.buttonStyleNone(padding: 0),
-          child: WidgetHub.iconStyleBig(icon: Icons.sim_card_download),
+          child: WidgetT.iconStyleBig(icon: Icons.sim_card_download),
         ),
       ],
     );
@@ -248,7 +248,7 @@ class _ManagerPage1State extends State<ManagerPage1> {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                WidgetHub.iconStyleMini(icon: Icons.notifications_active),
+                WidgetT.iconStyleMini(icon: Icons.notifications_active),
                 Container(
                   padding: EdgeInsets.all(12),
                   child: Expanded(
@@ -271,7 +271,7 @@ class _ManagerPage1State extends State<ManagerPage1> {
                       setState(() {});
                     },
                     style: StyleT.buttonStyleNone(padding: 0, elevation: 0 , strock: 1.4),
-                    child: WidgetHub.iconStyleMini(icon: Icons.close)
+                    child: WidgetT.iconStyleMini(icon: Icons.close)
                 ),
               ],
             ),
@@ -307,8 +307,8 @@ class _ManagerPage1State extends State<ManagerPage1> {
   void saveEditDate() async {
     if(replaceP == null) return;
 
-    if((await WidgetHub.showAlertDl(context, title: replaceP!.addresses.first) as bool) == false) {
-      WidgetHub.showSnackBar(context, text: '저장이 취소되었습니다.');
+    if((await WidgetT.showAlertDl(context, title: replaceP!.addresses.first) as bool) == false) {
+      WidgetT.showSnackBar(context, text: '저장이 취소되었습니다.');
       return;
     }
 
@@ -325,14 +325,14 @@ class _ManagerPage1State extends State<ManagerPage1> {
 
     search();
     refresh();
-    WidgetHub.showSnackBar(context, text: '저장되었습니다.');
-    WidgetHub.clear();
+    WidgetT.showSnackBar(context, text: '저장되었습니다.');
+    WidgetT.clear();
   }
   void saveEditDataW() async {
     if(replaceW == null) return;
 
-    if((await WidgetHub.showAlertDl(context, title: replaceW!.addresses.first) as bool) == false) {
-      WidgetHub.showSnackBar(context, text: '저장이 취소되었습니다.');
+    if((await WidgetT.showAlertDl(context, title: replaceW!.addresses.first) as bool) == false) {
+      WidgetT.showSnackBar(context, text: '저장이 취소되었습니다.');
       return;
     }
 
@@ -348,14 +348,14 @@ class _ManagerPage1State extends State<ManagerPage1> {
     selectMenu = 'main';
 
     search();
-    WidgetHub.showSnackBar(context, text: '저장되었습니다.');
-    WidgetHub.clear();
+    WidgetT.showSnackBar(context, text: '저장되었습니다.');
+    WidgetT.clear();
   }
   void saveEditDataC() async {
     if(replaceC == null) return;
 
-    if((await WidgetHub.showAlertDl(context, title: replaceC!.addresses.first) as bool) == false) {
-      WidgetHub.showSnackBar(context, text: '저장이 취소되었습니다.');
+    if((await WidgetT.showAlertDl(context, title: replaceC!.addresses.first) as bool) == false) {
+      WidgetT.showSnackBar(context, text: '저장이 취소되었습니다.');
       return;
     }
 
@@ -371,16 +371,16 @@ class _ManagerPage1State extends State<ManagerPage1> {
     selectMenu = 'main';
 
     search();
-    WidgetHub.showSnackBar(context, text: '저장되었습니다.');
-    WidgetHub.clear();
+    WidgetT.showSnackBar(context, text: '저장되었습니다.');
+    WidgetT.clear();
   }
 
   void saveNewDateP() async {
     if(createP == null) return;
 
     print('save new doc try');
-    if((await WidgetHub.showAlertDl(context, title: createP!.addresses.first) as bool) == false) {
-      WidgetHub.showSnackBar(context, text: '저장이 취소되었습니다.');
+    if((await WidgetT.showAlertDl(context, title: createP!.addresses.first) as bool) == false) {
+      WidgetT.showSnackBar(context, text: '저장이 취소되었습니다.');
       return;
     }
 
@@ -394,15 +394,15 @@ class _ManagerPage1State extends State<ManagerPage1> {
 
     search();
     refresh();
-    WidgetHub.showSnackBar(context, text: '저장되었습니다.');
-    WidgetHub.clear();
+    WidgetT.showSnackBar(context, text: '저장되었습니다.');
+    WidgetT.clear();
   }
   void saveNewDateW() async {
     if(createW == null) return;
 
     print('save new doc try');
-    if((await WidgetHub.showAlertDl(context, title: createW!.addresses.first) as bool) == false) {
-      WidgetHub.showSnackBar(context, text: '저장이 취소되었습니다.');
+    if((await WidgetT.showAlertDl(context, title: createW!.addresses.first) as bool) == false) {
+      WidgetT.showSnackBar(context, text: '저장이 취소되었습니다.');
       return;
     }
 
@@ -416,15 +416,15 @@ class _ManagerPage1State extends State<ManagerPage1> {
 
     search();
     refresh();
-    WidgetHub.showSnackBar(context, text: '저장되었습니다.');
-    WidgetHub.clear();
+    WidgetT.showSnackBar(context, text: '저장되었습니다.');
+    WidgetT.clear();
   }
   void saveNewDateC(bool isWork) async {
     if(createC == null) return;
 
     print('save new doc try');
-    if((await WidgetHub.showAlertDl(context, title: createC!.addresses.first) as bool) == false) {
-      WidgetHub.showSnackBar(context, text: '저장이 취소되었습니다.');
+    if((await WidgetT.showAlertDl(context, title: createC!.addresses.first) as bool) == false) {
+      WidgetT.showSnackBar(context, text: '저장이 취소되었습니다.');
       return;
     }
 
@@ -441,8 +441,8 @@ class _ManagerPage1State extends State<ManagerPage1> {
 
     search();
     refresh();
-    WidgetHub.showSnackBar(context, text: '저장되었습니다.');
-    WidgetHub.clear();
+    WidgetT.showSnackBar(context, text: '저장되었습니다.');
+    WidgetT.clear();
   }
 
   void refresh() {
@@ -456,9 +456,9 @@ class _ManagerPage1State extends State<ManagerPage1> {
       for(var p in listP) {
         Widget w = SizedBox();
         var backColor =  selectP == p ? StyleT.accentLowColor.withOpacity(0.5) : StyleT.backgroundColor.withOpacity(0.5);
-        w = WidgetHub.pmRowExcelWidget(context, p, color: backColor,
+        w = WidgetT.pmRowExcelWidget(context, p, color: backColor,
           fun: () async {
-            WidgetHub.clear();
+            WidgetT.clear();
 
             selectP = p;
             var jsonS = jsonEncode(p);
@@ -472,7 +472,7 @@ class _ManagerPage1State extends State<ManagerPage1> {
               //WidgetHub.pmRowExcelWidget(context, p, color: SystemStyle.accentLowColor.withOpacity(0.1),),
               Container(
                 padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                child: WidgetHub.pmRowExcelEditeWidget(
+                child: WidgetT.pmRowExcelEditeWidget(
                     context, replaceP!, saveFun: saveEditDate,
                     fun: () async {
                       refresh();
@@ -495,7 +495,7 @@ class _ManagerPage1State extends State<ManagerPage1> {
       for(int i = 0; i < listW.length; i++) {
         var p = listW[i];
         var backColor =  selectW == p ? StyleT.accentLowColor.withOpacity(0.5) : StyleT.backgroundColor.withOpacity(0.5);
-        Widget w =  WidgetHub.wmRowShortWidget(context, p,
+        Widget w =  WidgetT.wmRowShortWidget(context, p,
             fun: () async {
               var jsonS = jsonEncode(p);
               var j = jsonDecode(jsonS);
@@ -508,7 +508,7 @@ class _ManagerPage1State extends State<ManagerPage1> {
             });
 
         if(selectW == p) {
-          w = WidgetHub.wmRowEditeWidget(context, replaceW!, saveFun: saveEditDataW,
+          w = WidgetT.wmRowEditeWidget(context, replaceW!, saveFun: saveEditDataW,
               fun: () async { refresh(); },
               color: backColor, endVisible: false, setFun: () { refresh(); setState(() {}); });
         }
@@ -520,7 +520,7 @@ class _ManagerPage1State extends State<ManagerPage1> {
       countW = Text('계약문서 ${listW.length}건', style: StyleT.textStyleBig(bold: true),);
       for(var p in listC) {
         var backColor =  selectC == p ? StyleT.accentLowColor.withOpacity(0.5) : StyleT.backgroundColor.withOpacity(0.5);
-        Widget w =  WidgetHub.ctRowShortWidget(context, p,
+        Widget w =  WidgetT.ctRowShortWidget(context, p,
             fun: () async {
               selectC = p;
               var jsonS = jsonEncode(p);
@@ -533,7 +533,7 @@ class _ManagerPage1State extends State<ManagerPage1> {
               selectC = p; refresh();
             });
         if(selectC == p) {
-          w = WidgetHub.ctRowExcelEditorWidget(
+          w = WidgetT.ctRowExcelEditorWidget(
             context, replaceC!, color: backColor, endVisible: true,
             saveFun: saveEditDataC,
             setFun: () {
@@ -931,15 +931,15 @@ class _ManagerPage1State extends State<ManagerPage1> {
   void create() async {
     if (selectMenu1 == menu1[0]) {
       createP = PermitManagement.fromDatabase({});
-      await WidgetHub.pmCreateExcelEditeWidgetDl(context, createP!, saveFun: saveNewDateP!);
+      await WidgetT.pmCreateExcelEditeWidgetDl(context, createP!, saveFun: saveNewDateP!);
     }
     else if (selectMenu1 == menu1[1]) {
       createW = WorkManagement.fromDatabase({});
-      await WidgetHub.wmCreateExcelEditeWidgetDl(context, createW!, saveFun: saveNewDateW!);
+      await WidgetT.wmCreateExcelEditeWidgetDl(context, createW!, saveFun: saveNewDateW!);
     }
     else if (selectMenu1 == menu1[2]) {
       createC = Contract.fromDatabase({});
-      await WidgetHub.ctCreateExcelEditeWidgetDl(context, createC!, saveFun: saveNewDateC!);
+      await WidgetT.ctCreateExcelEditeWidgetDl(context, createC!, saveFun: saveNewDateC!);
     }
   }
 
@@ -969,7 +969,7 @@ class _ManagerPage1State extends State<ManagerPage1> {
                              child: Column(
                                children: [
                                  SizedBox(height: 8,),
-                                 WidgetHub.iconStyleBig(icon: Icons.dns, size: 24),
+                                 WidgetT.iconStyleBig(icon: Icons.dns, size: 24),
                                  SizedBox(height: 4,),
                                  Stack(
                                    children: [
@@ -984,27 +984,27 @@ class _ManagerPage1State extends State<ManagerPage1> {
                            TextButton(
                              onPressed: () async {
                                isEndAts = !isEndAts;
-                               WidgetHub.showSnackBar(context, text: '종료일이 가까운 목록을 표시합니다.');
+                               WidgetT.showSnackBar(context, text: '종료일이 가까운 목록을 표시합니다.');
                                search();
                              },
                              style: StyleT.buttonStyleNone(padding: 0,
                              color: isEndAts ? StyleT.accentColor.withOpacity(0.5) : Colors.transparent),
                              child: Column(
                                children: [
-                                 WidgetHub.iconStyleBig(icon: Icons.timelapse, color: Colors.redAccent, size: 48),
+                                 WidgetT.iconStyleBig(icon: Icons.timelapse, color: Colors.redAccent, size: 48),
                                ],
                              ),
                            ),
                            TextButton(
                              onPressed: () async {
-                               await WidgetHub.showSnackBar(context);
+                               await WidgetT.showSnackBar(context);
                              },
                              style: StyleT.buttonStyleNone(padding: 0),
-                             child: WidgetHub.iconStyleBig(icon: Icons.dark_mode),
+                             child: WidgetT.iconStyleBig(icon: Icons.dark_mode),
                            ),
                            TextButton(
                              onPressed: () async {
-                                WidgetHub.openPageWithFade(context, VersionLogPage());
+                                WidgetT.openPageWithFade(context, VersionLogPage());
                              },
                              style: StyleT.buttonStyleNone(padding: 0,
                                 color: !(SystemT.versionCheck() == 0) ? Colors.redAccent.withOpacity(0.15) : Colors.transparent),
@@ -1012,7 +1012,7 @@ class _ManagerPage1State extends State<ManagerPage1> {
                                child: Row(
                                  mainAxisAlignment: MainAxisAlignment.center,
                                  children: [
-                                   WidgetHub.iconStyleMini(icon: Icons.history, size: 18),
+                                   WidgetT.iconStyleMini(icon: Icons.history, size: 18),
                                   
                                    if((SystemT.versionCheck() == 0))
                                      Text('최신', style: TextStyle(fontSize: 9, color: StyleT.titleColor),),
@@ -1367,7 +1367,7 @@ class _ManagerPage1State extends State<ManagerPage1> {
                                                            setState(() {});
                                                            search();
                                                          },
-                                                         child: WidgetHub.iconStyleMini(icon: Icons.cancel)
+                                                         child: WidgetT.iconStyleMini(icon: Icons.cancel)
                                                        ),
                                                      ) : Padding(
                                                        padding: const EdgeInsets.only(right: 4),
@@ -1478,7 +1478,7 @@ class _ManagerPage1State extends State<ManagerPage1> {
                                                    onChanged: (text) {
                                                      search();
                                                    },
-                                                   decoration: WidgetHub.textInputDecoration(hintText: '검색어 입력'),
+                                                   decoration: WidgetT.textInputDecoration(hintText: '검색어 입력'),
                                                    controller: searchInput,
                                                  ),
                                                )

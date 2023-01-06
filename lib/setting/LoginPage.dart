@@ -70,7 +70,7 @@ class _LogInPageState extends State<LogInPage> {
                           child: Text('${currentMenu ?? '로그인 선택'}', style: StyleT.hintStyle(bold: true, size: 16, accent: true),),
                         ),
                         Expanded(child: SizedBox()),
-                        WidgetHub.iconStyleMini(icon: Icons.arrow_drop_down),
+                        WidgetT.iconStyleMini(icon: Icons.arrow_drop_down),
                       ],
                     ),
                   ),
@@ -168,7 +168,7 @@ class _LogInPageState extends State<LogInPage> {
             try {
               var id = '';
               if(currentMenu == null) {
-                await WidgetHub.showSnackBar(context, text: '로그인 계정을 선택해 주세요',);
+                await WidgetT.showSnackBar(context, text: '로그인 계정을 선택해 주세요',);
                 return;
               }
 
@@ -199,11 +199,11 @@ class _LogInPageState extends State<LogInPage> {
               if(currentUser != null) {
                 //await FirebaseAuth.instance.currentUser?.updatePassword('12345678');
                 //await FirebaseAuth.instance.currentUser?.updateEmail('taegi_0@taegi.com');
-                await WidgetHub.showSnackBar(context, text: '로그인 성공',);
+                await WidgetT.showSnackBar(context, text: '로그인 성공',);
                 Navigator.pop(context, true);
               }
             } on FirebaseAuthException catch (e) {
-              await WidgetHub.showSnackBar(context, text: '이메일 또는 패스워드를 잘못 입력했습니다. 다시 확인해주세요.',);
+              await WidgetT.showSnackBar(context, text: '이메일 또는 패스워드를 잘못 입력했습니다. 다시 확인해주세요.',);
               if (e.code == 'user-not-found') {
                 print('No user found for that email.');
               } else if (e.code == 'wrong-password') {

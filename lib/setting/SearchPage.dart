@@ -129,7 +129,7 @@ class _SearchPageState extends State<SearchPage> {
                   },
                   style: StyleT.buttonStyleNone(
                       padding: 0, color: StyleT.accentColor),
-                  child: WidgetHub.iconStyleBig(icon: Icons.search, size: 48),
+                  child: WidgetT.iconStyleBig(icon: Icons.search, size: 48),
                 )
               ],
             ),
@@ -146,7 +146,7 @@ class _SearchPageState extends State<SearchPage> {
       List<Widget> list = [];
       if(selectMenu == 'permit') {
         for(var p in permits) {
-          var w = WidgetHub.pmRowExcelWidget(context, p, fun: () async {
+          var w = WidgetT.pmRowExcelWidget(context, p, fun: () async {
           }, color: selectP == p ? StyleT.accentLowColor.withOpacity(0.5) : null, );
           list.add(w);
           list.add(SizedBox(height: 12,));
@@ -154,7 +154,7 @@ class _SearchPageState extends State<SearchPage> {
       }
       else if(selectMenu == menu[1]) {
         for(var p in contracts) {
-          var w = WidgetHub.ctRowShortWidget(context, p, fun: () async {
+          var w = WidgetT.ctRowShortWidget(context, p, fun: () async {
           }, color: selectP == p ? StyleT.accentLowColor.withOpacity(0.5) : null, );
           list.add(w);
           list.add(SizedBox(height: 12,));
@@ -162,7 +162,7 @@ class _SearchPageState extends State<SearchPage> {
       }
       else if(selectMenu == menu[2]) {
         for(var p in works) {
-          var w = WidgetHub.wmRowShortWidget(context, p, fun: () async {
+          var w = WidgetT.wmRowShortWidget(context, p, fun: () async {
           }, color: selectP == p ? StyleT.accentLowColor.withOpacity(0.5) : null, );
           list.add(w);
           list.add(SizedBox(height: 12,));
@@ -184,7 +184,7 @@ class _SearchPageState extends State<SearchPage> {
                         },
                         style: StyleT.buttonStyleNone(
                             padding: 0, color: StyleT.accentColor),
-                        child: WidgetHub.iconStyleBig(icon: Icons.search, size: 48),
+                        child: WidgetT.iconStyleBig(icon: Icons.search, size: 48),
                       ),
                       Expanded(child: TextFormField(
                         maxLines: 1,
@@ -219,12 +219,12 @@ class _SearchPageState extends State<SearchPage> {
                         },
                         style: StyleT.buttonStyleNone(
                             padding: 0, color: StyleT.accentColor),
-                        child: WidgetHub.iconStyleBig(icon: Icons.search, size: 48),
+                        child: WidgetT.iconStyleBig(icon: Icons.search, size: 48),
                       ),
                     ],
                   ),
                 ),
-                WidgetHub.dividHorizontalLow(),
+                WidgetT.dividHorizontalLow(),
                 Container(
                   height: 36,
                   child:Row(
@@ -243,7 +243,7 @@ class _SearchPageState extends State<SearchPage> {
                             )
                         ),
                       ),
-                      WidgetHub.dividVerticalLow(),
+                      WidgetT.dividVerticalLow(),
                       Container( width: widthMenu,
                         child: TextButton(
                             onPressed: () {
@@ -255,14 +255,14 @@ class _SearchPageState extends State<SearchPage> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                WidgetHub.iconStyleMiddle(icon: Icons.manage_search,),
+                                WidgetT.iconStyleMiddle(icon: Icons.manage_search,),
                                 Text('허가관리문서  ', style: StyleT.titleStyle(),),
                                 Text('${permits.length}건', style: StyleT.textStyle(),),
                               ],
                             )
                         ),
                       ),
-                      WidgetHub.dividVerticalLow(),
+                      WidgetT.dividVerticalLow(),
                       Container( width: widthMenu,
                         child: TextButton(
                             onPressed: () {
@@ -274,14 +274,14 @@ class _SearchPageState extends State<SearchPage> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                WidgetHub.iconStyleMiddle(icon: Icons.currency_exchange,),
+                                WidgetT.iconStyleMiddle(icon: Icons.currency_exchange,),
                                 Text('업무배당문서  ', style: StyleT.titleStyle(),),
                                 Text('${contracts.length}건', style: StyleT.textStyle(),),
                               ],
                             )
                         ),
                       ),
-                      WidgetHub.dividVerticalLow(),
+                      WidgetT.dividVerticalLow(),
                       Container( width: widthMenu,
                         child: TextButton(
                             onPressed: () {
@@ -293,14 +293,14 @@ class _SearchPageState extends State<SearchPage> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                WidgetHub.iconStyleMiddle(icon: Icons.engineering,),
+                                WidgetT.iconStyleMiddle(icon: Icons.engineering,),
                                 Text('계약현황  ', style: StyleT.titleStyle(),),
                                 Text('${works.length}건', style: StyleT.textStyle(),),
                               ],
                             )
                         ),
                       ),
-                      WidgetHub.dividVerticalLow(),
+                      WidgetT.dividVerticalLow(),
                     ],
                   ),
                 ),
@@ -342,7 +342,7 @@ class _SearchPageState extends State<SearchPage> {
                         Navigator.pop(context);
                       },
                       style: StyleT.buttonStyleNone(padding: 0, elevation: 0, strock: 1.4,),
-                      child: WidgetHub.iconStyleBig(icon: Icons.arrow_back)),
+                      child: WidgetT.iconStyleBig(icon: Icons.arrow_back)),
                 ],
               ),
             ),

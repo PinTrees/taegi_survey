@@ -54,7 +54,7 @@ class _AlertMainPageState extends State<AlertMainPage> {
   Widget main() {
     List<Widget> permitManagementW = [];
     for(var p in list) {
-      var w = WidgetHub.pmRowWidget(context, p, endVisible: true);
+      var w = WidgetT.pmRowWidget(context, p, endVisible: true);
       permitManagementW.add(w);
     }
     return ScrollConfiguration(
@@ -90,7 +90,7 @@ class _AlertMainPageState extends State<AlertMainPage> {
                 controller: horizontalScroll,
                 scrollDirection: Axis.horizontal,
                 child: Container(
-                    width: WidgetHub.allSize,
+                    width: WidgetT.allSize,
                     color: StyleT.backgroundColor,
                     child: ListView(
                       controller: verticalScroll,
@@ -403,7 +403,7 @@ class _AlertMainPageState extends State<AlertMainPage> {
                                             keyboardType: TextInputType.multiline,
                                             onChanged: (text) {
                                             },
-                                            decoration: WidgetHub.textInputDecoration(hintText: '검색어 입력'),
+                                            decoration: WidgetT.textInputDecoration(hintText: '검색어 입력'),
                                             controller: searchInput,
                                           ),
                                         )
@@ -459,7 +459,7 @@ class _AlertMainPageState extends State<AlertMainPage> {
                               ],
                             ),
                           ),
-                          WidgetHub.pmRowTitleBar(titleHorizontalScroll, backgroundColor: StyleT.backgroundLowColor),
+                          WidgetT.pmRowTitleBar(titleHorizontalScroll, backgroundColor: StyleT.backgroundLowColor),
                         ],
                       ),
                     ),

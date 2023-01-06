@@ -63,7 +63,7 @@ class _SettingPageState extends State<SettingPage> {
                             Navigator.pop(context);
                           },
                           style: StyleT.buttonStyleNone(padding: 0, elevation: 0, strock: 1.4,),
-                          child: WidgetHub.iconStyleBig(icon: Icons.arrow_back)),
+                          child: WidgetT.iconStyleBig(icon: Icons.arrow_back)),
                       SizedBox(height: 18,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -105,7 +105,7 @@ class _SettingPageState extends State<SettingPage> {
                                     child: Row(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
-                                        WidgetHub.iconStyleBigLarge(icon: Icons.manage_accounts_outlined),
+                                        WidgetT.iconStyleBigLarge(icon: Icons.manage_accounts_outlined),
                                         SizedBox(width: 12,),
                                         Column(
                                           crossAxisAlignment: CrossAxisAlignment.start, mainAxisSize: MainAxisSize.min,
@@ -125,7 +125,7 @@ class _SettingPageState extends State<SettingPage> {
                                     child: Row(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
-                                        WidgetHub.iconStyleBigLarge(icon: Icons.sync_sharp),
+                                        WidgetT.iconStyleBigLarge(icon: Icons.sync_sharp),
                                         SizedBox(width: 12,),
                                         Column(
                                           crossAxisAlignment: CrossAxisAlignment.start, mainAxisSize: MainAxisSize.min,
@@ -140,7 +140,7 @@ class _SettingPageState extends State<SettingPage> {
                               TextButton(
                                   onPressed: () {
                                     //Navigator.pop(context);
-                                    WidgetHub.openPageWithFade(context, EditTPage(), time: 0);
+                                    WidgetT.openPageWithFade(context, EditTPage(), time: 0);
                                   },
                                   style: StyleT.buttonStyleOutline(elevation: 0, strock: 1.4, color: StyleT.white.withOpacity(0.5)),
                                   child: Container(
@@ -148,7 +148,7 @@ class _SettingPageState extends State<SettingPage> {
                                     child: Row(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
-                                        WidgetHub.iconStyleBigLarge(icon: Icons.auto_fix_high),
+                                        WidgetT.iconStyleBigLarge(icon: Icons.auto_fix_high),
                                         SizedBox(width: 12,),
                                         Column(
                                           crossAxisAlignment: CrossAxisAlignment.start, mainAxisSize: MainAxisSize.min,
@@ -168,7 +168,7 @@ class _SettingPageState extends State<SettingPage> {
                                     child: Row(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
-                                        WidgetHub.iconStyleBigLarge(icon: Icons.campaign),
+                                        WidgetT.iconStyleBigLarge(icon: Icons.campaign),
                                         SizedBox(width: 12,),
                                         Column(
                                           crossAxisAlignment: CrossAxisAlignment.start, mainAxisSize: MainAxisSize.min,
@@ -189,7 +189,7 @@ class _SettingPageState extends State<SettingPage> {
                                     child: Row(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
-                                        WidgetHub.iconStyleBigLarge(icon: Icons.notification_add),
+                                        WidgetT.iconStyleBigLarge(icon: Icons.notification_add),
                                         SizedBox(width: 12,),
                                         Column(
                                           crossAxisAlignment: CrossAxisAlignment.start, mainAxisSize: MainAxisSize.min,
@@ -209,7 +209,7 @@ class _SettingPageState extends State<SettingPage> {
                                     child: Row(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
-                                        WidgetHub.iconStyleBigLarge(icon: Icons.lock),
+                                        WidgetT.iconStyleBigLarge(icon: Icons.lock),
                                         SizedBox(width: 8,),
                                         Column(
                                           crossAxisAlignment: CrossAxisAlignment.start, mainAxisSize: MainAxisSize.min,
@@ -229,7 +229,7 @@ class _SettingPageState extends State<SettingPage> {
                                     child: Row(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
-                                        WidgetHub.iconStyleBigLarge(icon: Icons.error),
+                                        WidgetT.iconStyleBigLarge(icon: Icons.error),
                                         SizedBox(width: 8,),
                                         Column(
                                           crossAxisAlignment: CrossAxisAlignment.start, mainAxisSize: MainAxisSize.min,
@@ -249,7 +249,7 @@ class _SettingPageState extends State<SettingPage> {
                                     child: Row(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
-                                        WidgetHub.iconStyleBigLarge(icon: Icons.supervised_user_circle),
+                                        WidgetT.iconStyleBigLarge(icon: Icons.supervised_user_circle),
                                         SizedBox(width: 8,),
                                         Column(
                                           crossAxisAlignment: CrossAxisAlignment.start, mainAxisSize: MainAxisSize.min,
@@ -270,7 +270,7 @@ class _SettingPageState extends State<SettingPage> {
                                     child: Row(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
-                                        WidgetHub.iconStyleBigLarge(icon: Icons.qr_code_2),
+                                        WidgetT.iconStyleBigLarge(icon: Icons.qr_code_2),
                                         SizedBox(width: 8,),
                                         Column(
                                           crossAxisAlignment: CrossAxisAlignment.start, mainAxisSize: MainAxisSize.min,
@@ -290,7 +290,7 @@ class _SettingPageState extends State<SettingPage> {
                                     child: Row(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
-                                        WidgetHub.iconStyleBigLarge(icon: Icons.search),
+                                        WidgetT.iconStyleBigLarge(icon: Icons.search),
                                         SizedBox(width: 8,),
                                         Column(
                                           crossAxisAlignment: CrossAxisAlignment.start, mainAxisSize: MainAxisSize.min,

@@ -133,7 +133,7 @@ class _AlertMiniPageState extends State<AlertMiniPage> {
                     TextButton(
                         onPressed: () async {
                           Navigator.pop(context);
-                          WidgetHub.openPageWithFade(context, AlertMainPage(permits: widget.permits), time: 0);
+                          WidgetT.openPageWithFade(context, AlertMainPage(permits: widget.permits), time: 0);
 
                           appWindow.maxSize = Size(2048, 2048);appWindow.minSize = new Size(400, 400);
                           appWindow.size = Size(1280, 720);
@@ -156,7 +156,7 @@ class _AlertMiniPageState extends State<AlertMiniPage> {
                     TextButton(
                         onPressed: () async {
                           Navigator.pop(context);
-                          WidgetHub.openPageWithFade(context, AlertMainPage(permits: widget.permits), time: 0);
+                          WidgetT.openPageWithFade(context, AlertMainPage(permits: widget.permits), time: 0);
 
                           appWindow.maxSize = Size(2048, 2048);appWindow.minSize = new Size(400, 400);
                           appWindow.size = Size(1280, 720);
@@ -229,7 +229,7 @@ class _AlertMiniPageState extends State<AlertMiniPage> {
                                 style: TextButton.styleFrom(
                                   minimumSize: Size.zero, padding: EdgeInsets.all(0),
                                 ),
-                                child: WidgetHub.iconStyleMini(icon: Icons.refresh)
+                                child: WidgetT.iconStyleMini(icon: Icons.refresh)
                             ),
                           ],
                         ),
@@ -255,7 +255,7 @@ class _AlertMiniPageState extends State<AlertMiniPage> {
                       style: TextButton.styleFrom(
                         minimumSize: Size.zero, padding: EdgeInsets.all(0),
                       ),
-                      child: WidgetHub.iconStyleMini(icon: Icons.open_in_new_sharp)
+                      child: WidgetT.iconStyleMini(icon: Icons.open_in_new_sharp)
                   ),
                   TextButton(
                       onPressed: () async {
@@ -269,7 +269,7 @@ class _AlertMiniPageState extends State<AlertMiniPage> {
                       style: TextButton.styleFrom(
                         minimumSize: Size.zero, padding: EdgeInsets.all(0),
                       ),
-                      child: WidgetHub.iconStyleMini(icon: Icons.close)
+                      child: WidgetT.iconStyleMini(icon: Icons.close)
                   ),
                 ],
               ),

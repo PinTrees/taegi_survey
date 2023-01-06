@@ -67,9 +67,9 @@ class _EditeTemplatePageState extends State<EditeTemplatePage> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      WidgetHub.textInputField(mngNameInput, height: 36, hintText: '담당자 이름 입력'),
-                      WidgetHub.textInputField(mngTypeInput, height: 36, hintText: '담당자 직책 입력'),
-                      WidgetHub.textInputField(mngPhoneNumberInput, height: 36, hintText: '담당자 연락처 입력'),
+                      WidgetT.textInputField(mngNameInput, height: 36, hintText: '담당자 이름 입력'),
+                      WidgetT.textInputField(mngTypeInput, height: 36, hintText: '담당자 직책 입력'),
+                      WidgetT.textInputField(mngPhoneNumberInput, height: 36, hintText: '담당자 연락처 입력'),
                     ],
                   ),
                 ),
@@ -152,9 +152,9 @@ class _EditeTemplatePageState extends State<EditeTemplatePage> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      WidgetHub.textInputField(nameInput, height: 36,  hintText: '건설회사 입력'),
-                      WidgetHub.textInputField(phoneNumberInput,  height: 36, hintText: '연락처 입력'),
-                      WidgetHub.textInputField(descInput,  height: 36, hintText: '자세한 정보'),
+                      WidgetT.textInputField(nameInput, height: 36,  hintText: '건설회사 입력'),
+                      WidgetT.textInputField(phoneNumberInput,  height: 36, hintText: '연락처 입력'),
+                      WidgetT.textInputField(descInput,  height: 36, hintText: '자세한 정보'),
                     ],
                   ),
                 ),

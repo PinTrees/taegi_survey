@@ -124,7 +124,7 @@ class _VersionLogPageState extends State<VersionLogPage> {
                   ]
               ),
               SizedBox(height: 8,),
-              WidgetHub.dividHorizontalLow(),
+              WidgetT.dividHorizontalLow(),
             ],
           ),
           Column(
@@ -174,7 +174,7 @@ class _VersionLogPageState extends State<VersionLogPage> {
                   ]
               ),
               SizedBox(height: 8,),
-              WidgetHub.dividHorizontalLow(),
+              WidgetT.dividHorizontalLow(),
             ],
           ),
           Column(
@@ -219,7 +219,7 @@ class _VersionLogPageState extends State<VersionLogPage> {
                   ]
               ),
               SizedBox(height: 8,),
-              WidgetHub.dividHorizontalLow(),
+              WidgetT.dividHorizontalLow(),
             ],
           ),
           Column(
@@ -264,7 +264,7 @@ class _VersionLogPageState extends State<VersionLogPage> {
                   ]
               ),
               SizedBox(height: 8,),
-              WidgetHub.dividHorizontalLow(),
+              WidgetT.dividHorizontalLow(),
             ],
           ),
           Column(
@@ -304,7 +304,7 @@ class _VersionLogPageState extends State<VersionLogPage> {
                   ]
               ),
               SizedBox(height: 8,),
-              WidgetHub.dividHorizontalLow(),
+              WidgetT.dividHorizontalLow(),
             ],
           ),
           Column(
@@ -347,7 +347,7 @@ class _VersionLogPageState extends State<VersionLogPage> {
                   ]
               ),
               SizedBox(height: 8,),
-              WidgetHub.dividHorizontalLow(),
+              WidgetT.dividHorizontalLow(),
             ],
           ),
           Column(
@@ -389,7 +389,7 @@ class _VersionLogPageState extends State<VersionLogPage> {
                   ]
               ),
               SizedBox(height: 8,),
-              WidgetHub.dividHorizontalLow(),
+              WidgetT.dividHorizontalLow(),
             ],
           ),
           Column(
@@ -428,7 +428,7 @@ class _VersionLogPageState extends State<VersionLogPage> {
                   ]
               ),
               SizedBox(height: 8,),
-              WidgetHub.dividHorizontalLow(),
+              WidgetT.dividHorizontalLow(),
             ],
           ),
           Column(
@@ -462,7 +462,7 @@ class _VersionLogPageState extends State<VersionLogPage> {
                 ]
               ),
               SizedBox(height: 8,),
-              WidgetHub.dividHorizontalLow(),
+              WidgetT.dividHorizontalLow(),
             ],
           ),
           Column(
@@ -483,7 +483,7 @@ class _VersionLogPageState extends State<VersionLogPage> {
                   ]
               ),
               SizedBox(height: 8,),
-              WidgetHub.dividHorizontalLow(),
+              WidgetT.dividHorizontalLow(),
             ],
           ),
           SizedBox(height: 8,),
@@ -516,7 +516,7 @@ class _VersionLogPageState extends State<VersionLogPage> {
                                 Navigator.pop(context);
                               },
                               style: StyleT.buttonStyleNone(padding: 0, elevation: 0, strock: 1.4,),
-                              child: WidgetHub.iconStyleBig(icon: Icons.arrow_back)),
+                              child: WidgetT.iconStyleBig(icon: Icons.arrow_back)),
                         ],
                       ),
                     ),

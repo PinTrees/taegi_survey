@@ -178,10 +178,10 @@ class _InitPageState extends State<InitPage> {
     await Future.delayed(const Duration(milliseconds: 300), () {});
     await SystemT.updateVersion();
     if(SystemT.versionCheck() >= 2) {
-      WidgetHub.showAlertDlVersion(context);
+      WidgetT.showAlertDlVersion(context);
       return;
     } else if(SystemT.versionCheck() != 0) {
-      WidgetHub.showAlertDlVersion(context, force: false);
+      WidgetT.showAlertDlVersion(context, force: false);
     }
 
 

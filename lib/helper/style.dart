@@ -70,7 +70,7 @@ class StyleT {
   static BoxDecoration dropButtonStyle() {
     return BoxDecoration(
       borderRadius: BorderRadius.circular(8),
-      border: Border.all(color: StyleT.accentColor.withOpacity(0.5), width: 1.4),
+      border: Border.all(color: StyleT.textColor.withOpacity(0.5), width: 1.4),
       color: Colors.white.withOpacity(0.5),
     );
   }

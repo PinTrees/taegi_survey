@@ -20,7 +20,7 @@ import 'package:window_manager/window_manager.dart';
 import 'addressApi.dart';
 import 'transition.dart';
 
-class WidgetHub extends StatelessWidget {
+class WidgetT extends StatelessWidget {
 
   /// 고정값 변경 불가
   static var addressSize = 300.0;
@@ -75,7 +75,7 @@ class WidgetHub extends StatelessWidget {
               if(set != null) await set(i, data);
               if(setFun != null) await setFun();
             },
-            decoration: WidgetHub.textInputDecoration( hintText: hint, round: 4),
+            decoration: WidgetT.textInputDecoration( hintText: hint, round: 4),
             controller: textInputs[k],
           ),
         );
@@ -197,7 +197,7 @@ class WidgetHub extends StatelessWidget {
     for(int i = 0; i < titleMenus.length; i++) {
       Widget w = Container(alignment: Alignment.center, width: titleSize[i], child: Text(titleMenus[i], style: titleStyle,),);
       titleW.add(w);
-      titleW.add(WidgetHub.dividViertical(color: Colors.transparent),);
+      titleW.add(WidgetT.dividViertical(color: Colors.transparent),);
     }
 
     return Column(
@@ -335,15 +335,15 @@ class WidgetHub extends StatelessWidget {
           child: Row(
             children: [
               Container(alignment: Alignment.center, width:defaultSize1, child: Text('${date!.year}', style: StyleT.titleStyle(),)),
-              WidgetHub.dividViertical(),
+              WidgetT.dividViertical(),
               Container(alignment: Alignment.center,width:defaultSize0, child: Text('${date!.month}', style: StyleT.titleStyle(),)),
-              WidgetHub.dividViertical(),
+              WidgetT.dividViertical(),
               Container(alignment: Alignment.center,width:defaultSize, child: Text(SystemT.getManagerName(p.managerUid), style: StyleT.titleStyle(),)),
-              WidgetHub.dividViertical(),
+              WidgetT.dividViertical(),
               Container(alignment: Alignment.center,width:defaultSize, child: Text(clientName, maxLines: maxline,  style: StyleT.titleStyle(),)),
-              WidgetHub.dividViertical(),
+              WidgetT.dividViertical(),
               Container(alignment: Alignment.center, width: phoneNumSize, child: Text(clientPN, maxLines: maxline, style: StyleT.titleStyle(),)),
-              WidgetHub.dividViertical(),
+              WidgetT.dividViertical(),
               Container(alignment: Alignment.center,width: addressSize,
                   child: Row(
                     children: [
@@ -365,7 +365,7 @@ class WidgetHub extends StatelessWidget {
                     ],
                   )
               ),
-              WidgetHub.dividViertical(),
+              WidgetT.dividViertical(),
               Container( padding: EdgeInsets.fromLTRB(0, 6, 0, 6),
                   alignment: Alignment.center,width: useTypeSize,
                   child: Column(
@@ -376,7 +376,7 @@ class WidgetHub extends StatelessWidget {
                     ],
                   )
               ),
-              WidgetHub.dividViertical(),
+              WidgetT.dividViertical(),
               Container(alignment: Alignment.center, width: areaSize,
                   child: Column(
                     mainAxisSize: MainAxisSize.min, mainAxisAlignment: MainAxisAlignment.center,
@@ -386,7 +386,7 @@ class WidgetHub extends StatelessWidget {
                     ],
                   )
               ),
-              WidgetHub.dividViertical(),
+              WidgetT.dividViertical(),
               Container( padding: EdgeInsets.fromLTRB(0, 4, 0, 4),
                 alignment: Alignment.center,width: dateSize,
                 child: Row(
@@ -403,7 +403,7 @@ class WidgetHub extends StatelessWidget {
                   ],
                 ),
               ),
-              WidgetHub.dividViertical(),
+              WidgetT.dividViertical(),
               Container( padding: EdgeInsets.fromLTRB(0, 4, 0, 4),
                 alignment: Alignment.center,width: dateSize,
                 child: Row(
@@ -420,9 +420,9 @@ class WidgetHub extends StatelessWidget {
                   ],
                 ),
               ),
-              WidgetHub.dividViertical(),
+              WidgetT.dividViertical(),
               Container(alignment: Alignment.center, width:defaultSize, child: Text(p.permitType, style: StyleT.titleStyle(),)),
-              WidgetHub.dividViertical(),
+              WidgetT.dividViertical(),
               Container(alignment: Alignment.center, width:defaultSize2,
                   child: Row(
                     children: [
@@ -444,11 +444,11 @@ class WidgetHub extends StatelessWidget {
                     ],
                   )
               ),
-              WidgetHub.dividViertical(),
+              WidgetT.dividViertical(),
               SizedBox(width: defaultSize2,),
-              WidgetHub.dividViertical(),
+              WidgetT.dividViertical(),
               Container(alignment: Alignment.center, width:descSize, child: Text(p.desc, style: StyleT.titleStyle(),)),
-              WidgetHub.dividViertical(),
+              WidgetT.dividViertical(),
               Container(alignment: Alignment.center, width:defaultSize,),
             ],
           ),
@@ -559,15 +559,15 @@ class WidgetHub extends StatelessWidget {
           child: Row(
             children: [
               Container(alignment: Alignment.center, width:defaultSize1, child: Text('${date!.year}', style: StyleT.titleStyle(),)),
-              WidgetHub.dividViertical(),
+              WidgetT.dividViertical(),
               Container(alignment: Alignment.center,width:defaultSize0, child: Text('${date!.month}', style: StyleT.titleStyle(),)),
-              WidgetHub.dividViertical(),
+              WidgetT.dividViertical(),
               Container(alignment: Alignment.center,width:defaultSize, child: Text(SystemT.getManagerName(p.managerUid), style: StyleT.titleStyle(),)),
-              WidgetHub.dividViertical(),
+              WidgetT.dividViertical(),
               Container(alignment: Alignment.center,width:defaultSize, child: Text(p.clientName, maxLines: maxline,  style: StyleT.titleStyle(),)),
-              WidgetHub.dividViertical(),
+              WidgetT.dividViertical(),
               Container(alignment: Alignment.center, width: phoneNumSize, child: Text(p.clientPhoneNumber, maxLines: maxline, style: StyleT.titleStyle(),)),
-              WidgetHub.dividViertical(),
+              WidgetT.dividViertical(),
               Container(alignment: Alignment.center,width: addressSize,
                   child: Row(
                     children: [
@@ -589,28 +589,28 @@ class WidgetHub extends StatelessWidget {
                     ],
                   )
               ),
-              WidgetHub.dividViertical(),
+              WidgetT.dividViertical(),
               Container( padding: EdgeInsets.fromLTRB(0, 6, 0, 6),
                   alignment: Alignment.center,width: useTypeSize,
                   child: Text(p.useType.first, maxLines: maxline, style: StyleT.titleStyle(),)
               ),
-              WidgetHub.dividViertical(),
+              WidgetT.dividViertical(),
               Container(alignment: Alignment.center, width: areaSize,
                   child: Text(p.area.first['type'] + ': ' + p.area.first['area'] + '㎡', style: StyleT.titleStyle(),)
               ),
-              WidgetHub.dividViertical(),
+              WidgetT.dividViertical(),
               Container( padding: EdgeInsets.fromLTRB(8, 4, 8, 4),
                 alignment: Alignment.center,width: dateSize,
                 child: pDateAtsW.first
               ),
-              WidgetHub.dividViertical(),
+              WidgetT.dividViertical(),
               Container( padding: EdgeInsets.fromLTRB(8, 4, 8, 4),
                 alignment: Alignment.center,width: dateSize,
                 child: eDateAtsW.first
               ),
-              WidgetHub.dividViertical(),
+              WidgetT.dividViertical(),
               Container(alignment: Alignment.center, width:defaultSize, child: Text(p.permitType, style: StyleT.titleStyle(),)),
-              WidgetHub.dividViertical(),
+              WidgetT.dividViertical(),
               Container(alignment: Alignment.center, width:defaultSize2,
                   child: Row(
                     children: [
@@ -632,11 +632,11 @@ class WidgetHub extends StatelessWidget {
                     ],
                   )
               ),
-              WidgetHub.dividViertical(),
+              WidgetT.dividViertical(),
               SizedBox(width: defaultSize2,),
-              WidgetHub.dividViertical(),
+              WidgetT.dividViertical(),
               Container(alignment: Alignment.center, width:descSize, child: Text(p.desc, maxLines: maxline, style: StyleT.titleStyle(),)),
-              WidgetHub.dividViertical(),
+              WidgetT.dividViertical(),
               Container(alignment: Alignment.center, width:defaultSize,),
             ],
           ),
@@ -701,7 +701,7 @@ class WidgetHub extends StatelessWidget {
                 ],
               ),
             ),
-            WidgetHub.dividVerticalLow(height: height1),
+            WidgetT.dividVerticalLow(height: height1),
           ],
         ),
       );
@@ -725,7 +725,7 @@ class WidgetHub extends StatelessWidget {
                     ],
                   ),
                 ),
-                WidgetHub.dividVerticalLow(height: height1),
+                WidgetT.dividVerticalLow(height: height1),
               ],
             ),
           );
@@ -779,7 +779,7 @@ class WidgetHub extends StatelessWidget {
                       Text(pYear, style: StyleT.titleStyle(),),
                       Text('년', style: StyleT.textStyle(),),
                       Expanded(child: SizedBox()),
-                      WidgetHub.dividVerticalLow(height: height1),
+                      WidgetT.dividVerticalLow(height: height1),
                     ],
                   ),
                 ),
@@ -790,7 +790,7 @@ class WidgetHub extends StatelessWidget {
                       Text(pMonth, style: StyleT.titleStyle(),),
                       Text('월', style: StyleT.textStyle(),),
                       Expanded(child: SizedBox()),
-                      WidgetHub.dividVerticalLow(height: height1),
+                      WidgetT.dividVerticalLow(height: height1),
                     ],
                   ),
                 ),
@@ -808,7 +808,7 @@ class WidgetHub extends StatelessWidget {
                               ],
                             ),
                           ),
-                          WidgetHub.dividVerticalLow(height: height1),
+                          WidgetT.dividVerticalLow(height: height1),
                         ],
                       ),
                     ),
@@ -826,7 +826,7 @@ class WidgetHub extends StatelessWidget {
                               ],
                             ),
                           ),
-                          WidgetHub.dividVerticalLow(height: height1),
+                          WidgetT.dividVerticalLow(height: height1),
                         ],
                       ),
                     ),
@@ -840,7 +840,7 @@ class WidgetHub extends StatelessWidget {
                       Text('소재지  ', style: StyleT.textStyle(),),
                       searchW,
                       Expanded(child: SizedBox()),
-                      WidgetHub.dividVerticalLow(height: height1),
+                      WidgetT.dividVerticalLow(height: height1),
                     ],
                   ),
                 ),
@@ -856,7 +856,7 @@ class WidgetHub extends StatelessWidget {
                           ],
                         ),
                       ),
-                      WidgetHub.dividVerticalLow(height: height1),
+                      WidgetT.dividVerticalLow(height: height1),
                     ],
                   ),
                 ),
@@ -872,13 +872,13 @@ class WidgetHub extends StatelessWidget {
                           ],
                         ),
                       ),
-                      WidgetHub.dividVerticalLow(height: height1),
+                      WidgetT.dividVerticalLow(height: height1),
                     ],
                   ),
                 ),
               ],
             ),
-            WidgetHub.dividHorizontalLow(),
+            WidgetT.dividHorizontalLow(),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -895,7 +895,7 @@ class WidgetHub extends StatelessWidget {
                           ],
                         ),
                       ),
-                      WidgetHub.dividVerticalLow(height: height1),
+                      WidgetT.dividVerticalLow(height: height1),
                     ],
                   ),
                 ),
@@ -912,13 +912,13 @@ class WidgetHub extends StatelessWidget {
                           ],
                         ),
                       ),
-                      WidgetHub.dividVerticalLow(height: height1),
+                      WidgetT.dividVerticalLow(height: height1),
                     ],
                   ),
                 ),
               ],
             ),
-            WidgetHub.dividHorizontalLow(),
+            WidgetT.dividHorizontalLow(),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -929,7 +929,7 @@ class WidgetHub extends StatelessWidget {
                       Expanded(child: SizedBox()),
                       Text('허가일', style: StyleT.textStyle(),),
                       Expanded(child: SizedBox()),
-                      WidgetHub.dividVerticalLow(height: height1),
+                      WidgetT.dividVerticalLow(height: height1),
                     ],
                   ),
                 ),
@@ -937,7 +937,7 @@ class WidgetHub extends StatelessWidget {
                   excelGrid(label: a['type'], text: a['date'], width: widthDateD)
               ],
             ),
-            WidgetHub.dividHorizontalLow(),
+            WidgetT.dividHorizontalLow(),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -948,7 +948,7 @@ class WidgetHub extends StatelessWidget {
                       Expanded(child: SizedBox()),
                       Text('종료일', style: StyleT.textStyle(),),
                       Expanded(child: SizedBox()),
-                      WidgetHub.dividVerticalLow(height: height1),
+                      WidgetT.dividVerticalLow(height: height1),
                     ],
                   ),
                 ),
@@ -1027,7 +1027,7 @@ class WidgetHub extends StatelessWidget {
                             Text(pYear, style: StyleT.titleStyle(),),
                             Text('년', style: StyleT.textStyle(),),
                             Expanded(child: SizedBox()),
-                            WidgetHub.dividVerticalLow(height: height1),
+                            WidgetT.dividVerticalLow(height: height1),
                           ],
                         ),
                       ),
@@ -1038,7 +1038,7 @@ class WidgetHub extends StatelessWidget {
                             Text(pMonth, style: StyleT.titleStyle(),),
                             Text('월', style: StyleT.textStyle(),),
                             Expanded(child: SizedBox()),
-                            WidgetHub.dividVerticalLow(height: height1),
+                            WidgetT.dividVerticalLow(height: height1),
                           ],
                         ),
                       ),
@@ -1060,8 +1060,8 @@ class WidgetHub extends StatelessWidget {
                           text: '${SystemT.getArchitectureOfficeName(p.architectureOffice).toString().replaceAll('\n', ' ')}', label: '건축사', isArch: true),
                     ],
                   ),
-                  WidgetHub.dividHorizontalLow(),
-                  WidgetHub.dividHorizontalLow(),
+                  WidgetT.dividHorizontalLow(),
+                  WidgetT.dividHorizontalLow(),
                   Container( width: 650, height: height1,
                     child: Row(
                         children: [
@@ -1073,7 +1073,7 @@ class WidgetHub extends StatelessWidget {
                         ],
                       ),
                   ),
-                  WidgetHub.dividHorizontalLow(),
+                  WidgetT.dividHorizontalLow(),
                   for(int i = 0; i < p.addresses.length; i++)
                     Container(
                       height: height1, width: 650,
@@ -1095,11 +1095,11 @@ class WidgetHub extends StatelessWidget {
                         ],
                       ),
                     ),
-                  WidgetHub.dividHorizontalLow(),
-                  WidgetHub.dividHorizontalLow(),
+                  WidgetT.dividHorizontalLow(),
+                  WidgetT.dividHorizontalLow(),
 
                   excelGrid(label: '신청인', width: 650),
-                  WidgetHub.dividHorizontalLow(),
+                  WidgetT.dividHorizontalLow(),
                   for(int i = 0; i < p.clients.length; i++)
                     Container(
                       height: height1, width: 650,
@@ -1128,7 +1128,7 @@ class WidgetHub extends StatelessWidget {
                         ],
                       ),
                     ),
-                  WidgetHub.dividHorizontalLow(),
+                  WidgetT.dividHorizontalLow(),
                 ],
               ),
             ),
@@ -1155,7 +1155,7 @@ class WidgetHub extends StatelessWidget {
                           }, icon: Icons.add),
                         ],
                       ),
-                      WidgetHub.dividHorizontalLow(),
+                      WidgetT.dividHorizontalLow(),
                       Wrap(
                         children: [
                           for(int i = 0; i < p.area.length; i++)
@@ -1205,7 +1205,7 @@ class WidgetHub extends StatelessWidget {
                           }, icon: Icons.add),
                         ],
                       ),
-                      WidgetHub.dividHorizontalLow(),
+                      WidgetT.dividHorizontalLow(),
                       Wrap(
                         children: [
                           for(int i = 0; i < p.useType.length; i++)
@@ -1254,7 +1254,7 @@ class WidgetHub extends StatelessWidget {
                           }, icon: Icons.add),
                       ],
                     ),
-                    WidgetHub.dividHorizontalLow(),
+                    WidgetT.dividHorizontalLow(),
                     Wrap(
                       children: [
                         for(int i = 0; i < p.permitAts.length; i++)
@@ -1301,7 +1301,7 @@ class WidgetHub extends StatelessWidget {
                         }, icon: Icons.add),
                       ],
                     ),
-                    WidgetHub.dividHorizontalLow(),
+                    WidgetT.dividHorizontalLow(),
                     Wrap(
                       children: [
                         for(int i = 0; i < p.endAts.length; i++)
@@ -1342,7 +1342,7 @@ class WidgetHub extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 excelGrid(label: '비고',),
-                WidgetHub.dividHorizontalLow(),
+                WidgetT.dividHorizontalLow(),
                 excelGridEditor(context, multiLine: true, setFun: setFun, set: (index, data) {
                   p.desc = data;
                 }, val: p.desc ?? '', key: 'pm.desc', text: p.desc, label: ''),
@@ -1356,8 +1356,8 @@ class WidgetHub extends StatelessWidget {
             Container( height: 28,
               child: TextButton(
                   onPressed: () async {
-                    if((await WidgetHub.showAlertDl(context, title: p.addresses.first) as bool) == false) {
-                      WidgetHub.showSnackBar(context, text: '저장이 취소되었습니다.');
+                    if((await WidgetT.showAlertDl(context, title: p.addresses.first) as bool) == false) {
+                      WidgetT.showSnackBar(context, text: '저장이 취소되었습니다.');
                       return;
                     }
                     //if(closeFun != null) await closeFun();
@@ -1481,7 +1481,7 @@ class WidgetHub extends StatelessWidget {
                                             Text(pYear, style: StyleT.titleStyle(),),
                                             Text('년', style: StyleT.textStyle(),),
                                             Expanded(child: SizedBox()),
-                                            WidgetHub.dividVerticalLow(height: height1),
+                                            WidgetT.dividVerticalLow(height: height1),
                                           ],
                                         ),
                                       ),
@@ -1492,7 +1492,7 @@ class WidgetHub extends StatelessWidget {
                                             Text(pMonth, style: StyleT.titleStyle(),),
                                             Text('월', style: StyleT.textStyle(),),
                                             Expanded(child: SizedBox()),
-                                            WidgetHub.dividVerticalLow(height: height1),
+                                            WidgetT.dividVerticalLow(height: height1),
                                           ],
                                         ),
                                       ),
@@ -1520,7 +1520,7 @@ class WidgetHub extends StatelessWidget {
                                           text: '${SystemT.getArchitectureOfficeName(p.architectureOffice).toString().replaceAll('\n', ' ')}', label: '건축사', isArch: true),
                                     ],
                                   ),
-                                  WidgetHub.dividHorizontalLow(),
+                                  WidgetT.dividHorizontalLow(),
                                   for(int i = 0; i < p.addresses.length; i++)
                                     Container(
                                       height: height1,
@@ -1547,10 +1547,10 @@ class WidgetHub extends StatelessWidget {
                                         ],
                                       ),
                                     ),
-                                  WidgetHub.dividHorizontalLow(),
+                                  WidgetT.dividHorizontalLow(),
 
                                   excelGrid(label: '신청인', width: widthClientN + widthClientPN + 28.7),
-                                  WidgetHub.dividHorizontalLow(),
+                                  WidgetT.dividHorizontalLow(),
                                   for(int i = 0; i < p.clients.length; i++)
                                     Container(
                                       height: height1,
@@ -1585,10 +1585,10 @@ class WidgetHub extends StatelessWidget {
                                         ],
                                       ),
                                     ),
-                                  WidgetHub.dividHorizontalLow(),
+                                  WidgetT.dividHorizontalLow(),
 
                                   excelGrid(label: '용도', width: widthAreaT + widthAreaT + 28.7),
-                                  WidgetHub.dividHorizontalLow(),
+                                  WidgetT.dividHorizontalLow(),
                                   for(int i = 0; i < p.useType.length; i++)
                                     Container(
                                       height: height1,
@@ -1617,10 +1617,10 @@ class WidgetHub extends StatelessWidget {
                                         ],
                                       ),
                                     ),
-                                  WidgetHub.dividHorizontalLow(),
+                                  WidgetT.dividHorizontalLow(),
 
                                   excelGrid(label: '허가면적', width: widthAreaT + widthAreaT + 28.7),
-                                  WidgetHub.dividHorizontalLow(),
+                                  WidgetT.dividHorizontalLow(),
                                   for(int i = 0; i < p.area.length; i++)
                                     Container(
                                       height: height1,
@@ -1655,10 +1655,10 @@ class WidgetHub extends StatelessWidget {
                                         ],
                                       ),
                                     ),
-                                  WidgetHub.dividHorizontalLow(),
+                                  WidgetT.dividHorizontalLow(),
 
                                   excelGrid(label: '허가일', width: widthAreaT + widthDateD + 28.7),
-                                  WidgetHub.dividHorizontalLow(),
+                                  WidgetT.dividHorizontalLow(),
                                   for(int i = 0; i < p.permitAts.length; i++)
                                     Container(
                                       height: height1,
@@ -1693,10 +1693,10 @@ class WidgetHub extends StatelessWidget {
                                         ],
                                       ),
                                     ),
-                                  WidgetHub.dividHorizontalLow(),
+                                  WidgetT.dividHorizontalLow(),
 
                                   excelGrid(label: '종료일', width: widthAreaT + widthDateD + 28.7),
-                                  WidgetHub.dividHorizontalLow(),
+                                  WidgetT.dividHorizontalLow(),
                                   for(int i = 0; i < p.endAts.length; i++)
                                     Container(
                                       height: height1,
@@ -1748,7 +1748,7 @@ class WidgetHub extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     excelGrid(label: '비고',),
-                                    WidgetHub.dividHorizontalLow(),
+                                    WidgetT.dividHorizontalLow(),
                                     excelGridEditor(context, multiLine: true, setFun: () async {
                                       if(setFun != null) await setFun();
                                       setStateS(() {});
@@ -2090,7 +2090,7 @@ class WidgetHub extends StatelessWidget {
                                   Text("${p.getContractAtsFirst()!.year}", style: StyleT.titleStyle(),),
                                   Text('년', style: StyleT.textStyle(),),
                                   Expanded(child: SizedBox()),
-                                  WidgetHub.dividVerticalLow(height: height1),
+                                  WidgetT.dividVerticalLow(height: height1),
                                 ],
                               ),
                             ),
@@ -2101,7 +2101,7 @@ class WidgetHub extends StatelessWidget {
                                   Text("${p.getContractAtsFirst()!.month}", style: StyleT.titleStyle(),),
                                   Text('월', style: StyleT.textStyle(),),
                                   Expanded(child: SizedBox()),
-                                  WidgetHub.dividVerticalLow(height: height1),
+                                  WidgetT.dividVerticalLow(height: height1),
                                 ],
                               ),
                             ),
@@ -2113,7 +2113,7 @@ class WidgetHub extends StatelessWidget {
                                   Text('실무자  ', style: StyleT.textStyle(),),
                                   Text('${SystemT.getManagerName(p.managerUid)}    ', style: StyleT.titleStyle(),),
                                   Expanded(child: SizedBox()),
-                                  WidgetHub.dividVerticalLow(height: height1),
+                                  WidgetT.dividVerticalLow(height: height1),
                                 ],
                               ),
                             ),
@@ -2126,14 +2126,14 @@ class WidgetHub extends StatelessWidget {
                                   Text('${p.clients.first['name']}  ', style: StyleT.titleStyle(),),
                                   Text('${p.clients.first['phoneNumber']}', style: StyleT.titleStyle(),),
                                   Expanded(child: SizedBox()),
-                                  WidgetHub.dividVerticalLow(height: height1),
+                                  WidgetT.dividVerticalLow(height: height1),
                                 ],
                               ),
                             ),
                             Container( width: widthAddress, alignment: Alignment.center,
                               child: searchW,
                             ),
-                            WidgetHub.dividVerticalLow(height: height1),
+                            WidgetT.dividVerticalLow(height: height1),
                             Container( width: widthLand, alignment: Alignment.center,
                               child: Row(
                                 mainAxisSize: MainAxisSize.min,
@@ -2143,7 +2143,7 @@ class WidgetHub extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            WidgetHub.dividVerticalLow(height: height1),
+                            WidgetT.dividVerticalLow(height: height1),
 
                             Container(  width: widthPay, alignment: Alignment.center,
                               child: Row(
@@ -2160,7 +2160,7 @@ class WidgetHub extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          WidgetHub.dividHorizontalLow(),
+                          WidgetT.dividHorizontalLow(),
                           Container(
                             //color: (p.getAllCfPay() >= p.getAllPay()) ? Colors.green.withOpacity(0.14) : Colors.redAccent.withOpacity(0.14) ,
                             height: height1,
@@ -2177,7 +2177,7 @@ class WidgetHub extends StatelessWidget {
                                       Text('계약금  ', style: StyleT.textStyle(),),
                                       Text('${StyleT.intNumberF(p.getCfDownPay())} / ${StyleT.intNumberF(p.downPayment)}', style: StyleT.titleStyle(),),
                                       Expanded(child: SizedBox()),
-                                      WidgetHub.dividVerticalLow(height: height1),
+                                      WidgetT.dividVerticalLow(height: height1),
                                     ],
                                   ),
                                 ),
@@ -2191,7 +2191,7 @@ class WidgetHub extends StatelessWidget {
                                         Text('중도금  ', style: StyleT.textStyle(),),
                                         Text('${StyleT.intNumberF(p.getCfMiddlePay())} / ${StyleT.intNumberF(p.middlePayment)}', style: StyleT.titleStyle(),),
                                         Expanded(child: SizedBox()),
-                                        WidgetHub.dividVerticalLow(height: height1),
+                                        WidgetT.dividVerticalLow(height: height1),
                                       ],
                                     ),
                                   ),
@@ -2204,7 +2204,7 @@ class WidgetHub extends StatelessWidget {
                                       Text('잔금  ', style: StyleT.textStyle(),),
                                       Text('${StyleT.intNumberF(p.getCfBalance())} / ${StyleT.intNumberF(p.balance)}', style: StyleT.titleStyle(),),
                                       Expanded(child: SizedBox()),
-                                      WidgetHub.dividVerticalLow(height: height1),
+                                      WidgetT.dividVerticalLow(height: height1),
                                     ],
                                   ),
                                 ),
@@ -2217,7 +2217,7 @@ class WidgetHub extends StatelessWidget {
                                       Text('총용역비용  ', style: StyleT.textStyle(),),
                                       Text('${StyleT.intNumberF(p.getAllCfPay())} / ${StyleT.intNumberF(p.getAllPay())}', style: StyleT.titleStyle(),),
                                       Expanded(child: SizedBox()),
-                                      WidgetHub.dividVerticalLow(height: height1),
+                                      WidgetT.dividVerticalLow(height: height1),
                                     ],
                                   ),
                                 ),
@@ -2231,7 +2231,7 @@ class WidgetHub extends StatelessWidget {
                                     ],
                                   ),
                                 ),
-                                WidgetHub.dividVerticalLow(height: height1),
+                                WidgetT.dividVerticalLow(height: height1),
                               ],
                             ),
                           ),
@@ -2240,7 +2240,7 @@ class WidgetHub extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          WidgetHub.dividHorizontalLow(),
+                          WidgetT.dividHorizontalLow(),
                           Container(
                             height: height1,
                             alignment: Alignment.center,
@@ -2255,7 +2255,7 @@ class WidgetHub extends StatelessWidget {
                                       Text('계약  ', style: StyleT.textStyle(),),
                                       Text('${p.contractAt}', style: StyleT.titleStyle(),),
                                       Expanded(child: SizedBox()),
-                                      WidgetHub.dividVerticalLow(height: height1),
+                                      WidgetT.dividVerticalLow(height: height1),
                                     ],
                                   ),
                                 ),
@@ -2267,7 +2267,7 @@ class WidgetHub extends StatelessWidget {
                                       Text('배당  ', style: StyleT.textStyle(),),
                                       Text('${p.takeAt}', style: StyleT.titleStyle(),),
                                       Expanded(child: SizedBox()),
-                                      WidgetHub.dividVerticalLow(height: height1),
+                                      WidgetT.dividVerticalLow(height: height1),
                                     ],
                                   ),
                                 ),
@@ -2279,7 +2279,7 @@ class WidgetHub extends StatelessWidget {
                                       Text('접수  ', style: StyleT.textStyle(),),
                                       Text('${p.applyAt}', style: StyleT.titleStyle(),),
                                       Expanded(child: SizedBox()),
-                                      WidgetHub.dividVerticalLow(height: height1),
+                                      WidgetT.dividVerticalLow(height: height1),
                                     ],
                                   ),
                                 ),
@@ -2292,7 +2292,7 @@ class WidgetHub extends StatelessWidget {
                                     ],
                                   ),
                                 ),
-                                WidgetHub.dividVerticalLow(height: height1),
+                                WidgetT.dividVerticalLow(height: height1),
                                 Container( alignment: Alignment.center,
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
@@ -2368,7 +2368,7 @@ class WidgetHub extends StatelessWidget {
                                 Text(pYear, style: StyleT.titleStyle(),),
                                 Text('년', style: StyleT.textStyle(),),
                                 Expanded(child: SizedBox()),
-                                WidgetHub.dividVerticalLow(height: height1),
+                                WidgetT.dividVerticalLow(height: height1),
                               ],
                             ),
                           ),
@@ -2379,7 +2379,7 @@ class WidgetHub extends StatelessWidget {
                                 Text(pMonth, style: StyleT.titleStyle(),),
                                 Text('월', style: StyleT.textStyle(),),
                                 Expanded(child: SizedBox()),
-                                WidgetHub.dividVerticalLow(height: height1),
+                                WidgetT.dividVerticalLow(height: height1),
                               ],
                             ),
                           ),
@@ -2399,8 +2399,8 @@ class WidgetHub extends StatelessWidget {
                               key: 'ct.landType', text: p.landType, label: '지목'),
                         ],
                       ),
-                      WidgetHub.dividHorizontalLow(),
-                      WidgetHub.dividHorizontalLow(),
+                      WidgetT.dividHorizontalLow(),
+                      WidgetT.dividHorizontalLow(),
                       Container( width: widthClientN + widthClientPN,
                         child: Row(
                           children: [
@@ -2412,7 +2412,7 @@ class WidgetHub extends StatelessWidget {
                           ],
                         ),
                       ),
-                      WidgetHub.dividHorizontalLow(),
+                      WidgetT.dividHorizontalLow(),
                       for(int i = 0; i < p.addresses.length; i++)
                         Container(
                           height: height1, width: widthAddress,
@@ -2436,8 +2436,8 @@ class WidgetHub extends StatelessWidget {
                             ],
                           ),
                         ),
-                      WidgetHub.dividHorizontalLow(),
-                      WidgetHub.dividHorizontalLow(),
+                      WidgetT.dividHorizontalLow(),
+                      WidgetT.dividHorizontalLow(),
 
                       Container( width: widthClientN + widthClientPN,
                         child: Row(
@@ -2450,7 +2450,7 @@ class WidgetHub extends StatelessWidget {
                           ],
                         ),
                       ),
-                      WidgetHub.dividHorizontalLow(),
+                      WidgetT.dividHorizontalLow(),
                       for(int i = 0; i < p.clients.length; i++)
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -2478,13 +2478,13 @@ class WidgetHub extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            WidgetHub.dividHorizontalLow(),
+                            WidgetT.dividHorizontalLow(),
                           ],
                         ),
 
-                      WidgetHub.dividHorizontalLow(),
+                      WidgetT.dividHorizontalLow(),
                       excelGrid(label: '계약 정보', width: widthPay * 5 ),
-                      WidgetHub.dividHorizontalLow(),
+                      WidgetT.dividHorizontalLow(),
                       Row(
                         children: [
                           excelGridEditor(context, setFun: setFun, set: (index, data) {
@@ -2506,7 +2506,7 @@ class WidgetHub extends StatelessWidget {
                           excelGrid(width: widthPay, label: '미수금', text: '- ${StyleT.intNumberF(p.getAllPay() - p.getAllCfPay())}'),
                         ],
                       ),
-                      WidgetHub.dividHorizontalLow(),
+                      WidgetT.dividHorizontalLow(),
                       Row(
                           children: [
                             excelGridEditor(context, setFun: setFun,
@@ -2533,7 +2533,7 @@ class WidgetHub extends StatelessWidget {
                                 key: 'ct.useType', text: p.useType.join(',  '), label: '사업목적 ( , , )'),
                           ]
                       ),
-                      WidgetHub.dividHorizontalLow(),
+                      WidgetT.dividHorizontalLow(),
                       Row(
                         children: [
                           excelGridEditor(context, isDate: true, setFun: setFun, set: (index, data) {
@@ -2578,7 +2578,7 @@ class WidgetHub extends StatelessWidget {
                     }, icon: Icons.add),
                   ],
                 ),
-                WidgetHub.dividHorizontalLow(),
+                WidgetT.dividHorizontalLow(),
                 for(int i = 0; i < p.confirmDeposits.length; i++)
                   Row(
                   children: [
@@ -2639,7 +2639,7 @@ class WidgetHub extends StatelessWidget {
                     Expanded(child: excelGrid(label: '비고', )),
                   ],
                 ),
-                WidgetHub.dividHorizontalLow(),
+                WidgetT.dividHorizontalLow(),
                 IntrinsicHeight(
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -2771,7 +2771,7 @@ class WidgetHub extends StatelessWidget {
                                                 Text(pYear, style: StyleT.titleStyle(),),
                                                 Text('년', style: StyleT.textStyle(),),
                                                 Expanded(child: SizedBox()),
-                                                WidgetHub.dividVerticalLow(height: height1),
+                                                WidgetT.dividVerticalLow(height: height1),
                                               ],
                                             ),
                                           ),
@@ -2782,7 +2782,7 @@ class WidgetHub extends StatelessWidget {
                                                 Text(pMonth, style: StyleT.titleStyle(),),
                                                 Text('월', style: StyleT.textStyle(),),
                                                 Expanded(child: SizedBox()),
-                                                WidgetHub.dividVerticalLow(height: height1),
+                                                WidgetT.dividVerticalLow(height: height1),
                                               ],
                                             ),
                                           ),
@@ -2803,8 +2803,8 @@ class WidgetHub extends StatelessWidget {
                                               key: 'ct.landType', text: p.landType, label: '지목'),
                                         ],
                                       ),
-                                      WidgetHub.dividHorizontalLow(),
-                                      WidgetHub.dividHorizontalLow(),
+                                      WidgetT.dividHorizontalLow(),
+                                      WidgetT.dividHorizontalLow(),
                                       Container( width: widthClientN + widthClientPN,
                                         child: Row(
                                           children: [
@@ -2817,7 +2817,7 @@ class WidgetHub extends StatelessWidget {
                                           ],
                                         ),
                                       ),
-                                      WidgetHub.dividHorizontalLow(),
+                                      WidgetT.dividHorizontalLow(),
                                       for(int i = 0; i < p.addresses.length; i++)
                                         Container(
                                           height: height1, width: widthAddress,
@@ -2843,8 +2843,8 @@ class WidgetHub extends StatelessWidget {
                                             ],
                                           ),
                                         ),
-                                      WidgetHub.dividHorizontalLow(),
-                                      WidgetHub.dividHorizontalLow(),
+                                      WidgetT.dividHorizontalLow(),
+                                      WidgetT.dividHorizontalLow(),
 
                                       Container( width: widthClientN + widthClientPN,
                                         child: Row(
@@ -2858,7 +2858,7 @@ class WidgetHub extends StatelessWidget {
                                           ],
                                         ),
                                       ),
-                                      WidgetHub.dividHorizontalLow(),
+                                      WidgetT.dividHorizontalLow(),
                                       for(int i = 0; i < p.clients.length; i++)
                                         Column(
                                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -2889,13 +2889,13 @@ class WidgetHub extends StatelessWidget {
                                                 ],
                                               ),
                                             ),
-                                            WidgetHub.dividHorizontalLow(),
+                                            WidgetT.dividHorizontalLow(),
                                           ],
                                         ),
 
-                                      WidgetHub.dividHorizontalLow(),
+                                      WidgetT.dividHorizontalLow(),
                                       excelGrid(label: '계약 정보', width: widthPay * 5 ),
-                                      WidgetHub.dividHorizontalLow(),
+                                      WidgetT.dividHorizontalLow(),
                                       Row(
                                         children: [
                                           excelGridEditor(context, setFun: () { if(setFun != null) setFun(); setStateS(() {}); },
@@ -2919,7 +2919,7 @@ class WidgetHub extends StatelessWidget {
                                           excelGrid(width: widthPay, label: '총용역비용', text: '${StyleT.intNumberF(p.getAllPay())}'),
                                         ],
                                       ),
-                                      WidgetHub.dividHorizontalLow(),
+                                      WidgetT.dividHorizontalLow(),
                                       Row(
                                           children: [
                                             excelGridEditor(context, setFun: () { if(setFun != null) setFun(); setStateS(() {}); },
@@ -2940,7 +2940,7 @@ class WidgetHub extends StatelessWidget {
                                                 key: 'ct.thirdParty', text: p.thirdParty.join(',  '), label: '타사업무내용 ( , , )'),
                                           ]
                                       ),
-                                      WidgetHub.dividHorizontalLow(),
+                                      WidgetT.dividHorizontalLow(),
                                       Row(
                                           children: [
                                             excelGrid(width: widthPay, label: '미수금', text: '- ${StyleT.intNumberF(p.getAllPay() - p.getAllCfPay())}'),
@@ -2952,7 +2952,7 @@ class WidgetHub extends StatelessWidget {
                                                 key: 'ct.useType', text: p.useType.join(',  '), label: '사업목적 ( , , )'),
                                           ]
                                       ),
-                                      WidgetHub.dividHorizontalLow(),
+                                      WidgetT.dividHorizontalLow(),
                                       Row(
                                         children: [
                                           excelGridEditor(context, isDate: true, setFun: () { if(setFun != null) setFun(); setStateS(() {}); },
@@ -3002,7 +3002,7 @@ class WidgetHub extends StatelessWidget {
                                     }, icon: Icons.add),
                                   ],
                                 ),
-                                WidgetHub.dividHorizontalLow(),
+                                WidgetT.dividHorizontalLow(),
                                 for(int i = 0; i < p.confirmDeposits.length; i++)
                                   Row(
                                     children: [
@@ -3066,7 +3066,7 @@ class WidgetHub extends StatelessWidget {
                                     Expanded(child: excelGrid(label: '비고', )),
                                   ],
                                 ),
-                                WidgetHub.dividHorizontalLow(),
+                                WidgetT.dividHorizontalLow(),
                                 IntrinsicHeight(
                                   child: Row(
                                     crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -3234,7 +3234,7 @@ class WidgetHub extends StatelessWidget {
                             Text('${p.getTaskAt()!.year}', style: StyleT.titleStyle(),),
                             Text('년', style: StyleT.textStyle(),),
                             Expanded(child: SizedBox()),
-                            WidgetHub.dividVerticalLow(height: height1),
+                            WidgetT.dividVerticalLow(height: height1),
                           ],
                         ),
                       ),
@@ -3245,7 +3245,7 @@ class WidgetHub extends StatelessWidget {
                             Text('${p.getTaskAt()!.month}', style: StyleT.titleStyle(),),
                             Text('월', style: StyleT.textStyle(),),
                             Expanded(child: SizedBox()),
-                            WidgetHub.dividVerticalLow(height: height1),
+                            WidgetT.dividVerticalLow(height: height1),
                           ],
                         ),
                       ),
@@ -3257,7 +3257,7 @@ class WidgetHub extends StatelessWidget {
                             Text('실무자  ', style: StyleT.textStyle(),),
                             Text('${SystemT.getManagerName(p.managerUid)}    ', style: StyleT.titleStyle(),),
                             Expanded(child: SizedBox()),
-                            WidgetHub.dividVerticalLow(height: height1),
+                            WidgetT.dividVerticalLow(height: height1),
                           ],
                         ),
                       ),
@@ -3271,7 +3271,7 @@ class WidgetHub extends StatelessWidget {
                             Text('연락처  ', style: StyleT.textStyle(),),
                             Text('${p.clients.first['phoneNumber']}', style: StyleT.titleStyle(),),
                             Expanded(child: SizedBox()),
-                            WidgetHub.dividVerticalLow(height: height1),
+                            WidgetT.dividVerticalLow(height: height1),
                           ],
                         ),
                       ),
@@ -3282,7 +3282,7 @@ class WidgetHub extends StatelessWidget {
                             Text('소재지  ', style: StyleT.textStyle(),),
                             searchW,
                             Expanded(child: SizedBox()),
-                            WidgetHub.dividVerticalLow(height: height1),
+                            WidgetT.dividVerticalLow(height: height1),
                           ],
                         ),
                       ),
@@ -3292,7 +3292,7 @@ class WidgetHub extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    WidgetHub.dividHorizontalLow(),
+                    WidgetT.dividHorizontalLow(),
                     Container(
                       height: height1,
                       alignment: Alignment.center,
@@ -3310,7 +3310,7 @@ class WidgetHub extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    WidgetHub.dividHorizontalLow(),
+                    WidgetT.dividHorizontalLow(),
                     Container(
                       height: height1,
                       alignment: Alignment.center,
@@ -3325,7 +3325,7 @@ class WidgetHub extends StatelessWidget {
                                 Text('측량자', style: StyleT.textStyle(),),
                                 Text('${p.workAts['survey_name'] ?? ' - '}', style: StyleT.titleStyle(),),
                                 Expanded(child: SizedBox()),
-                                WidgetHub.dividVerticalLow(height: height1),
+                                WidgetT.dividVerticalLow(height: height1),
                               ],
                             ),
                           ),
@@ -3337,7 +3337,7 @@ class WidgetHub extends StatelessWidget {
                                 Text('설계자', style: StyleT.textStyle(),),
                                 Text('${p.workAts['design_name'] ?? ' - '}', style: StyleT.titleStyle(),),
                                 Expanded(child: SizedBox()),
-                                WidgetHub.dividVerticalLow(height: height1),
+                                WidgetT.dividVerticalLow(height: height1),
                               ],
                             ),
                           ),
@@ -3349,7 +3349,7 @@ class WidgetHub extends StatelessWidget {
                                 Text('문서작성자', style: StyleT.textStyle(),),
                                 Text('${p.workAts['doc_name'] ?? ' - '}', style: StyleT.titleStyle(),),
                                 Expanded(child: SizedBox()),
-                                WidgetHub.dividVerticalLow(height: height1),
+                                WidgetT.dividVerticalLow(height: height1),
                               ],
                             ),
                           ),
@@ -3362,7 +3362,7 @@ class WidgetHub extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      WidgetHub.dividHorizontalLow(),
+                      WidgetT.dividHorizontalLow(),
                       Container(
                         height: height1,
                         alignment: Alignment.center,
@@ -3377,7 +3377,7 @@ class WidgetHub extends StatelessWidget {
                                   Text('보완일  ', style: StyleT.textStyle(),),
                                   Text('${p.supplementAt}', style: StyleT.titleStyle(),),
                                   Expanded(child: SizedBox()),
-                                  WidgetHub.dividVerticalLow(height: height1),
+                                  WidgetT.dividVerticalLow(height: height1),
                                 ],
                               ),
                             ),
@@ -3389,7 +3389,7 @@ class WidgetHub extends StatelessWidget {
                                   Text('보완마감일  ', style: StyleT.textStyle(),),
                                   Text('${p.supplementOverAt}', style: StyleT.titleStyle(),),
                                   Expanded(child: SizedBox()),
-                                  WidgetHub.dividVerticalLow(height: height1),
+                                  WidgetT.dividVerticalLow(height: height1),
                                 ],
                               ),
                             ),
@@ -3403,7 +3403,7 @@ class WidgetHub extends StatelessWidget {
                                   Text('마감까지  ', style: StyleT.textStyle(),),
                                   Text('${p.getSupplementOverAmount()}일', style: StyleT.titleStyle(),),
                                   Expanded(child: SizedBox()),
-                                  WidgetHub.dividVerticalLow(height: height1),
+                                  WidgetT.dividVerticalLow(height: height1),
                                 ],
                               ) : Row(
                                 mainAxisSize: MainAxisSize.min,
@@ -3412,7 +3412,7 @@ class WidgetHub extends StatelessWidget {
                                   Text('마감일  ', style: StyleT.textStyle(),),
                                   Text('${p.getSupplementOverAmount().abs()}일 지남', style: StyleT.titleStyle(),),
                                   Expanded(child: SizedBox()),
-                                  WidgetHub.dividVerticalLow(height: height1),
+                                  WidgetT.dividVerticalLow(height: height1),
                                 ],
                               ),
                             ),
@@ -3438,7 +3438,7 @@ class WidgetHub extends StatelessWidget {
                   Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    WidgetHub.dividHorizontalLow(),
+                    WidgetT.dividHorizontalLow(),
                     Container(
                       height: height1,
                       alignment: Alignment.center,
@@ -3453,7 +3453,7 @@ class WidgetHub extends StatelessWidget {
                                 Text('업무배당일  ', style: StyleT.textStyle(),),
                                 Text('${p.taskAt}', style: StyleT.titleStyle(),),
                                 Expanded(child: SizedBox()),
-                                WidgetHub.dividVerticalLow(height: height1),
+                                WidgetT.dividVerticalLow(height: height1),
                               ],
                             ),
                           ),
@@ -3465,7 +3465,7 @@ class WidgetHub extends StatelessWidget {
                                 Text('업무마감일  ', style: StyleT.textStyle(),),
                                 Text('${p.taskOverAt}', style: StyleT.titleStyle(),),
                                 Expanded(child: SizedBox()),
-                                WidgetHub.dividVerticalLow(height: height1),
+                                WidgetT.dividVerticalLow(height: height1),
                               ],
                             ),
                           ),
@@ -3479,7 +3479,7 @@ class WidgetHub extends StatelessWidget {
                                 Text('마감까지  ', style: StyleT.textStyle(),),
                                 Text('${p.getTaskOverAmount()}일', style: StyleT.titleStyle(),),
                                 Expanded(child: SizedBox()),
-                                WidgetHub.dividVerticalLow(height: height1),
+                                WidgetT.dividVerticalLow(height: height1),
                               ],
                             ) : Row(
                               mainAxisSize: MainAxisSize.min,
@@ -3488,7 +3488,7 @@ class WidgetHub extends StatelessWidget {
                                 Text('마감일  ', style: StyleT.textStyle(),),
                                 Text('만료', style: StyleT.titleStyle(),),
                                 Expanded(child: SizedBox()),
-                                WidgetHub.dividVerticalLow(height: height1),
+                                WidgetT.dividVerticalLow(height: height1),
                               ],
                             ),
                           ),
@@ -3547,7 +3547,7 @@ class WidgetHub extends StatelessWidget {
                             Text('${p.getTaskAt()!.year}', style: StyleT.titleStyle(),),
                             Text('년', style: StyleT.textStyle(),),
                             Expanded(child: SizedBox()),
-                            WidgetHub.dividVerticalLow(height: height1),
+                            WidgetT.dividVerticalLow(height: height1),
                           ],
                         ),
                       ),
@@ -3558,7 +3558,7 @@ class WidgetHub extends StatelessWidget {
                             Text('${p.getTaskAt()!.month}', style: StyleT.titleStyle(),),
                             Text('월', style: StyleT.textStyle(),),
                             Expanded(child: SizedBox()),
-                            WidgetHub.dividVerticalLow(height: height1),
+                            WidgetT.dividVerticalLow(height: height1),
                           ],
                         ),
                       ),
@@ -3571,8 +3571,8 @@ class WidgetHub extends StatelessWidget {
                     ],
                   ),
                 ),
-                WidgetHub.dividHorizontalLow(),
-                WidgetHub.dividHorizontalLow(),
+                WidgetT.dividHorizontalLow(),
+                WidgetT.dividHorizontalLow(),
                 Container( width: 600,
                     child: Row(
                       children: [
@@ -3584,7 +3584,7 @@ class WidgetHub extends StatelessWidget {
                       ],
                     ),
                 ),
-                WidgetHub.dividHorizontalLow(),
+                WidgetT.dividHorizontalLow(),
                 for(int i = 0; i < p.addresses.length; i++)
                   Container(
                     height: height1, width: 600,
@@ -3606,8 +3606,8 @@ class WidgetHub extends StatelessWidget {
                       ],
                     ),
                   ),
-                WidgetHub.dividHorizontalLow(),
-                WidgetHub.dividHorizontalLow(),
+                WidgetT.dividHorizontalLow(),
+                WidgetT.dividHorizontalLow(),
                 Container( width: 600,
                     child: Row(
                       children: [
@@ -3619,7 +3619,7 @@ class WidgetHub extends StatelessWidget {
                       ],
                     ),
                 ),
-                WidgetHub.dividHorizontalLow(),
+                WidgetT.dividHorizontalLow(),
                 for(int i = 0; i < p.clients.length; i++)
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -3649,18 +3649,18 @@ class WidgetHub extends StatelessWidget {
                           ],
                         ),
                       ),
-                      WidgetHub.dividHorizontalLow(),
+                      WidgetT.dividHorizontalLow(),
                     ],
                   ),
-                WidgetHub.dividHorizontalLow(),
+                WidgetT.dividHorizontalLow(),
                 excelGridEditor(context,setFun: () { if(setFun != null) setFun(); },
                     alignment: Alignment.center,
                     set: (index, data) {
                       p.useType = data.split(',');
                     }, val: p.useType.join(','), width: 600,
                     key: 'ct.useType', text: p.useType.join(',  '), label: '사업목적 ( , , )'),
-                WidgetHub.dividHorizontalLow(),
-                WidgetHub.dividHorizontalLow(),
+                WidgetT.dividHorizontalLow(),
+                WidgetT.dividHorizontalLow(),
                 Container(
                   height: height1,
                   alignment: Alignment.center,
@@ -3679,7 +3679,7 @@ class WidgetHub extends StatelessWidget {
                     ],
                   ),
                 ),
-                WidgetHub.dividHorizontalLow(),
+                WidgetT.dividHorizontalLow(),
                 Container(
                   height: height1,
                   alignment: Alignment.center,
@@ -3732,12 +3732,12 @@ class WidgetHub extends StatelessWidget {
                     ],
                   ),
                 ),
-                WidgetHub.dividHorizontalLow(),
+                WidgetT.dividHorizontalLow(),
                 if(p.isSupplement)
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      WidgetHub.dividHorizontalLow(),
+                      WidgetT.dividHorizontalLow(),
                       Container(
                         height: height1,
                         alignment: Alignment.center,
@@ -3762,7 +3762,7 @@ class WidgetHub extends StatelessWidget {
                                   Text('마감까지  ', style: StyleT.textStyle(),),
                                   Text('${p.getSupplementOverAmount()}일', style: StyleT.titleStyle(),),
                                   Expanded(child: SizedBox()),
-                                  WidgetHub.dividVerticalLow(height: height1),
+                                  WidgetT.dividVerticalLow(height: height1),
                                 ],
                               ) : Row(
                                 mainAxisSize: MainAxisSize.min,
@@ -3771,14 +3771,14 @@ class WidgetHub extends StatelessWidget {
                                   Text('마감일  ', style: StyleT.textStyle(),),
                                   Text('${p.getSupplementOverAmount().abs()}일 지남', style: StyleT.titleStyle(),),
                                   Expanded(child: SizedBox()),
-                                  WidgetHub.dividVerticalLow(height: height1),
+                                  WidgetT.dividVerticalLow(height: height1),
                                 ],
                               ),
                             ),
                           ],
                         ),
                       ),
-                      WidgetHub.dividHorizontalLow(),
+                      WidgetT.dividHorizontalLow(),
                       excelGridEditor(context, setFun: setFun, multiLine: true, set: (index, data) {
                         p.supplementDesc = data;
                       }, val: p.supplementDesc ?? '', width: 600, key: 'wm.supplementDesc',
@@ -3789,7 +3789,7 @@ class WidgetHub extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      WidgetHub.dividHorizontalLow(),
+                      WidgetT.dividHorizontalLow(),
                       Container(
                         height: height1,
                         alignment: Alignment.center,
@@ -3812,7 +3812,7 @@ class WidgetHub extends StatelessWidget {
                                   Text('마감까지  ', style: StyleT.textStyle(),),
                                   Text('${p.getTaskOverAmount()}일', style: StyleT.titleStyle(),),
                                   Expanded(child: SizedBox()),
-                                  WidgetHub.dividVerticalLow(height: height1),
+                                  WidgetT.dividVerticalLow(height: height1),
                                 ],
                               ) : Row(
                                 mainAxisSize: MainAxisSize.min,
@@ -3821,7 +3821,7 @@ class WidgetHub extends StatelessWidget {
                                   Text('마감일  ', style: StyleT.textStyle(),),
                                   Text('만료', style: StyleT.titleStyle(),),
                                   Expanded(child: SizedBox()),
-                                  WidgetHub.dividVerticalLow(height: height1),
+                                  WidgetT.dividVerticalLow(height: height1),
                                 ],
                               ),
                             ),
@@ -3934,7 +3934,7 @@ class WidgetHub extends StatelessWidget {
                                             Text('${p.getTaskAt()!.year}', style: StyleT.titleStyle(),),
                                             Text('년', style: StyleT.textStyle(),),
                                             Expanded(child: SizedBox()),
-                                            WidgetHub.dividVerticalLow(height: height1),
+                                            WidgetT.dividVerticalLow(height: height1),
                                           ],
                                         ),
                                       ),
@@ -3945,7 +3945,7 @@ class WidgetHub extends StatelessWidget {
                                             Text('${p.getTaskAt()!.month}', style: StyleT.titleStyle(),),
                                             Text('월', style: StyleT.textStyle(),),
                                             Expanded(child: SizedBox()),
-                                            WidgetHub.dividVerticalLow(height: height1),
+                                            WidgetT.dividVerticalLow(height: height1),
                                           ],
                                         ),
                                       ),
@@ -3959,8 +3959,8 @@ class WidgetHub extends StatelessWidget {
                                     ],
                                   ),
                                 ),
-                                WidgetHub.dividHorizontalLow(),
-                                WidgetHub.dividHorizontalLow(),
+                                WidgetT.dividHorizontalLow(),
+                                WidgetT.dividHorizontalLow(),
                                 Container( width: 600,
                                   child: Row(
                                     children: [
@@ -3973,7 +3973,7 @@ class WidgetHub extends StatelessWidget {
                                     ],
                                   ),
                                 ),
-                                WidgetHub.dividHorizontalLow(),
+                                WidgetT.dividHorizontalLow(),
                                 for(int i = 0; i < p.addresses.length; i++)
                                   Container(
                                     height: height1, width: 600,
@@ -3996,8 +3996,8 @@ class WidgetHub extends StatelessWidget {
                                       ],
                                     ),
                                   ),
-                                WidgetHub.dividHorizontalLow(),
-                                WidgetHub.dividHorizontalLow(),
+                                WidgetT.dividHorizontalLow(),
+                                WidgetT.dividHorizontalLow(),
                                 Container( width: 600,
                                   child: Row(
                                     children: [
@@ -4010,7 +4010,7 @@ class WidgetHub extends StatelessWidget {
                                     ],
                                   ),
                                 ),
-                                WidgetHub.dividHorizontalLow(),
+                                WidgetT.dividHorizontalLow(),
                                 for(int i = 0; i < p.clients.length; i++)
                                   Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -4041,18 +4041,18 @@ class WidgetHub extends StatelessWidget {
                                           ],
                                         ),
                                       ),
-                                      WidgetHub.dividHorizontalLow(),
+                                      WidgetT.dividHorizontalLow(),
                                     ],
                                   ),
-                                WidgetHub.dividHorizontalLow(),
+                                WidgetT.dividHorizontalLow(),
                                 excelGridEditor(context,setFun: () { if(setFun != null) setFun(); setStateS(() {}); },
                                     alignment: Alignment.center,
                                     set: (index, data) {
                                       p.useType = data.split(',');
                                     }, val: p.useType.join(','), width: 600,
                                     key: 'ct.useType', text: p.useType.join(',  '), label: '사업목적 ( , , )'),
-                                WidgetHub.dividHorizontalLow(),
-                                WidgetHub.dividHorizontalLow(),
+                                WidgetT.dividHorizontalLow(),
+                                WidgetT.dividHorizontalLow(),
                                 Container(
                                   height: height1,
                                   alignment: Alignment.center,
@@ -4071,7 +4071,7 @@ class WidgetHub extends StatelessWidget {
                                     ],
                                   ),
                                 ),
-                                WidgetHub.dividHorizontalLow(),
+                                WidgetT.dividHorizontalLow(),
                                 Container(
                                   height: height1,
                                   alignment: Alignment.center,
@@ -4124,12 +4124,12 @@ class WidgetHub extends StatelessWidget {
                                     ],
                                   ),
                                 ),
-                                WidgetHub.dividHorizontalLow(),
+                                WidgetT.dividHorizontalLow(),
                                 if(p.isSupplement)
                                   Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      WidgetHub.dividHorizontalLow(),
+                                      WidgetT.dividHorizontalLow(),
                                       Container(
                                         height: height1,
                                         alignment: Alignment.center,
@@ -4154,7 +4154,7 @@ class WidgetHub extends StatelessWidget {
                                                   Text('마감까지  ', style: StyleT.textStyle(),),
                                                   Text('${p.getSupplementOverAmount()}일', style: StyleT.titleStyle(),),
                                                   Expanded(child: SizedBox()),
-                                                  WidgetHub.dividVerticalLow(height: height1),
+                                                  WidgetT.dividVerticalLow(height: height1),
                                                 ],
                                               ) : Row(
                                                 mainAxisSize: MainAxisSize.min,
@@ -4163,14 +4163,14 @@ class WidgetHub extends StatelessWidget {
                                                   Text('마감일  ', style: StyleT.textStyle(),),
                                                   Text('${p.getSupplementOverAmount().abs()}일 지남', style: StyleT.titleStyle(),),
                                                   Expanded(child: SizedBox()),
-                                                  WidgetHub.dividVerticalLow(height: height1),
+                                                  WidgetT.dividVerticalLow(height: height1),
                                                 ],
                                               ),
                                             ),
                                           ],
                                         ),
                                       ),
-                                      WidgetHub.dividHorizontalLow(),
+                                      WidgetT.dividHorizontalLow(),
                                       excelGridEditor(context, setFun: () { if(setFun != null) setFun(); setStateS(() {}); }, multiLine: true, set: (index, data) {
                                         p.supplementDesc = data;
                                       }, val: p.supplementDesc ?? '', width: 600, key: 'wm.supplementDesc',
@@ -4181,7 +4181,7 @@ class WidgetHub extends StatelessWidget {
                                   Column(
                                     crossAxisAlignment: CrossAxisAlignment.center,
                                     children: [
-                                      WidgetHub.dividHorizontalLow(),
+                                      WidgetT.dividHorizontalLow(),
                                       Container(
                                         height: height1,
                                         alignment: Alignment.center,
@@ -4204,7 +4204,7 @@ class WidgetHub extends StatelessWidget {
                                                   Text('마감까지  ', style: StyleT.textStyle(),),
                                                   Text('${p.getTaskOverAmount()}일', style: StyleT.titleStyle(),),
                                                   Expanded(child: SizedBox()),
-                                                  WidgetHub.dividVerticalLow(height: height1),
+                                                  WidgetT.dividVerticalLow(height: height1),
                                                 ],
                                               ) : Row(
                                                 mainAxisSize: MainAxisSize.min,
@@ -4213,7 +4213,7 @@ class WidgetHub extends StatelessWidget {
                                                   Text('마감일  ', style: StyleT.textStyle(),),
                                                   Text('만료', style: StyleT.titleStyle(),),
                                                   Expanded(child: SizedBox()),
-                                                  WidgetHub.dividVerticalLow(height: height1),
+                                                  WidgetT.dividVerticalLow(height: height1),
                                                 ],
                                               ),
                                             ),
@@ -4309,20 +4309,21 @@ class WidgetHub extends StatelessWidget {
           Text('$label  ', style: StyleT.textStyle(),),
           Text('${text ?? ''}', style: StyleT.titleStyle(),),
           Expanded(child: SizedBox()),
-          WidgetHub.dividVerticalLow(height: height),
+          WidgetT.dividVerticalLow(height: height),
         ],
       ),
     );
   }
+
   static Widget excelGridEditor(BuildContext context, { Alignment alignment=Alignment.center, bool multiLine=false,Function(int, dynamic)? set, Function? setFun, double? width, double? height,
     String? key, String? hint, String? val, String? label, String? text,
     bool isDate=false, bool isArch=false, bool isDropMenu=false, List<String>? dropMenus,
   bool isManager=false, bool isAddress=false }) {
     if(key != null) {
-      if(editInput[key] == true) {
-        if(textInputs[key] == null)
-          textInputs[key] = new TextEditingController();
+      if(textInputs[key] == null)
+        textInputs[key] = new TextEditingController();
 
+      if(editInput[key] == true) {
         if(isAddress) {
           Widget w = Container(
             height: 28,
@@ -4330,7 +4331,7 @@ class WidgetHub extends StatelessWidget {
               autofocus: true,
               key: GlobalKey(),
               style: StyleT.titleStyle(),
-              decoration: WidgetHub.textInputDecoration( hintText: hint, round: 0,
+              decoration: WidgetT.textInputDecoration( hintText: hint, round: 0,
                   backColor: Colors.white.withOpacity(0.5)),
               controller: textInputs[key]!,
               suggestionsAmount: 10,
@@ -4389,7 +4390,7 @@ class WidgetHub extends StatelessWidget {
                 if(set != null) await set(i, data);
                 if(setFun != null) await setFun();
               },
-              decoration: WidgetHub.textInputDecoration( hintText: hint, round: 4,
+              decoration: WidgetT.textInputDecoration( hintText: hint, round: 4,
                   backColor: Colors.white.withOpacity(0.5)),
               controller: textInputs[key],
             ),
@@ -4412,7 +4413,6 @@ class WidgetHub extends StatelessWidget {
         );
       }
     }
-
 
     if(isManager)
       return Container(
@@ -4469,7 +4469,7 @@ class WidgetHub extends StatelessWidget {
                             child: iconStyleMini(icon: Icons.more_vert)
                         ),
                       ),
-                    WidgetHub.dividVerticalLow(height: height),
+                    WidgetT.dividVerticalLow(height: height),
                   ],
                 ),
               ),
@@ -4561,7 +4561,7 @@ class WidgetHub extends StatelessWidget {
                           child: iconStyleMini(icon: Icons.more_vert)
                       ),
                     ),
-                  WidgetHub.dividVerticalLow(height: height),
+                  WidgetT.dividVerticalLow(height: height),
                 ],
               ),
             ),
@@ -4598,52 +4598,6 @@ class WidgetHub extends StatelessWidget {
         ),
       ),
     );
-
-    Widget addressW = SizedBox();
-    if(isAddress) {
-      if(textInputs[key] == null)
-        textInputs[key!] = new TextEditingController();
-      var w = DropdownButtonHideUnderline(
-        child: DropdownButton2(
-          isExpanded: true,
-          customButton:  Container( width: 28, height: 28,
-            child: TextButton(
-              onPressed: null,
-              style: StyleT.buttonStyleNone(padding: 0),
-              child: iconStyleMini(icon: Icons.search),
-            ),
-          ),
-          items: AddressAPI.addressStringList.map((item) => DropdownMenuItem<dynamic>(
-            value: item,
-            child: Text(
-              item.toString(),
-              style: StyleT.titleStyle(),
-              overflow: TextOverflow.ellipsis,
-            ),
-          )).toList(),
-          onChanged: (value) async {
-
-          },
-          itemHeight: 28,
-          itemPadding: const EdgeInsets.only(left: 16, right: 16),
-          dropdownWidth: width,
-          dropdownPadding: const EdgeInsets.symmetric(vertical: 6),
-          dropdownDecoration: BoxDecoration(
-            border: Border.all(
-              width: 1.7,
-              color: Colors.grey.withOpacity(0.5),
-            ),
-            borderRadius: BorderRadius.circular(0),
-            color: Colors.white.withOpacity(0.95),
-          ),
-          dropdownElevation: 0,
-          offset: Offset(width! * -1 + 28 * 2 + 0.7, 0),
-        ),
-      );
-      addressW = Container( width: 28, height: 28,
-        child: w,
-      );
-    }
 
     return Container(  width: width, height: multiLine ? null : 28,
       alignment: alignment,
@@ -4747,8 +4701,6 @@ class WidgetHub extends StatelessWidget {
               ),
 
             if(isAddress)
-              addressW,
-            if(isAddress)
               Container(  width: 28, height: 28,
                 child: TextButton(
                     onPressed: () async {
@@ -4763,7 +4715,7 @@ class WidgetHub extends StatelessWidget {
                     child: iconStyleMini(icon: Icons.content_paste_search)
                 ),
               ),
-              WidgetHub.dividVerticalLow(height: height),
+              WidgetT.dividVerticalLow(height: height),
           ],
         ),
       ),
@@ -4787,7 +4739,7 @@ class WidgetHub extends StatelessWidget {
                 Text('$label  ', style: StyleT.textStyle(),),
               Text('$text', style: StyleT.titleStyle(),),
               Expanded(child: SizedBox()),
-              WidgetHub.dividVerticalLow(),
+              WidgetT.dividVerticalLow(),
             ],
           ),
         ),
@@ -4810,7 +4762,7 @@ class WidgetHub extends StatelessWidget {
               if(label != null)
                 Text('$label  ', style: StyleT.titleStyle(),),
               Text('$text', style: StyleT.titleStyle(),),
-              WidgetHub.dividVerticalLow(),
+              WidgetT.dividVerticalLow(),
             ],
           ),
         ),
@@ -4827,11 +4779,11 @@ class WidgetHub extends StatelessWidget {
           return StatefulBuilder(
             builder: (BuildContext context, StateSetter setStateS) {
               return AlertDialog(
-                backgroundColor: Colors.white.withOpacity(0.85),
-                elevation: 24,
+                backgroundColor: Colors.white.withOpacity(0.9),
+                elevation: 36,
                 shape: RoundedRectangleBorder(
-                    side: BorderSide(color: Colors.grey.shade400),
-                    borderRadius: BorderRadius.circular(0.0)),
+                    side: BorderSide(color: Colors.grey.shade400, width: 1.4),
+                    borderRadius: BorderRadius.circular(8)),
                 titlePadding: EdgeInsets.zero,
                 contentPadding: EdgeInsets.zero,
                 title: Container(padding: EdgeInsets.all(12), child: Text('도로명 주소 검색', style: StyleT.titleStyle(bold: true))),
@@ -4854,7 +4806,7 @@ class WidgetHub extends StatelessWidget {
                               await AddressAPI.fetchAddressList(textController!.text);
                               setStateS(() {});
                             },
-                            decoration: WidgetHub.textInputDecoration( hintText: '주소를 입력해 주세요.', round: 4,
+                            decoration: WidgetT.textInputDecoration( hintText: '주소를 입력해 주세요.', round: 4,
                                 backColor: Colors.white.withOpacity(0.5)),
                             controller: textController,
                           ),
@@ -5367,7 +5319,7 @@ class WindowButtons extends StatelessWidget {
                                     color: Colors.redAccent.withOpacity(0.5)),
                                 child: Row( mainAxisSize: MainAxisSize.min,
                                   children: [
-                                    WidgetHub.iconStyleMini(icon: Icons.cancel),
+                                    WidgetT.iconStyleMini(icon: Icons.cancel),
                                     Text('강제 종료', style: StyleT.titleStyle(),),
                                     SizedBox(width: 12,),
                                   ],
@@ -5383,7 +5335,7 @@ class WindowButtons extends StatelessWidget {
                                 style: StyleT.buttonStyleOutline(padding: 0, strock: 1.4, elevation: 0, color: StyleT.accentLowColor.withOpacity(0.5)),
                                 child: Row( mainAxisSize: MainAxisSize.min,
                                   children: [
-                                    WidgetHub.iconStyleMini(icon: Icons.undo),
+                                    WidgetT.iconStyleMini(icon: Icons.undo),
                                     Text('취소', style: StyleT.titleStyle(),),
                                     SizedBox(width: 12,),
                                   ],
@@ -5401,7 +5353,7 @@ class WindowButtons extends StatelessWidget {
                                 style: StyleT.buttonStyleOutline(padding: 0, strock: 1.4, elevation: 0, color: StyleT.accentColor.withOpacity(0.5)),
                                 child: Row( mainAxisSize: MainAxisSize.min,
                                   children: [
-                                    WidgetHub.iconStyleMini(icon: Icons.check_circle),
+                                    WidgetT.iconStyleMini(icon: Icons.check_circle),
                                     Text('확인', style: StyleT.titleStyle(),),
                                     SizedBox(width: 12,),
                                   ],

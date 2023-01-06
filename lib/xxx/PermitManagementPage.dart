@@ -602,7 +602,7 @@ class _PermitManagementPageState extends State<PermitManagementPage> {
                              ),
                            ),
                            SizedBox(width: 8,),
-                           Container(width: 80, child: WidgetHub.textInputField(aoTypeInput, hintText: '타입')),
+                           Container(width: 80, child: WidgetT.textInputField(aoTypeInput, hintText: '타입')),
                            SizedBox(width: 8,),
                            Container(
                              width: 128,
@@ -686,7 +686,7 @@ class _PermitManagementPageState extends State<PermitManagementPage> {
                        Row(
                          children: [
                            Text(SystemT.getManagerName(selectManagerId)),
-                           Container(width: 256, child: WidgetHub.textInputField(managerInput, hintText: '실무자 직접 입력')),
+                           Container(width: 256, child: WidgetT.textInputField(managerInput, hintText: '실무자 직접 입력')),
                            SizedBox(width: 8,),
                            SizedBox(
                              height: 32,
@@ -712,7 +712,7 @@ class _PermitManagementPageState extends State<PermitManagementPage> {
                          children: [
                            Row(
                              children: [
-                               Container(width: 128, child: WidgetHub.textInputField(clientInput, hintText: '이름 입력')),
+                               Container(width: 128, child: WidgetT.textInputField(clientInput, hintText: '이름 입력')),
                                SizedBox(width: 8,),
                                Container(
                                  width: 150,
@@ -759,7 +759,7 @@ class _PermitManagementPageState extends State<PermitManagementPage> {
                                ),
                              ],
                            ),
-                           Container(width: 334, child: WidgetHub.textInputField(clientDesc, hintText: '참고사항 입력 // 비고')),
+                           Container(width: 334, child: WidgetT.textInputField(clientDesc, hintText: '참고사항 입력 // 비고')),
                          ],
                        ),
                        SizedBox(height: 4,),
@@ -863,7 +863,7 @@ class _PermitManagementPageState extends State<PermitManagementPage> {
                            ),
                          ),
                          SizedBox(width: 8,),
-                         Container(width: 80, child: WidgetHub.textInputField(permitAtTypeInput, hintText: '타입')),
+                         Container(width: 80, child: WidgetT.textInputField(permitAtTypeInput, hintText: '타입')),
                          SizedBox(width: 8,),
                          Container(
                            height: 32, width: 200,
@@ -959,7 +959,7 @@ class _PermitManagementPageState extends State<PermitManagementPage> {
                              ),
                            ),
                            SizedBox(width: 8,),
-                           Container(width: 80, child: WidgetHub.textInputField(endAtTypeInput, hintText: '타입')),
+                           Container(width: 80, child: WidgetT.textInputField(endAtTypeInput, hintText: '타입')),
                            SizedBox(width: 8,),
                            Container(
                              height: 32, width: 200,
@@ -1036,12 +1036,12 @@ class _PermitManagementPageState extends State<PermitManagementPage> {
                        Text('허가유형', style: StyleT.titleStyle(bold: true),),
                        Row(
                          children: [
-                           Container(width: 128, child: WidgetHub.textInputField(typeInput, hintText: '허가유형 입력')),
+                           Container(width: 128, child: WidgetT.textInputField(typeInput, hintText: '허가유형 입력')),
                          ],
                        ),
 
                        SizedBox(height: StyleT.divideHeight,),
-                       WidgetHub.textInputField(memoInput, hintText: '진행 및 특이사항 입력', height: 128, maxLines: 8),
+                       WidgetT.textInputField(memoInput, hintText: '진행 및 특이사항 입력', height: 128, maxLines: 8),
 
                        SizedBox(height: StyleT.divideHeight,),
                        Column(

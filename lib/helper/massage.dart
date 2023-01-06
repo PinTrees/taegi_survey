@@ -56,7 +56,7 @@ class MassageT {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                WidgetHub.iconStyleMini(icon: Icons.notifications_active),
+                WidgetT.iconStyleMini(icon: Icons.notifications_active),
                 Expanded(
                   child: Container(
                     padding: EdgeInsets.fromLTRB(0, 6, 0, 6),
@@ -105,7 +105,7 @@ class MassageT {
                 title: Column(
                   children: [
                     Container(padding: EdgeInsets.all(12), child: Text('알림창', style: StyleT.titleStyle(bold: true))),
-                    WidgetHub.dividHorizontal(color: Colors.grey.withOpacity(0.35)),
+                    WidgetT.dividHorizontal(color: Colors.grey.withOpacity(0.35)),
                   ],
                 ),
                 content: ScrollConfiguration(
@@ -122,7 +122,7 @@ class MassageT {
                 actions: <Widget>[
                   Column(
                     children: [
-                      WidgetHub.dividHorizontal(color: Colors.grey.withOpacity(0.35)),
+                      WidgetT.dividHorizontal(color: Colors.grey.withOpacity(0.35)),
                       Container(
                         padding: EdgeInsets.all(12),
                         child: Row(
@@ -136,7 +136,7 @@ class MassageT {
                                       color: Colors.redAccent.withOpacity(0.5)),
                                   child: Row( mainAxisSize: MainAxisSize.min,
                                     children: [
-                                      WidgetHub.iconStyleMini(icon: Icons.cancel),
+                                      WidgetT.iconStyleMini(icon: Icons.cancel),
                                       Text('닫기', style: StyleT.titleStyle(),),
                                       SizedBox(width: 12,),
                                     ],
@@ -147,7 +147,7 @@ class MassageT {
                             Container( height: 28,
                               child: TextButton(
                                   onPressed: () async {
-                                    await WidgetHub.showSnackBar(context, text: '기능을 개발중 입니다.');
+                                    await WidgetT.showSnackBar(context, text: '기능을 개발중 입니다.');
                                     setStateS(() {});
                                     //Navigator.pop(context);
                                   },
@@ -155,7 +155,7 @@ class MassageT {
                                       elevation: 18, color: StyleT.accentColor.withOpacity(0.5)),
                                   child: Row( mainAxisSize: MainAxisSize.min,
                                     children: [
-                                      WidgetHub.iconStyleMini(icon: Icons.settings),
+                                      WidgetT.iconStyleMini(icon: Icons.settings),
                                       Text('알람설정', style: StyleT.titleStyle(),),
                                       SizedBox(width: 12,),
                                     ],

@@ -617,7 +617,7 @@ class SystemT {
 
   /// System Manager
   static startTrayOpen(BuildContext context) async {
-    WidgetHub.openPageWithFade(context, ManagerPage1(), time: 0, first: true);
+    WidgetT.openPageWithFade(context, ManagerPage1(), time: 0, first: true);
     //Navigator.push(context, MaterialPageRoute(builder: (context) => PermitManagementListViewerPage()),);
     await SystemT.windowMainStyle(show: true);
   }
