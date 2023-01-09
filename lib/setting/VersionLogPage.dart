@@ -78,6 +78,61 @@ class _VersionLogPageState extends State<VersionLogPage> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        Text('0.1.1+beta', style: TextStyle(fontSize: 24, fontWeight: FontWeight.normal),),
+                        Text('2023. 01. 06', style: StyleT.textStyle(),),
+                      ],
+                    ),
+                    SizedBox(width: 36,),
+                    SizedBox(width: 8,),
+                    Column(
+                      children: [
+                        Text('버그 수정'
+                            '\n             - 관리자 페이지에서 문서추가가 불가능하던 오류가 해결되었습니다.'
+                            '\n             - 실무자 페이지에서 문서수정이 불가능하던 오류가 해결되었습니다.'
+                            '\n             - 소재지 추가 후 도로면주소 검색 버튼 클릭시 검색되지 않던 오류가 수정되었습니다.'
+                            '\n             - 소재지 입력 방식중 드롭다운 목록을 통한 입력방법이 제거되었습니다. (사용률 낮음)'
+                            '\n             - 허가관리대장 목록의 종료일이 표시되지 않던 오류가 해결되었습니다.'
+
+                            '\n\n기능 및 UI 업데이트'
+                            '\nUpdate: 관리자 페이지 변경'
+                            '\n             - 페이지 카운터 추가됨'
+                            '\n             - 허가관리 추가, 수정 방식 통일화 됨'
+                            '\n             - 현재 적용증인 정렬 노출됨'
+                            '\n             - 버전확인 버튼 위치 변경됨'
+                            '\nUpdate: 허가관리'
+                            '\n             - 데이터가 미 입력된 문서에 대해 정렬오류 제거 (더이상 정렬데이터에 표시되지 않음)'
+                            '\n             - 데이터 추가, 수정 방식 통일화 됨'
+                            '\nUpdate: 업무배당'
+                            '\n             - 데이터 추가, 수정 가능'
+                            '\nUpdate: 관리자 페이지'
+                            '\n             - 데이터 추가, 수정 가능'
+                            '\nUpdate: 구 페이지 삭제됨'
+                            '\nUpdate: 전반적 인터페이스 통일화'
+                            '\nUpdate: 일부 UI 코드 최적화'
+                            '\nUpdate: 데이터베이스 SSE 적용됨 (ServerSentEvent)'
+                            '\n             - 문서 수정, 추가 반영'
+
+                            '\n\n기타'
+                            '\n-'
+                          , style: TextStyle(fontSize: 11, color: StyleT.titleColor, fontWeight: FontWeight.w300),),
+                      ],
+                    )
+                  ]
+              ),
+              SizedBox(height: 8,),
+              WidgetT.dividHorizontalLow(),
+            ],
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 8,),
+              Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
                         Text('0.1.0+beta', style: TextStyle(fontSize: 24, fontWeight: FontWeight.normal),),
                         Text('2023. 01. 04', style: StyleT.textStyle(),),
                       ],

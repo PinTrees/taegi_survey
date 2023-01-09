@@ -28,6 +28,8 @@ import 'package:untitled2/setting/VersionLogPage.dart';
 
 import 'AlertMainPage.dart';
 import 'PmEditePage.dart';
+import 'helper/dialog.dart';
+import 'helper/functions.dart';
 import 'helper/style.dart';
 import 'setting/SearchPage.dart';
 
@@ -249,9 +251,9 @@ class _ManagerPage1State extends State<ManagerPage1> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 WidgetT.iconStyleMini(icon: Icons.notifications_active),
-                Container(
-                  padding: EdgeInsets.all(12),
-                  child: Expanded(
+                Expanded(
+                  child: Container(
+                    padding: EdgeInsets.all(12),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -464,26 +466,12 @@ class _ManagerPage1State extends State<ManagerPage1> {
             var jsonS = jsonEncode(p);
             var j = jsonDecode(jsonS);
             replaceP = PermitManagement.fromDatabase(j);
+            FunctionT.refresh = () { refresh(); };
+            DialogT.dialogInfoPm(context, replaceP!, color: StyleT.accentLowColor.withOpacity(0.15), setFun: () { setState(() {}); }, saveFun: saveEditDate);
             refresh();
           },);
         if(selectP == p) {
-          w = Stack(
-            children: [
-              //WidgetHub.pmRowExcelWidget(context, p, color: SystemStyle.accentLowColor.withOpacity(0.1),),
-              Container(
-                padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                child: WidgetT.pmRowExcelEditeWidget(
-                    context, replaceP!, saveFun: saveEditDate,
-                    fun: () async {
-                      refresh();
-                    },
-                    color: StyleT.accentLowColor.withOpacity(0.5), setFun: () {
-                  refresh();
-                  setState(() {});
-                }),
-              )
-            ],
-          );
+          w =  WidgetT.pmRowExcelWidget(context, p, color: backColor,);
         }
         childrenW.add(w);
       }
@@ -1104,6 +1092,27 @@ class _ManagerPage1State extends State<ManagerPage1> {
                                        child: Container( alignment: Alignment.center,
                                          padding: EdgeInsets.all(8),
                                          child: Text('알림 ${MassageT.massages.length}건', style: StyleT.hintStyle(bold: true, size: 12, accent: true),),
+                                       ),
+                                     ),
+                                     SizedBox(width: 8,),
+                                     Container(
+                                       child: TextButton(
+                                         onPressed: () async {
+                                           WidgetT.openPageWithFade(context, VersionLogPage());
+                                         },
+                                         style: StyleT.buttonStyleOutline(elevation: 8, padding: 6, strock: 1.4,
+                                             color: (SystemT.versionCheck() == 0) ? StyleT.accentLowColor.withOpacity(0.5) : StyleT.errorColor.withOpacity(0.5) ),
+                                         child: Container( alignment: Alignment.center, height: 32,
+                                           padding: EdgeInsets.all(0),
+                                           child: Row(
+                                             children: [
+                                               WidgetT.iconStyleMini(icon: Icons.history, size: 18),
+                                               SizedBox(width: 4,),
+                                               Text((SystemT.versionCheck() == 0) ? '최신버전' : '업데이트 필요', style: StyleT.hintStyle(bold: true, size: 12, accent: true),),
+                                               SizedBox(width: 4,),
+                                             ],
+                                           ),
+                                         ),
                                        ),
                                      ),
                                      SizedBox(width: 12,),

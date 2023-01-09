@@ -135,7 +135,7 @@ class _OwnerPageState extends State<OwnerPage> {
   var menu1_1 = [ '전체', '종료임박',];
   var selectMenu1_1 = '종료임박';
 
-  var menu1_2 = [ '전체', '업무마감임박', '보완필요', '미배정'];
+  var menu1_2 = [ '전체', '업무마감임박', '보완필요', '미배정', '문자미전송', '문자전송완료'];
   var selectMenu1_2 = '업무마감임박';
 
   var menu1_3 = [ '전체', '정산완료', '미정산',];
@@ -359,7 +359,6 @@ class _OwnerPageState extends State<OwnerPage> {
   void refresh() {
     List<Widget> childrenW = [];
     Widget countW = SizedBox();
-    List<Widget> childrenWC = [];
 
     var startAt = (currentPage - 1) * SettingT.pageCount;
     var limitAt = startAt + SettingT.pageCount;
@@ -425,13 +424,13 @@ class _OwnerPageState extends State<OwnerPage> {
               refresh();
             },
             color: backColor, endVisible: false, moreFun: () {
-              selectW = p; refresh();
+              selectW = p; search();
             });
 
         if(selectW == p) {
           w = WidgetT.wmRowEditeWidget(context, replaceW!, saveFun: saveEditDataW,
               fun: () async { refresh(); },
-              color: backColor, endVisible: false, setFun: () { refresh(); setState(() {}); });
+              color: backColor, endVisible: false, setFun: () { search(); setState(() {}); });
         }
         childrenW.add(w);
       }
@@ -461,7 +460,7 @@ class _OwnerPageState extends State<OwnerPage> {
             context, replaceC!, color: backColor, endVisible: true,
             saveFun: saveEditDataC,
             setFun: () {
-              setState(() {}); refresh();
+              search();
             },
             fun: () async {
             },
@@ -587,6 +586,40 @@ class _OwnerPageState extends State<OwnerPage> {
                               ),
                             ],
                           ),
+
+                        SizedBox(height: 8,),
+                        Row(
+                          children: [
+                            if(searchSelectYear != null)
+                              Container(
+                                padding: EdgeInsets.only(right: 8),
+                                child: TextButton(
+                                  onPressed: () {
+                                  },
+                                  style: StyleT.buttonStyleOutline(elevation: 8, padding: 0,
+                                      strock: 1.4, color: StyleT.errorColor.withOpacity(0.5)),
+                                  child:   Container( alignment: Alignment.center,
+                                    padding: EdgeInsets.all(8),
+                                    child: Text('${searchSelectYear!.year}년', style: StyleT.hintStyle(bold: true, size: 12, accent: true),),
+                                  ),
+                                ),
+                              ),
+                            if(searchSelectMonth != null)
+                              Container(
+                                padding: EdgeInsets.only(right: 8),
+                                child: TextButton(
+                                  onPressed: () {
+                                  },
+                                  style: StyleT.buttonStyleOutline(elevation: 8, padding: 0,
+                                      strock: 1.4, color: StyleT.errorColor.withOpacity(0.5)),
+                                  child:   Container( alignment: Alignment.center,
+                                    padding: EdgeInsets.all(8),
+                                    child: Text('$searchSelectMonth월', style: StyleT.hintStyle(bold: true, size: 12, accent: true),),
+                                  ),
+                                ),
+                              ),
+                          ],
+                        ),
 
                         SizedBox(height: 8,),
                         Container(
@@ -735,11 +768,17 @@ class _OwnerPageState extends State<OwnerPage> {
     if(selectMenu1_2 == menu1_2[1]) {
       tmpList = await SystemT.searchWmSortTaskOverAtOnly(tmpList);
     }
-    if(selectMenu1_2 == menu1_2[2]) {
+    else if(selectMenu1_2 == menu1_2[2]) {
       tmpList = await SystemT.searchWmSortIsSum(tmpList);
     }
-    if(selectMenu1_2 == menu1_2[3]) {
+    else if(selectMenu1_2 == menu1_2[3]) {
       tmpList =  await SystemT.searchWmSortNullManager(tmpList);
+    }
+    else if(selectMenu1_2 == menu1_2[4]) {
+      tmpList =  await SystemT.searchWmSortIsMessageSent(tmpList, isOn: false);
+    }
+    else if(selectMenu1_2 == menu1_2[5]) {
+      tmpList =  await SystemT.searchWmSortIsMessageSent(tmpList, isOn: true);
     }
 
     if(selectManager != null) {
@@ -822,8 +861,6 @@ class _OwnerPageState extends State<OwnerPage> {
   }
 
   void search() async {
-    //clearPage();
-
     var tmpP = SystemT.permitManagementMaps.values.toList();
     var tmpC = SystemT.contracts.values.toList();
     var tmpW = SystemT.workManagements.values.toList();
@@ -907,27 +944,6 @@ class _OwnerPageState extends State<OwnerPage> {
                              style: StyleT.buttonStyleNone(padding: 0),
                              child: WidgetT.iconStyleBig(icon: Icons.dark_mode),
                            ),
-                           TextButton(
-                             onPressed: () async {
-                                WidgetT.openPageWithFade(context, VersionLogPage());
-                             },
-                             style: StyleT.buttonStyleNone(padding: 0,
-                                color: !(SystemT.versionCheck() == 0) ? Colors.redAccent.withOpacity(0.15) : Colors.transparent),
-                             child: SizedBox( width: 48, height: 36,
-                               child: Row(
-                                 mainAxisAlignment: MainAxisAlignment.center,
-                                 children: [
-                                   WidgetT.iconStyleMini(icon: Icons.history, size: 18),
-                                  
-                                   if((SystemT.versionCheck() == 0))
-                                     Text('최신', style: TextStyle(fontSize: 9, color: StyleT.titleColor),),
-                                   if(!(SystemT.versionCheck() == 0))
-                                     Text('Update', style: TextStyle(fontSize: 9, color: StyleT.titleColor),),
-                                 ],
-                               ),
-                             )
-                     
-                           ),
                          ],
                        ),
                    )
@@ -1000,6 +1016,28 @@ class _OwnerPageState extends State<OwnerPage> {
                                          SettingT.pageCountDropDown(search),
                                        ],
                                      ),
+                                     Expanded(child: SizedBox()),
+                                     Container(
+                                       child: TextButton(
+                                         onPressed: () async {
+                                           WidgetT.openPageWithFade(context, VersionLogPage());
+                                         },
+                                         style: StyleT.buttonStyleOutline(elevation: 8, padding: 6, strock: 1.4,
+                                             color: (SystemT.versionCheck() == 0) ? StyleT.accentLowColor.withOpacity(0.5) : StyleT.errorColor.withOpacity(0.5) ),
+                                         child: Container( alignment: Alignment.center, height: 32,
+                                           padding: EdgeInsets.all(0),
+                                           child: Row(
+                                             children: [
+                                               WidgetT.iconStyleMini(icon: Icons.history, size: 18),
+                                               SizedBox(width: 4,),
+                                               Text((SystemT.versionCheck() == 0) ? '최신버전' : '업데이트 필요', style: StyleT.hintStyle(bold: true, size: 12, accent: true),),
+                                               SizedBox(width: 4,),
+                                             ],
+                                           ),
+                                         ),
+                                       ),
+                                     ),
+                                     SizedBox(width: 12,),
                                    ],
                                  ),
                                  SizedBox(height: 4,),

@@ -141,20 +141,30 @@ class _InitPageState extends State<InitPage> {
       //dark: InterfaceBrightness.dark,
     );
 
-    var sss = await FirebaseNTT.spacarniasdcweijncd();
+    /*var sss = await FirebaseNTT.spacarniasdcweijncd();
     dynamic fff = await FirebaseNTT.orasklnasldvnlksanksadcjn(kyasvjsadnvlkn: await FirebaseNTT.kyasdnvalksdnvknsvmmvav(lcdasoinkasdvnk: await FirebaseNTT.lccdskasdcawnfqlncljacd(spascdnand: sss['sp'], lcasodncjqwnls: sss['lc']), kyasnvljnlasljdlnvkasd: sss['ky']),
     oranlsjdavbjasbdlknaskdc: sss['or']) ?? {};
-    if(fff == null) return;
+    if(fff == null) return;*/
+    try{
+      await SystemT.initSystem();
+    }catch(e) {
+      WidgetT.showSnackBar(context, text: '시스템 기초정보를 불러올 수 없습니다. 관리자에게 문의해 주세요. ERROR: 101052');
+      print(e);
+    }
+    if(SystemT.settingS == null) {
+      WidgetT.showSnackBar(context, text: '시스템 기초정보를 불러올 수 없습니다. 관리자에게 문의해 주세요. ERROR: 101052');
+      return;
+    }
 
     loadText = '서버 정보를 설정하고 있습니다.'; setState(() {});
     var firebaseOptions = FirebaseOptions(
-      appId: fff['appId'],
-      apiKey: fff['apiKey'],
-      projectId: fff['projectId'],
-      messagingSenderId: fff['messagingSenderId'],
-      authDomain: fff['authDomain'],
+      appId: SystemT.settingS.appId,
+      apiKey: SystemT.settingS.databaseKey,
+      projectId: SystemT.settingS.projectId,
+      messagingSenderId: SystemT.settingS.messagingSenderId,
+      authDomain: SystemT.settingS.authDomain,
     );
-    fff = null;
+    //fff = null;
     setState(() {});
 
     await Firebase.initializeApp(options: firebaseOptions);

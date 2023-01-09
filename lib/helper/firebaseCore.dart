@@ -402,10 +402,10 @@ class FirebaseT {
       list.add(current);
     list.add('-NI4ujaycSizu0Tx5cYA');
 
-    print(id);
     var idC = await FirebaseAuth.instance.currentUser?.getIdToken();
     await http.patch(Uri.parse("$_databaseURL/work-management/list/$id.json?auth=$idC"),
         body: json.encode({ 'data': list as List, }));
+    SystemT.workManagements[data.id] = data;
   }
   static dynamic pushWorkManagementWithAES(dynamic data) async {
     if(SystemT.versionCheck() == false) return;

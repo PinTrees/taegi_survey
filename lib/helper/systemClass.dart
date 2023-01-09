@@ -2,6 +2,46 @@
 import 'package:untitled2/helper/style.dart';
 import 'package:untitled2/helper/systemControl.dart';
 
+class SettingS {
+  var aligoAPIKey = '';
+  var aligoServerUrl = '';
+
+  var appId = '';
+  var databaseKey = '';
+  var projectId = '';
+  var messagingSenderId = '';
+  var authDomain = '';
+
+  var databaseNas = '';
+
+  SettingS.fromDatabase(Map<dynamic, dynamic> json) {
+    aligoAPIKey = json['aligoAPIKey'] ?? '';
+    aligoServerUrl = json['aligoServerUrl'] ?? '';
+
+    appId = json['appId'] ?? '';
+    databaseKey = json['databaseKey'] ?? '';
+    projectId = json['projectId'] ?? '';
+    messagingSenderId = json['messagingSenderId'] ?? '';
+    authDomain = json['authDomain'] ?? '';
+
+    databaseNas = json['databaseNas'] ?? '';
+  }
+  Map<String, dynamic> toJson() {
+    return {
+      'aligoAPIKey': aligoAPIKey,
+      'aligoServerUrl': aligoServerUrl,
+
+      'appId': appId,
+      'databaseKey': databaseKey,
+      'projectId': projectId,
+      'messagingSenderId': messagingSenderId,
+      'authDomain': authDomain,
+
+      'databaseNas': databaseNas,
+    };
+  }
+}
+
 class ArchitectureOffice {
   var name = '';
   var desc = '';
@@ -177,6 +217,7 @@ class PermitManagement {
   }
   DateTime? getPermitAtsFirst() {
     if(permitAts.length < 1) return null;
+    if(permitAts.first['date'] == null) return null;
     var dS = permitAts.first['date'].replaceAll('.', '-');
     DateTime? dD = DateTime.tryParse(dS) ?? DateTime.now();
     return dD;
@@ -474,6 +515,7 @@ class WorkManagement {
   var supplementDesc = '';
   var delayDesc = '';
   var desc = '';
+  var isMessageSent = false;
 
   WorkManagement.fromDatabase(Map<dynamic, dynamic> json) {
     id = json['id'] ?? '';
@@ -493,6 +535,8 @@ class WorkManagement {
     supplementDesc = json['additionalWorkDesc'] ?? '';
     delayDesc = json['delayDesc'] ?? '';
     desc = json['desc'] ?? '';
+
+    isMessageSent = json['isMessageSent'] ?? false;
   }
   void fromDatabase(Map<dynamic, dynamic> json) {
     id = json['id'] ?? '';
@@ -512,6 +556,8 @@ class WorkManagement {
     supplementDesc = json['additionalWorkDesc'] ?? '';
     delayDesc = json['delayDesc'] ?? '';
     desc = json['desc'] ?? '';
+
+    isMessageSent = json['isMessageSent'] ?? false;
   }
   Map<String, dynamic> toJson() {
     return {
@@ -532,6 +578,7 @@ class WorkManagement {
       'additionalWorkDesc': supplementDesc,
       'delayDesc': delayDesc,
       'desc': desc,
+      'isMessageSent': isMessageSent,
     };
   }
 

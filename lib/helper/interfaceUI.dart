@@ -18,6 +18,8 @@ import 'package:untitled2/helper/systemControl.dart';
 import 'package:window_manager/window_manager.dart';
 
 import 'addressApi.dart';
+import 'aligoApi.dart';
+import 'firebaseCore.dart';
 import 'transition.dart';
 
 class WidgetT extends StatelessWidget {
@@ -681,7 +683,7 @@ class WidgetT extends StatelessWidget {
 
     List<Widget> eDateAtsW = [];
     for(var a in p.endAts) {
-      if(a['date'] != '') continue;
+      if(a['date'] == '') continue;
       var dS = a['date'].replaceAll('.', '-');
       DateTime? dD = DateTime.tryParse(dS) ?? DateTime.now();
 
@@ -3870,6 +3872,46 @@ class WidgetT extends StatelessWidget {
                   )
               ),
             ),
+            SizedBox(width:  8,),
+            if(!p.isMessageSent)
+              Container( height: 28,
+                child: TextButton(
+                    onPressed: () async {
+                      //p.isMessageSent = await AligoAPI.sendMessage();
+                      if(p.isMessageSent) {
+                        await FirebaseT.postWorkManagementWithAES(p, p.id);
+                        await WidgetT.showSnackBar(context, text: '신청인에게 문자가 전송되었습니다.');
+                      } else {
+                        await WidgetT.showSnackBar(context, text: '문자 전송에 실패했습니다. 나중에 다시 시도해주세요');
+                      }
+                      if(setFun != null) await setFun();
+                    },
+                    style: StyleT.buttonStyleOutline(padding: 0, strock: 1.4, elevation: 8,
+                        color: StyleT.accentLowColor.withOpacity(0.5)),
+                    child: Row( mainAxisSize: MainAxisSize.min,
+                      children: [
+                        iconStyleMini(icon: Icons.send),
+                        Text('업무시작문자전송', style: StyleT.titleStyle(),),
+                        SizedBox(width: 12,),
+                      ],
+                    )
+              ),
+            ),
+            if(p.isMessageSent)
+              Container( height: 28,
+                child: TextButton(
+                    onPressed: null,
+                    style: StyleT.buttonStyleOutline(padding: 0, strock: 1.4, elevation: 8,
+                        color: Colors.yellow.withOpacity(0.5)),
+                    child: Row( mainAxisSize: MainAxisSize.min,
+                      children: [
+                        iconStyleMini(icon: Icons.send),
+                        Text('전송됨', style: StyleT.titleStyle(),),
+                        SizedBox(width: 12,),
+                      ],
+                    )
+                ),
+              ),
           ],
         )
       ],
@@ -5086,46 +5128,78 @@ class WidgetT extends StatelessWidget {
         barrierDismissible: false,
         builder: (BuildContext context) {
           return AlertDialog(
-            backgroundColor: Colors.white.withOpacity(0.85),
-            elevation: 4,
+            backgroundColor: Colors.white.withOpacity(0.9),
+            elevation: 36,
             shape: RoundedRectangleBorder(
-                side: BorderSide(color: Colors.grey.shade400),
-                borderRadius: BorderRadius.circular(0.0)),
+                side: BorderSide(color: Colors.grey.shade400, width: 1.4),
+                borderRadius: BorderRadius.circular(8)),
             titlePadding: EdgeInsets.zero,
-            contentPadding:  EdgeInsets.all(18),
-            title: Container(padding: EdgeInsets.all(18), child: Text('중요 알림', style: StyleT.titleStyle(color: Colors.red, bold: true))),
-            content: Text('현재 최신버전이 아닙니다.'
-                '\n버전을 업데이트 해 주세요. (폴더를 복사)'
-                '\nZ:태기측량/태기측량 시스템 프로그램/(버전코드)'
-                '\n\n최신버전: ${SystemT.releaseVer}  현재버전: ${SystemT.currentVer}', style: StyleT.titleStyle()),
-            actionsPadding: EdgeInsets.all(14),
+            contentPadding: EdgeInsets.zero,
+            title:  Column(
+              children: [
+                Container(padding: EdgeInsets.all(12),
+                    child: Text('버전 알림', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w900, color: StyleT.titleColor.withOpacity(0.7)))),
+                WidgetT.dividHorizontal(color: Colors.grey.withOpacity(0.5)),
+              ],
+            ),
+            content: Container(
+              padding: EdgeInsets.all(12),
+              child: Text('현재 최신버전이 아닙니다.'
+                  '\n버전을 업데이트 해 주세요. ( 웹사이트에서 다운로드 GitHub )'
+                  '\nZ:태기측량/태기측량 시스템 프로그램/(버전코드)'
+                  '\n\n최신버전: ${SystemT.releaseVer}  현재버전: ${SystemT.currentVer}', style: StyleT.titleStyle()),
+            ),
+            actionsPadding: EdgeInsets.zero,
             actions: <Widget>[
-              Row(
-                children: [
-                  TextButton(
-                    child: Text('취소', style: StyleT.titleStyle(bold: true),),
-                    onPressed: () {
-                      if(!force) {
-                        Navigator.pop(context);
-                        return;
-                      }
-                      appWindow.close();
-                    },
-                    style: StyleT.buttonStyleOutline(elevation: 0, color: Colors.redAccent.withOpacity(0.5) , strock: 1.4),
-                  ),
-                  Expanded(child:Container()),
-                  TextButton(
-                    child: Text('확인', style: StyleT.titleStyle(bold: true,),),
-                    onPressed: () {
-                      if(!force) {
-                        Navigator.pop(context);
-                        return;
-                      }
-                      appWindow.close();
-                    },
-                    style: StyleT.buttonStyleOutline(elevation: 0, color: Colors.blue.withOpacity(0.5) , strock: 1.4),
-                  ),
-                ],
+              WidgetT.dividHorizontal(color: Colors.grey.withOpacity(0.5)),
+              Container(
+                padding: EdgeInsets.all(12),
+                child:
+                Row(
+                  children: [
+                    Container( height: 28,
+                      child: TextButton(
+                          onPressed: () {
+                            if(!force) {
+                              Navigator.pop(context);
+                              return;
+                            }
+                            appWindow.close();
+                          },
+                          style: StyleT.buttonStyleOutline(padding: 0, strock: 1.4, elevation: 8,
+                              color: Colors.redAccent.withOpacity(0.5)),
+                          child: Row( mainAxisSize: MainAxisSize.min,
+                            children: [
+                              WidgetT.iconStyleMini(icon: Icons.cancel),
+                              Text('취소', style: StyleT.titleStyle(),),
+                              SizedBox(width: 12,),
+                            ],
+                          )
+                      ),
+                    ),
+                    Expanded(child: SizedBox()),
+                    Container( height: 28,
+                      child: TextButton(
+                          onPressed: () {
+                            if(!force) {
+                              Navigator.pop(context);
+                              return;
+                            }
+                            appWindow.close();
+                          },
+                          style: StyleT.buttonStyleOutline(padding: 0, strock: 1.4, elevation: 8,
+                              color: StyleT.accentColor.withOpacity(0.5) ),
+                          child: Row( mainAxisSize: MainAxisSize.min,
+                            children: [
+                              WidgetT.iconStyleMini(icon: Icons.save),
+                              Text('저장하기', style: StyleT.titleStyle(),),
+                              SizedBox(width: 12,),
+                            ],
+                          )
+                      ),
+                    ),
+                  ],
+                ),
               )
             ],
           );

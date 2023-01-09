@@ -8,6 +8,7 @@ import 'package:korea_regexp/get_regexp.dart';
 import 'package:korea_regexp/models/regexp_options.dart';
 import 'package:untitled2/AlertPage.dart';
 import 'package:untitled2/ManagerPage1.dart';
+import 'package:untitled2/helper/databaseNAS.dart';
 import 'package:untitled2/helper/firebaseCore.dart';
 import 'package:untitled2/helper/interfaceUI.dart';
 import 'package:untitled2/helper/systemClass.dart';
@@ -25,6 +26,7 @@ class SystemT {
 
   static Map<dynamic, dynamic> currentManager = {};
 
+  static late SettingS settingS;
   static SecurityKeys securityKeys = SecurityKeys.fromDatabase({});
 
   static double alertDu = 60;
@@ -141,6 +143,9 @@ class SystemT {
   }
 
 
+  static dynamic initSystem() async {
+    settingS = await NAS.getReference();
+  }
   static dynamic init() async {
     securityKeys = await FirebaseT.getSecurityKey();
 
@@ -566,6 +571,16 @@ class SystemT {
         int tDate = t.getSupplementOverAt()!.microsecondsSinceEpoch;
         if (c <= tDate)
           tmpList.add(t);
+      }
+      return tmpList;
+    }
+    return sorts ?? [];
+  }
+  static dynamic searchWmSortIsMessageSent(List<WorkManagement>? sorts, { bool isOn=false }) async {
+    List<WorkManagement> tmpList = [];
+    if(sorts!.length > 0) {
+      for(var t in sorts) {
+        if(t.isMessageSent == isOn) tmpList.add(t);
       }
       return tmpList;
     }
