@@ -4,6 +4,7 @@
 .dart_tool/
 .packages
 build/
+assets/lock/
 # If you're building an application, you may want to check-in your pubspec.lock
 pubspec.lock
 

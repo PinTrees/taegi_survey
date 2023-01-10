@@ -5144,10 +5144,37 @@ class WidgetT extends StatelessWidget {
             ),
             content: Container(
               padding: EdgeInsets.all(12),
-              child: Text('현재 최신버전이 아닙니다.'
-                  '\n버전을 업데이트 해 주세요. ( 웹사이트에서 다운로드 GitHub )'
-                  '\nZ:태기측량/태기측량 시스템 프로그램/(버전코드)'
-                  '\n\n최신버전: ${SystemT.releaseVer}  현재버전: ${SystemT.currentVer}', style: StyleT.titleStyle()),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text('현재 최신버전이 아닙니다.'
+                      '\n버전을 업데이트 해 주세요. ( 웹사이트에서 다운로드 GitHub )'
+                      '\nZ:태기측량/태기측량 시스템 프로그램/(버전코드)  또는'
+                      '\nhttps://github.com/PinTrees/taegi_survey/tree/main/version'
+                      '\n\n최신버전: ${SystemT.releaseVer}  현재버전: ${SystemT.currentVer}',
+                      style: TextStyle(fontSize: 12, fontWeight: FontWeight.w900, color: StyleT.textColor.withOpacity(0.7))),
+                  Container( height: 28,
+                    child: TextButton(
+                        onPressed: () {
+                          if(!force) {
+                            Navigator.pop(context);
+                            return;
+                          }
+                          appWindow.close();
+                        },
+                        style: StyleT.buttonStyleOutline(padding: 0, strock: 1.4, elevation: 8,
+                            color: StyleT.accentColor.withOpacity(0.5) ),
+                        child: Row( mainAxisSize: MainAxisSize.min,
+                          children: [
+                            WidgetT.iconStyleMini(icon: Icons.save),
+                            Text('다운로드 페이지 바로가기', style: StyleT.titleStyle(),),
+                            SizedBox(width: 12,),
+                          ],
+                        )
+                    ),
+                  ),
+                ],
+              ),
             ),
             actionsPadding: EdgeInsets.zero,
             actions: <Widget>[
@@ -5192,7 +5219,7 @@ class WidgetT extends StatelessWidget {
                           child: Row( mainAxisSize: MainAxisSize.min,
                             children: [
                               WidgetT.iconStyleMini(icon: Icons.save),
-                              Text('저장하기', style: StyleT.titleStyle(),),
+                              Text('확인', style: StyleT.titleStyle(),),
                               SizedBox(width: 12,),
                             ],
                           )
