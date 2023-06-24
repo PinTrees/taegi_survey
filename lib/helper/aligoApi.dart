@@ -7,9 +7,6 @@ import 'package:http/http.dart' as http;
 import 'package:untitled2/helper/style.dart';
 import 'package:untitled2/helper/systemControl.dart';
 
-class Aligo{
-}
-
 class AligoAPI {
   static dynamic sendMessage() async {
     var url = 'https://apis.aligo.in/send/';

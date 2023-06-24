@@ -66,15 +66,17 @@ dependencies:
 
   firebase_core_platform_interface: 4.5.1
   firebase_auth: ^3.4.1
-  firebase_auth_desktop: ^1.0.2
+  firebase_auth_desktop: 1.0.2
   firebase_core: 1.20.0
-  firebase_core_desktop: ^1.0.2
+  firebase_core_desktop: 1.0.2
 
   flutter_client_sse: ^1.0.0
 
   local_notifier: ^0.1.5
   flutter_acrylic: ^1.0.0+2
   glassmorphism: ^3.0.0
+  url_launcher: ^6.1.7
+  #auto_updater: ^0.1.6
   #flutter_secure_storage: ^6.1.0
 
 dev_dependencies:
@@ -105,6 +107,7 @@ flutter:
     - assets/icon.ico
     - assets/
     - assets/csv/
+    - assets/lock/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

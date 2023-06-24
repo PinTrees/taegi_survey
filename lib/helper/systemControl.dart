@@ -143,8 +143,8 @@ class SystemT {
   }
 
 
-  static dynamic initSystem() async {
-    settingS = await NAS.getReference();
+  static dynamic initSystem(BuildContext context) async {
+    settingS = await NAS.getReference(context);
   }
   static dynamic init() async {
     securityKeys = await FirebaseT.getSecurityKey();

@@ -146,7 +146,7 @@ class _InitPageState extends State<InitPage> {
     oranlsjdavbjasbdlknaskdc: sss['or']) ?? {};
     if(fff == null) return;*/
     try{
-      await SystemT.initSystem();
+      await SystemT.initSystem(context);
     }catch(e) {
       WidgetT.showSnackBar(context, text: '시스템 기초정보를 불러올 수 없습니다. 관리자에게 문의해 주세요. ERROR: 101052');
       print(e);

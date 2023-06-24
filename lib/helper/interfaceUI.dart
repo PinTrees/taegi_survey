@@ -15,6 +15,7 @@ import 'package:untitled2/xxx/PermitManagementViewerPage.dart';
 import 'package:untitled2/helper/style.dart';
 import 'package:untitled2/helper/systemClass.dart';
 import 'package:untitled2/helper/systemControl.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:window_manager/window_manager.dart';
 
 import 'addressApi.dart';
@@ -5152,22 +5153,23 @@ class WidgetT extends StatelessWidget {
                       '\nZ:태기측량/태기측량 시스템 프로그램/(버전코드)  또는'
                       '\nhttps://github.com/PinTrees/taegi_survey/tree/main/version'
                       '\n\n최신버전: ${SystemT.releaseVer}  현재버전: ${SystemT.currentVer}',
-                      style: TextStyle(fontSize: 12, fontWeight: FontWeight.w900, color: StyleT.textColor.withOpacity(0.7))),
-                  Container( height: 28,
+                      style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700, color: StyleT.textColor.withOpacity(0.8))),
+                  SizedBox(height: 8,),
+                  Container( height: 32,
                     child: TextButton(
-                        onPressed: () {
-                          if(!force) {
-                            Navigator.pop(context);
-                            return;
+                        onPressed: () async {
+                          var url = Uri.parse('https://github.com/PinTrees/taegi_survey/tree/main/version');
+                          if (await canLaunchUrl(url)) {
+                          launchUrl(url);
                           }
-                          appWindow.close();
                         },
                         style: StyleT.buttonStyleOutline(padding: 0, strock: 1.4, elevation: 8,
-                            color: StyleT.accentColor.withOpacity(0.5) ),
+                            color: StyleT.accentLowColor.withOpacity(0.5) ),
                         child: Row( mainAxisSize: MainAxisSize.min,
                           children: [
                             WidgetT.iconStyleMini(icon: Icons.save),
-                            Text('다운로드 페이지 바로가기', style: StyleT.titleStyle(),),
+                            Text('다운로드 페이지 바로가기',
+                              style: StyleT.hintStyle(bold: true, size: 12, accent: true),),
                             SizedBox(width: 12,),
                           ],
                         )
